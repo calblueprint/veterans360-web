@@ -1,0 +1,2 @@
+class PartneringOrganization < ApplicationRecord
+end

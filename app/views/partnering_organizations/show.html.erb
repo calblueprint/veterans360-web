@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @partnering_organization.name %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @partnering_organization.phone_number %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @partnering_organization.website %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @partnering_organization.address %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @partnering_organization.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @partnering_organization.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_partnering_organization_path(@partnering_organization) %> |
+<%= link_to 'Back', partnering_organizations_path %>
