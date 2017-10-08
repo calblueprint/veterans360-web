@@ -10,17 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 9f26750b7e5f2766e6e7f5daca204469b2cf19ec
 ActiveRecord::Schema.define(version: 20171010001902) do
+=======
+ActiveRecord::Schema.define(version: 20171008204739) do
+>>>>>>> Add resources base model and scaffold and associate with benefactors.
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "resources", force: :cascade do |t|
+<<<<<<< 9f26750b7e5f2766e6e7f5daca204469b2cf19ec
     t.string "file_name"
     t.string "file"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+=======
+    t.string "name"
+    t.string "description"
+    t.string "file"
+    t.string "category"
+    t.string "benefactor_type"
+    t.bigint "benefactor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["benefactor_type", "benefactor_id"], name: "index_resources_on_benefactor_type_and_benefactor_id"
+>>>>>>> Add resources base model and scaffold and associate with benefactors.
   end
 
 end
