@@ -84,6 +84,5 @@ ActiveRecord::Schema.define(version: 20171013161249) do
     t.inet "last_sign_in_ip"
     t.index ["email"], name: "index_veterans_on_email", unique: true
     t.index ["reset_password_token"], name: "index_veterans_on_reset_password_token", unique: true
-  end
 
 end
