@@ -10,4 +10,7 @@
 #  category   :string
 #
 class Resource < ApplicationRecord
+  # Resources can either belong to Admins or ParterOrgs
+  # Both of which can be referred to as a "benefactor"
+  belongs_to :benefactor, polymorphic: true
 end
