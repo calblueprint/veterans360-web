@@ -11,4 +11,5 @@
 #
 class Resource < ApplicationRecord
   belongs_to :admin
+
 end
