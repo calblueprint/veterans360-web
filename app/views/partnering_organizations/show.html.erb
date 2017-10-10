@@ -30,5 +30,15 @@
   <%= @partnering_organization.longitude %>
 </p>
 
+<p>
+  <strong>Category:</strong>
+  <%= @partnering_organization.category %>
+</p>
+
+<p>
+  <strong>Demographic:</strong>
+  <%= @partnering_organization.demographic %>
+</p>
+
 <%= link_to 'Edit', edit_partnering_organization_path(@partnering_organization) %> |
 <%= link_to 'Back', partnering_organizations_path %>

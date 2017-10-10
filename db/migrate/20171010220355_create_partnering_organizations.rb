@@ -7,6 +7,8 @@ class CreatePartneringOrganizations < ActiveRecord::Migration[5.1]
       t.string :address
       t.float :latitude
       t.float :longitude
+      t.integer :category
+      t.integer :demographic
 
       t.timestamps
     end

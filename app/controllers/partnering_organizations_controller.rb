@@ -69,6 +69,6 @@ class PartneringOrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def partnering_organization_params
-      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :latitude, :longitude)
+      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :latitude, :longitude, :category, :demographic)
     end
 end

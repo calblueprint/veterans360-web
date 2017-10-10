@@ -41,6 +41,16 @@
     <%= form.text_field :longitude, id: :partnering_organization_longitude %>
   </div>
 
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.number_field :category, id: :partnering_organization_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :demographic %>
+    <%= form.number_field :demographic, id: :partnering_organization_demographic %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

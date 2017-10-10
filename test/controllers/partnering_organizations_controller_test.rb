@@ -17,7 +17,7 @@ class PartneringOrganizationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create partnering_organization" do
     assert_difference('PartneringOrganization.count') do
-      post partnering_organizations_url, params: { partnering_organization: { address: @partnering_organization.address, latitude: @partnering_organization.latitude, longitude: @partnering_organization.longitude, name: @partnering_organization.name, phone_number: @partnering_organization.phone_number, website: @partnering_organization.website } }
+      post partnering_organizations_url, params: { partnering_organization: { address: @partnering_organization.address, category: @partnering_organization.category, demographic: @partnering_organization.demographic, latitude: @partnering_organization.latitude, longitude: @partnering_organization.longitude, name: @partnering_organization.name, phone_number: @partnering_organization.phone_number, website: @partnering_organization.website } }
     end
 
     assert_redirected_to partnering_organization_url(PartneringOrganization.last)
@@ -34,7 +34,7 @@ class PartneringOrganizationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update partnering_organization" do
-    patch partnering_organization_url(@partnering_organization), params: { partnering_organization: { address: @partnering_organization.address, latitude: @partnering_organization.latitude, longitude: @partnering_organization.longitude, name: @partnering_organization.name, phone_number: @partnering_organization.phone_number, website: @partnering_organization.website } }
+    patch partnering_organization_url(@partnering_organization), params: { partnering_organization: { address: @partnering_organization.address, category: @partnering_organization.category, demographic: @partnering_organization.demographic, latitude: @partnering_organization.latitude, longitude: @partnering_organization.longitude, name: @partnering_organization.name, phone_number: @partnering_organization.phone_number, website: @partnering_organization.website } }
     assert_redirected_to partnering_organization_url(@partnering_organization)
   end
 
