@@ -5,6 +5,7 @@
 #  name          :string         
 #  phone_number  :string
 #  website       :string
+#  address       :string
 #  latitude      :float
 #  longitude     :float
 #  role          :integer
