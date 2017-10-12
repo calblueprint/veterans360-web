@@ -7,7 +7,7 @@ one:
   address: MyString
   latitude: 1.5
   longitude: 1.5
-  category: 1
+  role: 1
   demographic: 1
 
 two:
@@ -17,5 +17,5 @@ two:
   address: MyString
   latitude: 1.5
   longitude: 1.5
-  category: 1
+  role: 1
   demographic: 1
