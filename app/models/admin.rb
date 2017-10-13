@@ -12,5 +12,5 @@
 #
 
 class Admin < ApplicationRecord
-  has_many :resources, as: :benefactor
+  has_many :resources
 end
