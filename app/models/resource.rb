@@ -10,4 +10,5 @@
 #  category   :string
 #
 class Resource < ApplicationRecord
+	belongs_to :partnering_organizations
 end

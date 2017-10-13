@@ -1,0 +1,57 @@
+<%= form_with(model: partnering_organization, local: true) do |form| %>
+  <% if partnering_organization.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(partnering_organization.errors.count, "error") %> prohibited this partnering_organization from being saved:</h2>
+
+      <ul>
+      <% partnering_organization.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :partnering_organization_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number, id: :partnering_organization_phone_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :website %>
+    <%= form.text_field :website, id: :partnering_organization_website %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: :partnering_organization_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :latitude %>
+    <%= form.text_field :latitude, id: :partnering_organization_latitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :longitude %>
+    <%= form.text_field :longitude, id: :partnering_organization_longitude %>
+  </div>
+
+  <div class="field">
+    <%= form.label :role %>
+    <%= form.number_field :role, id: :partnering_organization_role %>
+  </div>
+
+  <div class="field">
+    <%= form.label :demographic %>
+    <%= form.number_field :demographic, id: :partnering_organization_demographic %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
