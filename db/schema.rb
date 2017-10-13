@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 3f7e39644249342ac8216a812fc8800412e3fc96
 <<<<<<< 9e29f3a21f01d11991afa10759d0cc600a3ed67c
 <<<<<<< 2de87a0936e732f6f383545122ba84ada2a8c2dd
 ActiveRecord::Schema.define(version: 20171013161249) do
@@ -23,6 +24,9 @@ ActiveRecord::Schema.define(version: 20171008204739) do
 =======
 ActiveRecord::Schema.define(version: 20171010001902) do
 >>>>>>> Remove resources from schema so Jason can add.
+=======
+ActiveRecord::Schema.define(version: 20171013040214) do
+>>>>>>> Add several migrations to rename columns and add serialize field for veteran role.
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +35,15 @@ ActiveRecord::Schema.define(version: 20171010001902) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
+<<<<<<< 3f7e39644249342ac8216a812fc8800412e3fc96
 <<<<<<< 9e29f3a21f01d11991afa10759d0cc600a3ed67c
     t.text "description"
 =======
     t.string "description"
 >>>>>>> Remove resources from schema so Jason can add.
+=======
+    t.text "description"
+>>>>>>> Add several migrations to rename columns and add serialize field for veteran role.
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,6 +88,7 @@ ActiveRecord::Schema.define(version: 20171010001902) do
     t.boolean "on_connect", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "roles", default: "0"
   end
 
   create_table "veterans", force: :cascade do |t|
