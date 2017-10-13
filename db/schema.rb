@@ -10,23 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< 3f7e39644249342ac8216a812fc8800412e3fc96
-<<<<<<< 9e29f3a21f01d11991afa10759d0cc600a3ed67c
-<<<<<<< 2de87a0936e732f6f383545122ba84ada2a8c2dd
-ActiveRecord::Schema.define(version: 20171013161249) do
-=======
-<<<<<<< 9f26750b7e5f2766e6e7f5daca204469b2cf19ec
-ActiveRecord::Schema.define(version: 20171010001902) do
-=======
-ActiveRecord::Schema.define(version: 20171008204739) do
->>>>>>> Add resources base model and scaffold and associate with benefactors.
->>>>>>> Add resources base model and scaffold and associate with benefactors.
-=======
-ActiveRecord::Schema.define(version: 20171010001902) do
->>>>>>> Remove resources from schema so Jason can add.
-=======
-ActiveRecord::Schema.define(version: 20171013040214) do
->>>>>>> Add several migrations to rename columns and add serialize field for veteran role.
+ActiveRecord::Schema.define(version: 20171013044711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,18 +18,21 @@ ActiveRecord::Schema.define(version: 20171013040214) do
   create_table "admins", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "email"
-<<<<<<< 3f7e39644249342ac8216a812fc8800412e3fc96
-<<<<<<< 9e29f3a21f01d11991afa10759d0cc600a3ed67c
     t.text "description"
-=======
-    t.string "description"
->>>>>>> Remove resources from schema so Jason can add.
-=======
-    t.text "description"
->>>>>>> Add several migrations to rename columns and add serialize field for veteran role.
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -57,38 +44,12 @@ ActiveRecord::Schema.define(version: 20171013040214) do
     t.index ["veteran_id"], name: "index_friendships_on_veteran_id"
   end
 
-<<<<<<< 9e29f3a21f01d11991afa10759d0cc600a3ed67c
-  create_table "partnering_organizations", force: :cascade do |t|
-    t.string "name"
-    t.string "phone_number"
-    t.string "website"
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.integer "role"
-    t.integer "demographic"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-=======
->>>>>>> Remove resources from schema so Jason can add.
   create_table "resources", force: :cascade do |t|
     t.string "file_name"
     t.string "file"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "veterans", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.boolean "on_connect", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "roles", default: "0"
   end
 
   create_table "veterans", force: :cascade do |t|
