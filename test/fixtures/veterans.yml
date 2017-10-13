@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: veterans
+#
+#  id         :integer          not null, primary key
+#  first_name :string
+#  last_name  :string
+#  email      :string
+#  on_connect :boolean          default(FALSE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  roles      :text             default("0")
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  on_connect: false
+
+two:
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  on_connect: false
