@@ -12,5 +12,5 @@
 #
 
 class Admin < ApplicationRecord
-  has_many :resources
+  has_many :resources, dependent: :destroy
 end
