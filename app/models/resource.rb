@@ -12,4 +12,9 @@
 class Resource < ApplicationRecord
   belongs_to :admin
 
+  mount_uploader :file, FilesUploader
+
+  def url
+    file.url
+  end
 end
