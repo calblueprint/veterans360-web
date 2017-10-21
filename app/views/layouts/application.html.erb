@@ -9,6 +9,26 @@
   </head>
 
   <body>
+    <% if veteran_signed_in? %>
+      <button>
+        <%= link_to('Veteran Logout', destroy_veteran_session_path, method: :delete) %>
+      </button>
+    <% else %>
+      <button>
+        <%= link_to('Veteran Login', new_veteran_session_path) %>
+      </button>
+    <% end %>
+
+    <% if admin_signed_in? %>
+      <button>
+        <%= link_to('Admin Logout', destroy_admin_session_path, method: :delete) %>
+      </button>
+    <% else %>
+      <button>
+        <%= link_to('Admin Login', new_admin_session_path) %>
+      </button>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
