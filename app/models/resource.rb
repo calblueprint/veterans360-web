@@ -11,7 +11,6 @@
 #
 class Resource < ApplicationRecord
   belongs_to :owner, :polymorphic => true
-
   mount_uploader :file, FilesUploader
 
   def url
