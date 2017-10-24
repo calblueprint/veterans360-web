@@ -1,11 +1,28 @@
 <h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+ 
+<%= form_for(resource_url, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+ <div><%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true %></div>
+
+ <div><%= f.label :website %><br />
+        <%= f.text_field :website, autofocus: true %></div>
+
+<div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
+  </div>
+  
+
+  <div>
+  <%= f.label :role %><br />
+  <%= f.select :role, options_for_select(%w[Select Care Giver Support Team Educator Volunteer Organization Awareness Team]) %>
+  </div>
+
+ <div>
+  <%= f.label :demographic %><br />
+  <%= f.select :demographic, options_for_select(%w[Select Active Duty Veterans Family Members Children, Victims of Violence Suicide Prevention Drugs and Alcohol]) %>
   </div>
 
 
