@@ -45,6 +45,7 @@ GEM
     bindex (0.5.0)
     builder (3.2.3)
     byebug (9.1.0)
+    cancan (1.6.10)
     capybara (2.13.0)
       addressable
       mime-types (>= 1.16)
@@ -71,6 +72,8 @@ GEM
     erubi (1.6.1)
     execjs (2.7.0)
     ffi (1.9.18)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.6)
@@ -189,9 +192,11 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  cancan
   capybara (~> 2.13.0)
   coffee-rails (~> 4.2)
   devise
+  font-awesome-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)
