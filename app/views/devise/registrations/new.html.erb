@@ -17,12 +17,13 @@
 
   <div>
   <%= f.label :role %><br />
-  <%= f.select :role, options_for_select(%w[Select Care Giver Support Team Educator Volunteer Organization Awareness Team]) %>
+  <%= f.select :role, options_for_select(partnering_organization.role.map {|k, v| [k.humanize.capitalize, v] %>
   </div>
 
  <div>
   <%= f.label :demographic %><br />
-  <%= f.select :demographic, options_for_select(%w[Select Active Duty Veterans Family Members Children, Victims of Violence Suicide Prevention Drugs and Alcohol]) %>
+  <%= f.select <%= select_tag :demographic, options_for_select(partnering_organization.demographic.map {|k, v| [k.humanize.capitalize, v]}) %> 
+) %>
   </div>
 
 

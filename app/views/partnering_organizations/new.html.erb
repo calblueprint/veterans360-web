@@ -14,6 +14,10 @@
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+
+ <div><%= f.label :phone_number %><br />
+        <%= f.text_field :phone_number, autofocus: true %></div>
+
   <div>
   <%= f.label :role %><br />
   <%= f.select :role, options_for_select(%w[Select Care Giver Support Team Educator Volunteer Organization Awareness Team]) %>
@@ -21,7 +25,9 @@
 
  <div>
   <%= f.label :demographic %><br />
-  <%= f.select :demographic, options_for_select(%w[Select Active Duty Veterans Family Members Children, Victims of Violence Suicide Prevention Drugs and Alcohol]) %>
+  <%= f.select :demographic, <%= select_tag :status, options_for_select(Partnering_Organization.demographic) %>
+
+ %>
   </div>
 
 

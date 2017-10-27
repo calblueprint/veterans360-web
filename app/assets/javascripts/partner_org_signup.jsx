@@ -6,3 +6,4 @@
 	class Partnering_Org {
 		
 	}
+	
