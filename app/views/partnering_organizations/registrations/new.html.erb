@@ -25,13 +25,15 @@
 
   <div>
   <%= f.label :role %><br />
-  <%= f.select :role, options_for_select(%w[Select Care Giver Support Team Educator Volunteer Organization Awareness Team]) %>
-  </div>
+    <%= f.select(:role, PartneringOrganization.roles.keys.map {|role| [role.titleize,role]}) %>
+</div>
 
- <div>
+  <div>
   <%= f.label :demographic %><br />
-  <%= f.select :demographic, options_for_select(%w[Select Active Duty Veterans Family Members Children, Victims of Violence Suicide Prevention Drugs and Alcohol]) %>
-  </div>
+    <%= f.select(:demographic, PartneringOrganization.demographics.keys.map {|demographic| [demographic.titleize,demographic]}) %>
+</div>
+
+
 
 
   <div class="field">

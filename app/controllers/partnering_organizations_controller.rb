@@ -1,4 +1,4 @@
-class PartneringOrganizationsController < Devise::RegistrationController 
+class PartneringOrganizationsController < ApplicationController 
   before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy]
 
   # GET /partnering_organizations
