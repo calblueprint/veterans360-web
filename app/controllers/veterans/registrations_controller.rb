@@ -2,15 +2,21 @@ class Veterans::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
+  skip_before_action :verify_authenticity_token
+  respond_to :json
+
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    params[:veteran][:roles] = Veteran.serialize_string_roles(
+      params[:veteran][:roles]
+    )
+    super
+  end
 
   # GET /resource/edit
   # def edit
@@ -42,14 +48,14 @@ class Veterans::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,
                                                        :last_name,
-                                                       :roles])
+                                                       { roles: [] }])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name,
                                                               :last_name,
-                                                              :roles])
+                                                              { roles: [] }])
   end
 
   # The path used after sign up.

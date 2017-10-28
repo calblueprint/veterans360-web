@@ -35,8 +35,8 @@ class Veteran < ApplicationRecord
 
   serialize :roles
 
-  def string_roles
-    role = [
+  def self.role_names
+    [
       :active_duty,
       :veteran,
       :post_911,
@@ -44,6 +44,15 @@ class Veteran < ApplicationRecord
       :caregiver,
       :other,
     ]
+  end
+
+  # Accepts an array of string roles and returns the serialized integer version
+  def self.serialize_string_roles(arr)
+    arr.map { |s| self.role_names.index(s.to_sym) }
+  end
+
+  def string_roles
+    role = self.role_names
     roles.map { |r| role[r].to_s }
   end
 
