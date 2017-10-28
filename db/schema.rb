@@ -75,8 +75,6 @@ ActiveRecord::Schema.define(version: 20171021192641) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "partnering_organizations_id"
-    t.index ["partnering_organizations_id"], name: "index_resources_on_partnering_organizations_id"
   end
 
   create_table "veterans", force: :cascade do |t|
@@ -100,5 +98,4 @@ ActiveRecord::Schema.define(version: 20171021192641) do
     t.index ["reset_password_token"], name: "index_veterans_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "resources", "partnering_organizations", column: "partnering_organizations_id"
 end

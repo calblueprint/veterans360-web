@@ -4,14 +4,11 @@ class PartneringOrganizations::RegistrationsController < Devise::RegistrationsCo
 
   # GET /resource/sign_up
   def new
-    puts 'nikita####'
     super
   end
 
   # POST /resource
   def create
-    puts 'pooja#4$$'
-
     super
   end
 

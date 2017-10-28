@@ -25,7 +25,6 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 class PartneringOrganization < ApplicationRecord
-	# attr_accessible :address, :latitude, :longitude
 	geocoded_by :address
 	after_validation :geocode
 	devise :database_authenticatable, :registerable,
