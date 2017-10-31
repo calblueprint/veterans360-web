@@ -71,13 +71,11 @@ class Veteran < ApplicationRecord
   def correctly_serialized_roles
     unless self.roles.is_a?(Array)
       errors.add(:roles, 'is not an array.')
-      puts 'failed first'
       return
     end
     self.roles.each do |r|
       unless r.is_a?(Integer) && r < Veteran.role_names.length
         errors.add(:roles, 'are not well defined.')
-        puts 'failed second'
       end
     end
   end
