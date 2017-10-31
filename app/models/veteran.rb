@@ -33,6 +33,13 @@ class Veteran < ApplicationRecord
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :followers, through: :inverse_friendships, source: :veteran
 
+  EMAIL_PATTERN = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, format: { with: EMAIL_PATTERN }, uniqueness: true, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
+  validate :correctly_serialized_roles, on: [ :create, :update ]
+
   serialize :roles
 
   def self.role_names
@@ -48,12 +55,31 @@ class Veteran < ApplicationRecord
 
   # Accepts an array of string roles and returns the serialized integer version
   def self.serialize_string_roles(arr)
+    if arr.nil?
+      return
+    end
     arr.map { |s| self.role_names.index(s.to_sym) }
   end
 
   def string_roles
     role = self.role_names
     roles.map { |r| role[r].to_s }
+  end
+
+  private
+
+  def correctly_serialized_roles
+    unless self.roles.is_a?(Array)
+      errors.add(:roles, 'is not an array.')
+      puts 'failed first'
+      return
+    end
+    self.roles.each do |r|
+      unless r.is_a?(Integer) && r < Veteran.role_names.length
+        errors.add(:roles, 'are not well defined.')
+        puts 'failed second'
+      end
+    end
   end
 
 end
