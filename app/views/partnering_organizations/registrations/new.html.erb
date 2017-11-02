@@ -9,32 +9,26 @@
  <div><%= f.label :website %><br />
         <%= f.text_field :website, autofocus: true %></div>
 
-
  <div><%= f.label :phone_number %><br />
         <%= f.text_field :phone_number, autofocus: true %></div>
-
-    
-     <div><%= f.label :address %><br />
+   
+  <div><%= f.label :address %><br />
         <%= f.text_field :address, autofocus: true %></div>
 
-<div class="field">
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
-  
 
   <div>
   <%= f.label :role %><br />
     <%= f.select(:role, PartneringOrganization.roles.keys.map {|role| [role.titleize,role]}) %>
-</div>
+  </div>
 
   <div>
   <%= f.label :demographic %><br />
     <%= f.select(:demographic, PartneringOrganization.demographics.keys.map {|demographic| [demographic.titleize,demographic]}) %>
-</div>
-
-
-
+  </div>
 
   <div class="field">
     <%= f.label :password %>
@@ -52,8 +46,7 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
-
-
