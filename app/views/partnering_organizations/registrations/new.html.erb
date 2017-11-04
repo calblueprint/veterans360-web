@@ -1,11 +1,33 @@
-<<h2>Sign up</h2>
+<h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+ <div><%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true %></div>
+
+ <div><%= f.label :website %><br />
+        <%= f.text_field :website, autofocus: true %></div>
+
+ <div><%= f.label :phone_number %><br />
+        <%= f.text_field :phone_number, autofocus: true %></div>
+   
+  <div><%= f.label :address %><br />
+        <%= f.text_field :address, autofocus: true %></div>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div>
+  <%= f.label :role %><br />
+    <%= f.select(:role, PartneringOrganization.roles.keys.map {|role| [role.titleize,role]}) %>
+  </div>
+
+  <div>
+  <%= f.label :demographic %><br />
+    <%= f.select(:demographic, PartneringOrganization.demographics.keys.map {|demographic| [demographic.titleize,demographic]}) %>
   </div>
 
   <div class="field">
@@ -24,7 +46,7 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
-
