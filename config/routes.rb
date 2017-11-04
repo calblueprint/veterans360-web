@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
   devise_for :admins
 
-  resources :veterans, only: [:index, :show, :update, :destroy]
+  resources :veterans
   resources :admins
   resources :partnering_organizations
   resources :resources
