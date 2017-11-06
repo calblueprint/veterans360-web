@@ -39,6 +39,9 @@ gem 'active_model_serializers'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'carrierwave', '~> 1.0'
+gem 'fog-aws'
+gem 'figaro'
 gem 'geocoder'
 
 group :development, :test do

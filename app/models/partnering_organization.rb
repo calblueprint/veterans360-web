@@ -2,7 +2,7 @@
 #
 # Table name: resources
 #
-#  name          :string         
+#  name          :string
 #  phone_number  :string
 #  website       :string
 #  address       :string
@@ -30,5 +30,7 @@ class PartneringOrganization < ApplicationRecord
 	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	enum role: [:caregiver, :support_team, :educator, :volunteer_organization, :awareness_team]
-  	enum demographic: [:active_duty, :veterans, :family_members, :children, :victims_of_violence, :suicide_prevention, :drugs_and_alcohol]
+  enum demographic: [:active_duty, :veterans, :family_members, :children, :victims_of_violence, :suicide_prevention, :drugs_and_alcohol]
+  has_many :resources, :as => :owner, dependent: :destroy
+
 end
