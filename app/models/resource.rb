@@ -10,5 +10,11 @@
 #  category   :string
 #
 class Resource < ApplicationRecord
-  belongs_to :admin
+  belongs_to :owner, :polymorphic => true
+
+  mount_uploader :file, FilesUploader
+
+  def url
+    file.url
+  end
 end

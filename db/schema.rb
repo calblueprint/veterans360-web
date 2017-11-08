@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171013161249) do
+ActiveRecord::Schema.define(version: 20171103044500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,18 @@ ActiveRecord::Schema.define(version: 20171013161249) do
     t.integer "demographic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.index ["email"], name: "index_partnering_organizations_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_partnering_organizations_on_reset_password_token", unique: true
   end
 
   create_table "resources", force: :cascade do |t|
@@ -63,6 +75,9 @@ ActiveRecord::Schema.define(version: 20171013161249) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "owner_type"
+    t.bigint "owner_id"
+    t.index ["owner_type", "owner_id"], name: "index_resources_on_owner_type_and_owner_id"
   end
 
   create_table "veterans", force: :cascade do |t|
@@ -71,7 +86,7 @@ ActiveRecord::Schema.define(version: 20171013161249) do
     t.boolean "on_connect", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "roles", default: "0"
+    t.text "roles", default: "[]"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -86,4 +101,5 @@ ActiveRecord::Schema.define(version: 20171013161249) do
     t.index ["reset_password_token"], name: "index_veterans_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "resources", "partnering_organizations", column: "partnering_organizations_id"
 end

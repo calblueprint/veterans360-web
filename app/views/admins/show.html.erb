@@ -19,6 +19,17 @@
   <strong>Description:</strong>
   <%= @admin.description %>
 </p>
-
+<p>
+  <strong>Upload File:</strong>
+  <%= form_for Resource.new, url: '/resources' do |f| %>
+    <%= f.label(:file_name, "File Name:") %>
+    <%= f.text_field(:file_name) %>
+    <%= f.label(:category, "Category:") %>
+    <%= f.text_field(:category) %> <br>
+    <%= f.file_field 'file' %> <br>
+    <%= f.submit 'Submit' %>
+  <% end %>
+</p>
 <%= link_to 'Edit', edit_admin_path(@admin) %> |
 <%= link_to 'Back', admins_path %>
+
