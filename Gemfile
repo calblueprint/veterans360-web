@@ -34,6 +34,8 @@ gem 'devise'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem "font-awesome-rails"
+# Use CanCan for authorization
+gem "cancan"
 gem 'active_model_serializers'
 
 # Use Capistrano for deployment

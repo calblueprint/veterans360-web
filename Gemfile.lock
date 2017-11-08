@@ -50,6 +50,7 @@ GEM
     bindex (0.5.0)
     builder (3.2.3)
     byebug (9.1.0)
+    cancan (1.6.10)
     capybara (2.13.0)
       addressable
       mime-types (>= 1.16)
@@ -225,6 +226,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   byebug
+  cancan
   capybara (~> 2.13.0)
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
