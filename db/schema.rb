@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20171103044500) do
-=======
 ActiveRecord::Schema.define(version: 20171105203126) do
->>>>>>> Update veterans model and adds routes for connect sign up
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
