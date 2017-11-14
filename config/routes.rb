@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :admins, only: [:index, :create]
   resources :partnering_organizations
   resources :resources
+
+  patch 'partnering_organizations/:id/approve' => 'partnering_organizations#approve', as: 'approve_partnering_organization'
   root to: 'veterans#index'
   get 'admins/view_resources', to: 'admins#view_resources'
 
