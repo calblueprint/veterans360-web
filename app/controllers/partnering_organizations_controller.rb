@@ -1,10 +1,14 @@
-class PartneringOrganizationsController < ApplicationController 
-  before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy]
+class PartneringOrganizationsController < ApplicationController
+  before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve]
 
   # GET /partnering_organizations
   # GET /partnering_organizations.json
   def index
-    @partnering_organizations = PartneringOrganization.all
+    if params[:approved] == "false"
+      @partnering_organizations = PartneringOrganization.where(approved: false)
+    else
+      @partnering_organizations = PartneringOrganization.all
+    end
   end
 
   # GET /partnering_organizations/1
@@ -49,6 +53,11 @@ class PartneringOrganizationsController < ApplicationController
         format.json { render json: @partnering_organization.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def approve
+    @partnering_organization.approval_status = true
+    @partnering_organization.save
   end
 
   # DELETE /partnering_organizations/1
