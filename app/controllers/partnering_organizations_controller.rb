@@ -1,4 +1,4 @@
-class PartneringOrganizationsController < ApplicationController 
+class PartneringOrganizationsController < ApplicationController
   before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy]
 
   # GET /partnering_organizations
@@ -69,6 +69,6 @@ class PartneringOrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def partnering_organization_params
-      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :latitude, :longitude, :role, :demographic)
+      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :latitude, :longitude, :role, :demographic, :image)
     end
 end

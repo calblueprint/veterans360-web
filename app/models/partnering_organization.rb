@@ -32,5 +32,6 @@ class PartneringOrganization < ApplicationRecord
 	enum role: [:caregiver, :support_team, :educator, :volunteer_organization, :awareness_team]
   enum demographic: [:active_duty, :veterans, :family_members, :children, :victims_of_violence, :suicide_prevention, :drugs_and_alcohol]
   has_many :resources, :as => :owner, dependent: :destroy
+  mount_uploader :image, ImageUploader
 
 end
