@@ -19,6 +19,13 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+#  military_status        :integer
+#  military_branch        :integer
+#  unit                   :string
+#  notes                  :string
+#  accept_messages        :boolean
+#  share_profile          :boolean
+#  accept_notices         :boolean
 #
 
 class Veteran < ApplicationRecord

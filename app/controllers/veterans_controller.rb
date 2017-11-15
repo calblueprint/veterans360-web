@@ -12,6 +12,7 @@ class VeteransController < ApplicationController
   # GET /veterans/1
   # GET /veterans/1.json
   def show
+    @veteran = Veteran.find(params[:id])
   end
 
   # GET /veterans/new
@@ -90,8 +91,7 @@ class VeteransController < ApplicationController
     end
 
     def veteran_connect_signup_params
-      params.require(:veteran).permit(:military_status, 
-                                      :military_branch, 
+      params.require(:veteran).permit(:military_branch, 
                                       :unit, 
                                       :notes, 
                                       :accept_messages, 
