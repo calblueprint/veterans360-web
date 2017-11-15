@@ -27,6 +27,9 @@ class Veteran < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :upvotes
+  has_many :resources, through: :upvotes
+
   has_many :friendships
   has_many :follows, through: :friendships
 

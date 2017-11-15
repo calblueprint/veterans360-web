@@ -12,6 +12,9 @@
 class Resource < ApplicationRecord
   belongs_to :owner, :polymorphic => true
 
+  has_many :upvotes
+  has_many :veterans, through: :upvotes
+
   mount_uploader :file, FilesUploader
 
   def url
