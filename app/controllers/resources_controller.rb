@@ -4,6 +4,7 @@ class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
   def index
+    puts Resource.all.inspect
     @resources = Resource.all
   end
 

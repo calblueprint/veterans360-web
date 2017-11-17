@@ -2,5 +2,6 @@ class ResourceSerializer < BaseSerializer
   attributes :id,
              :file_name,
              :file,
-             :category
+             :category,
+             :description
 end
