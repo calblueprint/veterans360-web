@@ -51,28 +51,38 @@ class Veteran < ApplicationRecord
 
   enum military_branch: {Army: 1, Navy: 2, Marines: 3, Air_Force: 4, Coast_Guard: 5, First_Responder: 6}
 
-  def self.role_names
-    [
-      :active_duty,
-      :veteran,
-      :post_911,
-      :family_member,
-      :caregiver,
-      :other,
-    ]
-  end
+  ROLE_KEYS = [
+    :active_duty,
+    :veteran,
+    :post_911,
+    :family_member,
+    :caregiver,
+    :other,
+  ]
+
+  ROLE_NAMES = {
+    active_duty:    'Active Duty',
+    veteran:        'Veteran',
+    post_911:       'Post 911',
+    family_member:  'Family Member',
+    caregiver:      'Caregiver',
+    other:          'Other',
+  }
 
   # Accepts an array of string roles and returns the serialized integer version
   def self.serialize_string_roles(arr)
     if arr.nil?
       return
     end
-    arr.map { |s| Veteran.role_names.index(s.to_sym) }
+    arr.map { |s| ROLE_KEYS.index(s.to_sym) }
   end
 
   def string_roles
-    role = Veteran.role_names
-    roles.map { |r| role[r].to_s }
+    roles.map { |r| ROLE_KEYS[r].to_s }
+  end
+
+  def readable_roles
+    roles.map { |r| ROLE_NAMES[ROLE_KEYS[r]] }
   end
 
   private
@@ -83,7 +93,7 @@ class Veteran < ApplicationRecord
       return
     end
     self.roles.each do |r|
-      unless r.is_a?(Integer) && r < Veteran.role_names.length
+      unless r.is_a?(Integer) && r < ROLE_KEYS.length
         errors.add(:roles, 'are not well defined.')
       end
     end

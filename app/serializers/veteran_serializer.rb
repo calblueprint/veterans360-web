@@ -30,6 +30,6 @@ class VeteranSerializer < BaseSerializer
              :email
 
   def roles
-    object.string_roles
-  end 
+    object.readable_roles
+  end
 end
