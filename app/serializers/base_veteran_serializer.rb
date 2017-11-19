@@ -21,13 +21,11 @@
 #  last_sign_in_ip        :inet
 #
 
-class VeteranSerializer < BaseVeteranSerializer
-
-  def roles
-    object.readable_roles
-  end
-
-  # def is_friend
-  #   current_veteran.is_friend_of?(object)
-  # end
+class BaseVeteranSerializer < BaseSerializer
+  attributes :id,
+             :first_name,
+             :last_name,
+             :on_connect,
+             :roles,
+             :email
 end

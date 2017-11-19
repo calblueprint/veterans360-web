@@ -1,5 +1,6 @@
 class VeteransController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_veteran!
   before_action :set_veteran, only: [:show, :edit, :update, :destroy]
 
 
@@ -7,12 +8,28 @@ class VeteransController < ApplicationController
   # GET /veterans.json
   def index
     @veterans = Veteran.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json {
+        render json: @veterans,
+               each_serializer: VeteranFriendSerializer,
+               scope: { current_veteran: current_veteran }
+      }
+    end
   end
 
   # GET /veterans/1
   # GET /veterans/1.json
   def show
-    @veteran = Veteran.find(params[:id])
+    respond_to do |format|
+      format.html { render :index }
+      format.json {
+        puts "HEY"
+        render json: @veteran,
+               serializer: VeteranFriendSerializer,
+               scope: { current_veteran: current_veteran }
+      }
+    end
   end
 
   # GET /veterans/new

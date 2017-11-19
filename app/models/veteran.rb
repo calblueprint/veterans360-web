@@ -34,7 +34,7 @@ class Veteran < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :friendships
-  has_many :follows, through: :friendships
+  has_many :follows, through: :friendships, source: :friend
 
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :followers, through: :inverse_friendships, source: :veteran
@@ -83,6 +83,10 @@ class Veteran < ApplicationRecord
 
   def readable_roles
     roles.map { |r| ROLE_NAMES[ROLE_KEYS[r]] }
+  end
+
+  def is_friend_of?(other)
+    follows.exists?(other.id) && followers.exists?(other.id)
   end
 
   private
