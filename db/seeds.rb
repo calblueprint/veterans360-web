@@ -20,7 +20,9 @@ def create_veterans
       email: "veteran#{i}@gmail.com",
       password: 'password',
       password_confirmation: 'password',
-      roles: Array(0...num_roles).sample(rng.rand(num_roles) + 1)
+      roles: Array(0...num_roles).sample(rng.rand(num_roles) + 1),
+      lat: FFaker::Geolocation.lat,
+      lng: FFaker::Geolocation.lng,
     )
     veterans << veteran
   end
@@ -56,8 +58,8 @@ def create_partering_orgs
                FFaker::AddressUS.city + ', ' +
                FFaker::AddressUS.state_abbr + ' ' +
                FFaker::AddressUS.zip_code,
-      latitude: FFaker::Geolocation.lat,
-      longitude: FFaker::Geolocation.lng,
+      lat: FFaker::Geolocation.lat,
+      lng: FFaker::Geolocation.lng,
       role: rng.rand(PartneringOrganization.roles.count),
       demographic: rng.rand(PartneringOrganization.demographics.count),
     )
