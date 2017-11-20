@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 # Create Veterans
 def create_veterans
   veterans = []
@@ -39,13 +31,13 @@ def create_veterans
       end
     end
   end
-
 end
 
 
 # Create Partering Orgs
 def create_partering_orgs
   rng = Random.new(934857239324211115710)
+  
   10.times do |i|
     po = PartneringOrganization.create(
       name: FFaker::Company.name,
