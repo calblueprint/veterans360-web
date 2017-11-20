@@ -32,8 +32,8 @@ one:
   phone_number: MyString
   website: MyString
   address: MyString
-  latitude: 1.5
-  longitude: 1.5
+  lat: 1.5
+  lng: 1.5
   role: 1
   demographic: 1
 
@@ -42,7 +42,7 @@ two:
   phone_number: MyString
   website: MyString
   address: MyString
-  latitude: 1.5
-  longitude: 1.5
+  lat: 1.5
+  lng: 1.5
   role: 1
   demographic: 1
