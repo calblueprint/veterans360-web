@@ -22,9 +22,8 @@ class VeteransController < ApplicationController
   # GET /veterans/1.json
   def show
     respond_to do |format|
-      format.html { render :index }
+      format.html { render :show }
       format.json {
-        puts "HEY"
         render json: @veteran,
                serializer: VeteranFriendSerializer,
                scope: { current_veteran: current_veteran }
