@@ -19,6 +19,8 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+#  lat                    :decimal(10, 6)
+#  lng                    :decimal(10, 6)
 #
 
 require 'test_helper'

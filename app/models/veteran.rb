@@ -25,6 +25,8 @@
 #  accept_messages        :boolean
 #  share_profile          :boolean
 #  accept_notices         :boolean
+#  lat                    :decimal(10, 6)
+#  lng                    :decimal(10, 6)
 #
 
 class Veteran < ApplicationRecord
