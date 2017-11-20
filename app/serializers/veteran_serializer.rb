@@ -29,7 +29,4 @@ class VeteranSerializer < BaseVeteranSerializer
     object.readable_roles
   end
 
-  # def is_friend
-  #   current_veteran.is_friend_of?(object)
-  # end
 end

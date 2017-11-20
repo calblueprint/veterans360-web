@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   devise_for :admins
 
   resources :veterans do
+    resources :friendships, only: [:create]
     member do
       patch 'connect_sign_up', to: 'veterans#connect_sign_up'
     end

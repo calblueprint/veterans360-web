@@ -91,6 +91,10 @@ class Veteran < ApplicationRecord
     follows.exists?(other.id) && followers.exists?(other.id)
   end
 
+  def sent_friend_request_to?(other)
+    follows.exists?(other.id)
+  end
+
   private
 
   def correctly_serialized_roles
