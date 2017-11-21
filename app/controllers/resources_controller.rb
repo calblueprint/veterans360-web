@@ -4,8 +4,8 @@ class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
   def index
-    puts Resource.all.inspect
     @resources = Resource.all
+    render json: @resources, each_serializer: ResourceSerializer
   end
 
   # GET /resources/1
@@ -67,6 +67,18 @@ class ResourcesController < ApplicationController
     end
   end
 
+  def num_upvotes
+    @resource = Resource.find(params[:id])
+    render :json => {:count => @resource.upvotes.count}.to_json
+  end
+
+  def has_upvoted
+    @resource = Resource.find(params[:resourceId])
+    @veteran = Veteran.find(params[:veteranId])
+    puts @resource.inspect
+    puts @veteran.inspect
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_resource
@@ -75,6 +87,6 @@ class ResourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
-      params.require(:resource).permit(:file_name, :file, :category)
+      params.require(:resource).permit(:file_name, :file, :category, :description)
     end
 end
