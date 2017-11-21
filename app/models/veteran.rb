@@ -8,7 +8,7 @@
 #  on_connect             :boolean          default(FALSE)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  roles                  :text             default("0")
+#  roles                  :text             default("[]")
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -59,11 +59,11 @@ class Veteran < ApplicationRecord
     if arr.nil?
       return
     end
-    arr.map { |s| self.role_names.index(s.to_sym) }
+    arr.map { |s| Veteran.role_names.index(s.to_sym) }
   end
 
   def string_roles
-    role = self.role_names
+    role = Veteran.role_names
     roles.map { |r| role[r].to_s }
   end
 

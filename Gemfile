@@ -46,6 +46,8 @@ gem 'fog-aws'
 gem 'figaro'
 gem 'geocoder'
 gem 'mini_magick'
+gem 'webpacker'
+gem 'react-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

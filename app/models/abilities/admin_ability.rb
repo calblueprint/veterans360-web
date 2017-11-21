@@ -11,7 +11,7 @@ class AdminAbility
     ], Admin, id: admin.id
 
     can [
-      :index
+      :index, 
       :destroy,
     ], PartneringOrganization
 
