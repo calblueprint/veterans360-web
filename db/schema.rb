@@ -75,10 +75,12 @@ ActiveRecord::Schema.define(version: 20171116014836) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "partnering_organizations_id"
     t.string "owner_type"
     t.bigint "owner_id"
     t.string "description"
     t.index ["owner_type", "owner_id"], name: "index_resources_on_owner_type_and_owner_id"
+    t.index ["partnering_organizations_id"], name: "index_resources_on_partnering_organizations_id"
   end
 
   create_table "upvotes", force: :cascade do |t|

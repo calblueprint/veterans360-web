@@ -12,6 +12,7 @@ class VeteransController < ApplicationController
   # GET /veterans/1
   # GET /veterans/1.json
   def show
+    @veteran = Veteran.find(params[:id])
   end
 
   # GET /veterans/new
@@ -83,19 +84,18 @@ class VeteransController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def veteran_params
-      params.require(:veteran).permit(:first_name, 
-                                      :last_name, 
-                                      :email, 
+      params.require(:veteran).permit(:first_name,
+                                      :last_name,
+                                      :email,
                                       :on_connect)
     end
 
     def veteran_connect_signup_params
-      params.require(:veteran).permit(:military_status, 
-                                      :military_branch, 
-                                      :unit, 
-                                      :notes, 
-                                      :accept_messages, 
-                                      :share_profile, 
+      params.require(:veteran).permit(:military_branch,
+                                      :unit,
+                                      :notes,
+                                      :accept_messages,
+                                      :share_profile,
                                       :accept_notices,
                                       :on_connect)
     end
