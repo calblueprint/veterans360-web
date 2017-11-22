@@ -20,4 +20,8 @@ class Resource < ApplicationRecord
   def url
     file.url
   end
+
+  def upvoted_by?(veteran)
+    upvotes.exists?(veteran_id: veteran.id)
+  end
 end

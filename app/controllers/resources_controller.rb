@@ -1,11 +1,14 @@
 class ResourcesController < ApplicationController
+  # before_action :authenticate_veteran!
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
 
   # GET /resources
   # GET /resources.json
   def index
     @resources = Resource.all
-    render json: @resources, each_serializer: ResourceSerializer
+    render json: @resources, each_serializer: ResourceSerializer, scope: {
+      current_veteran: current_veteran
+    }
   end
 
   # GET /resources/1

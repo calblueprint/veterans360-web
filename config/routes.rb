@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :admins
   resources :partnering_organizations
   resources :resources
+  resources :upvotes
 
   root to: 'veterans#index'
 end
