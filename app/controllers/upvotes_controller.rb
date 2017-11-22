@@ -1,8 +1,20 @@
 class UpvotesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def new
   end
 
   def create
+    @upvote = Upvote.new(upvote_params)
+
+    respond_to do |format|
+      if @upvote.save
+        format.json { render json: @upvote, status: :created }
+      else
+        format.html { render :new }
+        format.json { render json: @veteran.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
@@ -20,8 +32,10 @@ class UpvotesController < ApplicationController
   def show
   end
 
-  def num_upvotes
-
+  def delete_upvote
+    @upvote = Upvote.find_by(resource_id: params[:resource_id], veteran_id: params[:veteran_id])
+    @upvote.destroy
+    render json: @upvote
   end
 
   private

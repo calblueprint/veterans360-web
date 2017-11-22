@@ -24,6 +24,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :upvotes do
+    collection do
+      delete 'delete_upvote/:resource_id/:veteran_id', to: 'upvotes#delete_upvote'
+    end
+  end
+
   resources :admins
   resources :partnering_organizations
   resources :resources
