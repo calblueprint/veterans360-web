@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103044500) do
+ActiveRecord::Schema.define(version: 20171116014836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20171103044500) do
     t.bigint "partnering_organizations_id"
     t.string "owner_type"
     t.bigint "owner_id"
+    t.string "description"
     t.index ["owner_type", "owner_id"], name: "index_resources_on_owner_type_and_owner_id"
     t.index ["partnering_organizations_id"], name: "index_resources_on_partnering_organizations_id"
   end
@@ -99,9 +100,14 @@ ActiveRecord::Schema.define(version: 20171103044500) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.integer "military_branch"
+    t.string "unit"
+    t.string "notes"
+    t.boolean "accept_messages"
+    t.boolean "share_profile"
+    t.boolean "accept_notices"
     t.index ["email"], name: "index_veterans_on_email", unique: true
     t.index ["reset_password_token"], name: "index_veterans_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "resources", "partnering_organizations", column: "partnering_organizations_id"
 end
