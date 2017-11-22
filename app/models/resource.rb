@@ -12,7 +12,7 @@
 class Resource < ApplicationRecord
   belongs_to :owner, :polymorphic => true
 
-  has_many :upvotes
+  has_many :upvotes, :dependent => :destroy
   has_many :veterans, through: :upvotes
 
   mount_uploader :file, FilesUploader
