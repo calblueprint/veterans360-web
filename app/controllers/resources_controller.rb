@@ -72,13 +72,6 @@ class ResourcesController < ApplicationController
     render :json => {:count => @resource.upvotes.count}.to_json
   end
 
-  def has_upvoted
-    @resource = Resource.find(params[:resourceId])
-    @veteran = Veteran.find(params[:veteranId])
-    puts @resource.inspect
-    puts @veteran.inspect
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_resource

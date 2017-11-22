@@ -107,7 +107,6 @@ ActiveRecord::Schema.define(version: 20171116014836) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.integer "military_status"
     t.integer "military_branch"
     t.string "unit"
     t.string "notes"
