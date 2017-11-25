@@ -11,15 +11,18 @@ Rails.application.routes.draw do
   }
   devise_for :admins
 
-  resources :veterans do 
-    member do 
+  resources :veterans do
+    member do
       patch 'connect_sign_up', to: 'veterans#connect_sign_up'
+    end
+    collection do
+      get 'get_military_branch'
     end
   end
 
   resources :admins
   resources :partnering_organizations
   resources :resources
-  
+
   root to: 'veterans#index'
 end
