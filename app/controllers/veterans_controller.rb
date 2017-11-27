@@ -92,8 +92,17 @@ class VeteransController < ApplicationController
     end
   end
 
+
   def get_military_branch
     render json: Veteran.military_branches
+  end
+
+  # Returns a list of all users that follow this user unreciprocated
+  # GET /veterans/1/requests
+  def requests
+    @veteran = Veteran.find(params[:id])
+    requesters = @veteran.followers - @veteran.follows
+    render json: requesters
   end
 
   private

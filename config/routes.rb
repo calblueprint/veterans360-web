@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :veterans do
     resources :friendships, only: [:create]
     member do
+      get :requests
       patch 'connect_sign_up', to: 'veterans#connect_sign_up'
     end
     collection do

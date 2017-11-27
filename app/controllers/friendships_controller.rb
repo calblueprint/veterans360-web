@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  
+
   def create
     veteran_id = friendship_params[:veteran_id]
     friend_id = friendship_params[:friend_id]
