@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     member do
       patch 'connect_sign_up', to: 'veterans#connect_sign_up'
     end
+    collection do
+      get 'get_military_branch'
+    end
   end
 
   resources :admins, only: [:index, :create]
