@@ -21,14 +21,7 @@
 </p>
 
 <p>
-  <strong>Latitude:</strong>
-  <%= @partnering_organization.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @partnering_organization.longitude %>
-</p>
+ 
 
 <p>
   <strong>Role:</strong>
@@ -39,6 +32,18 @@
   <strong>Demographic:</strong>
   <%= @partnering_organization.demographic %>
 </p>
+ <strong>Upload File:</strong>
+  <%= form_for Resource.new, url: '/resources' do |f| %>
+    <%= f.label(:file_name, "File Name:") %>
+    <%= f.text_field(:file_name) %>
+    <%= f.label(:category, "Category:") %>
+    <%= f.text_field(:category) %> <br>
+    <%= f.file_field 'file' %> <br>
+    <%= f.submit 'Submit' %>
+  <% end %>
+</p>
+
+<%
 
 <%= link_to 'Edit', edit_partnering_organization_path(@partnering_organization) %> |
 <%= link_to 'Back', partnering_organizations_path %>
