@@ -39,7 +39,7 @@ gem "cancan"
 gem 'active_model_serializers'
 # Use CanCan for authorization
 gem "cancan"
-
+gem "mini_magick"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
