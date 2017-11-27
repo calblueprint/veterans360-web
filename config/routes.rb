@@ -11,15 +11,20 @@ Rails.application.routes.draw do
   }
   devise_for :admins
 
-  resources :veterans do 
-    member do 
+  resources :veterans do
+    member do
       patch 'connect_sign_up', to: 'veterans#connect_sign_up'
     end
   end
 
-  resources :admins
+  resources :admins, only: [:index, :create]
   resources :partnering_organizations
   resources :resources
-  
   root to: 'veterans#index'
+  get 'admins/view_resources', to: 'admins#view_resources'
+
+  namespace :api, defaults: { format: [:json, :csv] } do
+    resources :resources, only: [:index, :show] do
+    end
+  end
 end
