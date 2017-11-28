@@ -51,7 +51,14 @@ class Veteran < ApplicationRecord
 
   serialize :roles
 
-  enum military_branch: {Army: 1, Navy: 2, Marines: 3, Air_Force: 4, Coast_Guard: 5, First_Responder: 6}
+  enum military_branch: {
+    Army: 1,
+    Navy: 2,
+    Marines: 3,
+    Air_Force: 4,
+    Coast_Guard: 5,
+    First_Responder: 6
+  }
 
   ROLE_KEYS = [
     :active_duty,
