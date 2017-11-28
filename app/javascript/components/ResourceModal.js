@@ -18,11 +18,20 @@ class ResourceModal extends React.Component {
   }
 
   render() {
+    console.log(this.props.resource)
     return (
       <div className='flex resource-modal-card'>
         <div className='resource-name'>
           {this.props.resource.file_name}
         </div>
+        <a href={this.props.resource.file.url}>
+          <button className='show-resource'>
+            Show
+          </button>
+        </a>
+        <button className='delete-resource'>
+          Delete
+        </button>
       </div>
     )
   }

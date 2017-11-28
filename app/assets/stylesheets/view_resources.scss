@@ -1,0 +1,68 @@
+.resource-modal-card {
+  padding: 15px 20px;
+  margin: 10px auto;
+  background: white;
+  cursor: pointer;
+
+  &.empty {
+    opacity: 0.6;
+    font-weight: bold;
+
+    &:hover {
+      opacity: 0.8;
+      background-color: blue;
+      color: white;
+      box-shadow: 0 2px 8px charcoal-40;
+      transition: 200ms;
+      transform-origin: 50% 50%;
+      transform: scale(1.02);
+    }
+  }
+}
+
+.resource-name {
+  margin-right: 15px;
+  font-weight: 600;
+}
+.flex {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.flex.center {
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: center; }
+.flex.vertical {
+  align-items: center; }
+.flex-vertical {
+  flex-direction: column; }
+.flex-horizontal {
+  flex-direction: row; }
+.flex-grow {
+  flex: 1; }
+.flex-child-end {
+  align-self: flex-end; }
+.flex-parent-start {
+  align-items: flex-start; }
+
+div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  display: block;
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
