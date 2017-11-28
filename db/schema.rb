@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171120013453) do
+ActiveRecord::Schema.define(version: 20171128020202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20171120013453) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["veteran_id", "friend_id"], name: "index_friendships_on_veteran_id_and_friend_id", unique: true
     t.index ["veteran_id"], name: "index_friendships_on_veteran_id"
   end
 
