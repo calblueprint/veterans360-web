@@ -21,6 +21,12 @@
 #  last_sign_in_ip        :inet
 #  lat                    :decimal(10, 6)
 #  lng                    :decimal(10, 6)
+#  military_branch        :integer
+#  unit                   :string
+#  notes                  :string
+#  accept_messages        :boolean
+#  share_profile          :boolean
+#  accept_notices         :boolean
 #
 
 require 'test_helper'
