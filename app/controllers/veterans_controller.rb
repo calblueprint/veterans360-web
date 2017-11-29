@@ -76,6 +76,10 @@ class VeteransController < ApplicationController
     end
   end
 
+  def get_military_branch
+    render json: Veteran.military_branches
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_veteran
@@ -84,18 +88,18 @@ class VeteransController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def veteran_params
-      params.require(:veteran).permit(:first_name, 
-                                      :last_name, 
-                                      :email, 
+      params.require(:veteran).permit(:first_name,
+                                      :last_name,
+                                      :email,
                                       :on_connect)
     end
 
     def veteran_connect_signup_params
-      params.require(:veteran).permit(:military_branch, 
-                                      :unit, 
-                                      :notes, 
-                                      :accept_messages, 
-                                      :share_profile, 
+      params.require(:veteran).permit(:military_branch,
+                                      :unit,
+                                      :notes,
+                                      :accept_messages,
+                                      :share_profile,
                                       :accept_notices,
                                       :on_connect)
     end
