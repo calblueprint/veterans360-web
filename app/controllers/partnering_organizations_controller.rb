@@ -5,6 +5,13 @@ class PartneringOrganizationsController < ApplicationController
   # GET /partnering_organizations.json
   def index
     @partnering_organizations = PartneringOrganization.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json {
+        render json: @partnering_organizations,
+               each_serializer: PartneringOrganizationSerializer
+      }
+    end
   end
 
   # GET /partnering_organizations/1
@@ -69,6 +76,6 @@ class PartneringOrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def partnering_organization_params
-      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :latitude, :longitude, :role, :demographic, :image)
+      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :lat, :lng, :role, :demographic, :image)
     end
 end
