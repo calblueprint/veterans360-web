@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   resources :upvotes do
     collection do
-      delete 'delete_upvote/:resource_id/:veteran_id', to: 'upvotes#delete_upvote'
+      patch 'delete_upvote', to: 'upvotes#delete_upvote'
     end
   end
 

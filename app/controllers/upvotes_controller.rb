@@ -33,7 +33,7 @@ class UpvotesController < ApplicationController
   end
 
   def delete_upvote
-    @upvote = Upvote.find_by(resource_id: params[:resource_id], veteran_id: params[:veteran_id])
+    @upvote = Upvote.find_by(resource_id: upvote_params[:resource_id], veteran_id: upvote_params[:veteran_id])
     @upvote.destroy
     render json: @upvote
   end
