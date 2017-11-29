@@ -76,11 +76,9 @@ ActiveRecord::Schema.define(version: 20171128020202) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "partnering_organizations_id"
     t.string "owner_type"
     t.bigint "owner_id"
     t.index ["owner_type", "owner_id"], name: "index_resources_on_owner_type_and_owner_id"
-    t.index ["partnering_organizations_id"], name: "index_resources_on_partnering_organizations_id"
   end
 
   create_table "veterans", force: :cascade do |t|
@@ -100,17 +98,16 @@ ActiveRecord::Schema.define(version: 20171128020202) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.decimal "lat", precision: 10, scale: 6
-    t.decimal "lng", precision: 10, scale: 6
     t.integer "military_branch"
     t.string "unit"
     t.string "notes"
     t.boolean "accept_messages"
     t.boolean "share_profile"
     t.boolean "accept_notices"
+    t.decimal "lat", precision: 10, scale: 6
+    t.decimal "lng", precision: 10, scale: 6
     t.index ["email"], name: "index_veterans_on_email", unique: true
     t.index ["reset_password_token"], name: "index_veterans_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "resources", "partnering_organizations", column: "partnering_organizations_id"
 end
