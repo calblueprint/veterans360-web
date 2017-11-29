@@ -31,6 +31,7 @@ class PartneringOrganization < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 	has_many :resources, :as => :owner, dependent: :destroy
+  mount_uploader :image, ImageUploader
 
 	enum role: [
 		:caregiver,
@@ -50,7 +51,7 @@ class PartneringOrganization < ApplicationRecord
 		:drugs_and_alcohol
 	]
 
-	geocoded_by :address
+	geocoded_by :address, :latitude  => :lat, :longitude => :lng
 	after_validation :geocode
 
 end
