@@ -63,7 +63,6 @@
   <%= react_component("PartneringOrganizationProfileStyle", {partneringOrganization: current_partnering_organization,
                                                           all_resources: @all_resources}) %>
 
-
  <!--
 #    <strong>Upload File:</strong>
 #     <%= form_for Resource.new, url: '/resources' do |f| %>
@@ -74,6 +73,10 @@
 #       <%= f.file_field 'file' %> <br>
 #       <%= f.submit 'Submit' %>
 #     <% end %> -->
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @partnering_organization.image.thumb.url %>
+</p>
 
  <%= link_to 'Edit', edit_partnering_organization_path(@partnering_organization) %> |
  <%= link_to 'Back', partnering_organizations_path %>

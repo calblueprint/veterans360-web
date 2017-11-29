@@ -40,13 +40,12 @@ class PartneringOrganizations::RegistrationsController < Devise::RegistrationsCo
 
   # If you have extra params to permit, append them to the sanitizer.
   def sign_up_params
-    params.require(:partnering_organization).permit(:email, :password, :password_confirmation, :name, :phone_number, :website, :address, :lat, :lng, :role, :demographic)
+    params.require(:partnering_organization).permit(:email, :password, :password_confirmation, :name, :phone_number, :website, :address, :lat, :lng, :role, :demographic, :image)
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def account_update_params
-    params.require(:partnering_organization).permit(:email, :password, :password_confirmation, :name, :phone_number, :website, :address, :lat, :lng, :role, :demographic)
-
+    params.require(:partnering_organization).permit(:email, :password, :password_confirmation, :name, :phone_number, :website, :address, :lat, :lng, :role, :demographic, :image)
   end
 
   # The path used after sign up.

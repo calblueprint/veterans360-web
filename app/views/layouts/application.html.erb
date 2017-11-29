@@ -11,6 +11,26 @@
 
   <body>
     <%= react_component("AdminNavbar") %>
+
+    <% if admin_signed_in? %>
+      <button>
+        <%= link_to('Admin Logout', destroy_admin_session_path, method: :delete) %>
+      </button>
+    <% else %>
+      <button>
+        <%= link_to('Admin Login', new_admin_session_path) %>
+      </button>
+    <% end %>
+    <% if partnering_organization_signed_in? %>
+      <button>
+        <%= link_to('Partnering Organization Logout', destroy_partnering_organization_session_path, method: :delete) %>
+      </button>
+    <% else %>
+      <button>
+        <%= link_to('Partnering Organization Login', new_partnering_organization_session_path) %>
+      </button>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
