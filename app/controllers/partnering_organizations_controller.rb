@@ -4,10 +4,13 @@ class PartneringOrganizationsController < ApplicationController
   # GET /partnering_organizations
   # GET /partnering_organizations.json
   def index
-    if params[:approved] == "false"
-      @partnering_organizations = PartneringOrganization.where(approved: false)
-    else
-      @partnering_organizations = PartneringOrganization.all
+    @partnering_organizations = PartneringOrganization.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json {
+        render json: @partnering_organizations,
+               each_serializer: PartneringOrganizationSerializer
+      }
     end
   end
 
@@ -79,6 +82,6 @@ class PartneringOrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def partnering_organization_params
-      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :latitude, :longitude, :role, :demographic)
+      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :lat, :lng, :role, :demographic)
     end
 end
