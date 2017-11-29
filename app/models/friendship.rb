@@ -12,4 +12,6 @@
 class Friendship < ApplicationRecord
   belongs_to :veteran
   belongs_to :friend, class_name: 'Veteran'
+
+  validates_uniqueness_of :veteran_id, scope: :friend_id
 end

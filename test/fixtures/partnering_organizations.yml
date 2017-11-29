@@ -7,8 +7,8 @@
 #  phone_number           :string
 #  website                :string
 #  address                :string
-#  latitude               :float
-#  longitude              :float
+#  lat                    :decimal(10, 6)
+#  lng                    :decimal(10, 6)
 #  role                   :integer
 #  demographic            :integer
 #  created_at             :datetime         not null
@@ -32,8 +32,8 @@ one:
   phone_number: MyString
   website: MyString
   address: MyString
-  latitude: 1.5
-  longitude: 1.5
+  lat: 1.5
+  lng: 1.5
   role: 1
   demographic: 1
 
@@ -42,7 +42,7 @@ two:
   phone_number: MyString
   website: MyString
   address: MyString
-  latitude: 1.5
-  longitude: 1.5
+  lat: 1.5
+  lng: 1.5
   role: 1
   demographic: 1

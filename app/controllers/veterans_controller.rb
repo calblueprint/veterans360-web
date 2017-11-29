@@ -1,5 +1,6 @@
 class VeteransController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_veteran!
   before_action :set_veteran, only: [:show, :edit, :update, :destroy]
 
 
@@ -7,12 +8,27 @@ class VeteransController < ApplicationController
   # GET /veterans.json
   def index
     @veterans = Veteran.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json {
+        render json: @veterans,
+               each_serializer: VeteranFriendSerializer,
+               scope: { current_veteran: current_veteran }
+      }
+    end
   end
 
   # GET /veterans/1
   # GET /veterans/1.json
   def show
-    @veteran = Veteran.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json {
+        render json: @veteran,
+               serializer: VeteranFriendSerializer,
+               scope: { current_veteran: current_veteran }
+      }
+    end
   end
 
   # GET /veterans/new
@@ -76,8 +92,17 @@ class VeteransController < ApplicationController
     end
   end
 
+
   def get_military_branch
     render json: Veteran.military_branches
+  end
+
+  # Returns a list of all users that follow this user unreciprocated
+  # GET /veterans/1/requests
+  def requests
+    @veteran = Veteran.find(params[:id])
+    requesters = @veteran.followers - @veteran.follows
+    render json: requesters
   end
 
   private
