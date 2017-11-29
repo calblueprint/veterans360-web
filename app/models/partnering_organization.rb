@@ -51,7 +51,7 @@ class PartneringOrganization < ApplicationRecord
 		:drugs_and_alcohol
 	]
 
-	geocoded_by :address
+	geocoded_by :address, :latitude  => :lat, :longitude => :lng
 	after_validation :geocode
 
 end
