@@ -1,17 +1,16 @@
 # == Schema Information
 #
-# Table name: resources
+# Table name: partnering_organizations
 #
-#  name          :string
-#  phone_number  :string
-#  website       :string
-#  address       :string
-#  latitude      :float
-#  longitude     :float
-#  role          :integer
-#  demographic   :integer
 #  id                     :integer          not null, primary key
-#  description            :text
+#  name                   :string
+#  phone_number           :string
+#  website                :string
+#  address                :string
+#  latitude               :float
+#  longitude              :float
+#  role                   :integer
+#  demographic            :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  email                  :string           default(""), not null
@@ -25,6 +24,7 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #  approval_status        :boolean          default(false)
+#
 class PartneringOrganization < ApplicationRecord
 	geocoded_by :address
 	after_validation :geocode

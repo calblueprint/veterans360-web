@@ -1,4 +1,4 @@
-class PartneringOrganizationDevise::ConfirmationsController < Devise::ConfirmationsController
+class PartneringOrganizations::ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation/new
   # def new
   #   super

@@ -8,7 +8,7 @@
 #  on_connect             :boolean          default(FALSE)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  roles                  :text             default("0")
+#  roles                  :text             default("[]")
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
