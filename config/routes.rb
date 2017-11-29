@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   resources :admins
   resources :partnering_organizations
   resources :resources
-
+  patch 'partnering_organizations/:id/approve' => 'partnering_organizations#approve', as: 'approve_partnering_organization'
   root to: 'veterans#index'
 end

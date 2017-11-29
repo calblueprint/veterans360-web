@@ -30,6 +30,16 @@
     <%= f.submit 'Submit' %>
   <% end %>
 </p>
+<p>
+  <strong>Partnering Organization Approval:</strong>
+  <table>
+    <% @partnering_organizations.each do |po| %>
+      <td> <%= po.email %> </td>
+      <td> <%= po.approval_status %> </td>
+      <%= link_to 'Approve', approve_partnering_organization_path(po), method: :patch %>
+    <%end%>
+  </table>
+</p>
 <%= link_to 'Edit', edit_admin_path(@admin) %> |
 <%= link_to 'Back', admins_path %>
 

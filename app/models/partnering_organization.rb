@@ -23,8 +23,8 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+#  approval_status        :boolean          default(false)
 #
-
 class PartneringOrganization < ApplicationRecord
 	geocoded_by :address
 	after_validation :geocode
@@ -34,4 +34,15 @@ class PartneringOrganization < ApplicationRecord
   enum demographic: [:active_duty, :veterans, :family_members, :children, :victims_of_violence, :suicide_prevention, :drugs_and_alcohol]
   has_many :resources, :as => :owner, dependent: :destroy
 
+  def active_for_authentication?
+    super && approval_status?
+  end
+
+  def inactive_message
+    if !approval_status?
+      :not_approval_status
+    else
+      super # Use whatever other message
+    end
+  end
 end
