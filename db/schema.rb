@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116014836) do
+ActiveRecord::Schema.define(version: 20171128020202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20171116014836) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["veteran_id", "friend_id"], name: "index_friendships_on_veteran_id_and_friend_id", unique: true
     t.index ["veteran_id"], name: "index_friendships_on_veteran_id"
   end
 
@@ -49,8 +50,8 @@ ActiveRecord::Schema.define(version: 20171116014836) do
     t.string "phone_number"
     t.string "website"
     t.string "address"
-    t.float "latitude"
-    t.float "longitude"
+    t.decimal "lat", precision: 10, scale: 6
+    t.decimal "lng", precision: 10, scale: 6
     t.integer "role"
     t.integer "demographic"
     t.datetime "created_at", null: false
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 20171116014836) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.string "image"
     t.index ["email"], name: "index_partnering_organizations_on_email", unique: true
     t.index ["reset_password_token"], name: "index_partnering_organizations_on_reset_password_token", unique: true
   end
@@ -75,12 +77,9 @@ ActiveRecord::Schema.define(version: 20171116014836) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "partnering_organizations_id"
     t.string "owner_type"
     t.bigint "owner_id"
-    t.string "description"
     t.index ["owner_type", "owner_id"], name: "index_resources_on_owner_type_and_owner_id"
-    t.index ["partnering_organizations_id"], name: "index_resources_on_partnering_organizations_id"
   end
 
   create_table "upvotes", force: :cascade do |t|
@@ -115,6 +114,8 @@ ActiveRecord::Schema.define(version: 20171116014836) do
     t.boolean "accept_messages"
     t.boolean "share_profile"
     t.boolean "accept_notices"
+    t.decimal "lat", precision: 10, scale: 6
+    t.decimal "lng", precision: 10, scale: 6
     t.index ["email"], name: "index_veterans_on_email", unique: true
     t.index ["reset_password_token"], name: "index_veterans_on_reset_password_token", unique: true
   end

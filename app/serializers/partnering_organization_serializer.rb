@@ -7,8 +7,8 @@
 #  phone_number           :string
 #  website                :string
 #  address                :string
-#  latitude               :float
-#  longitude              :float
+#  lat                    :decimal(10, 6)
+#  lng                    :decimal(10, 6)
 #  role                   :integer
 #  demographic            :integer
 #  created_at             :datetime         not null
@@ -31,8 +31,8 @@ class PartneringOrganizationSerializer < BaseSerializer
              :phone_number,
              :website,
              :address,
-             :latitude,
-             :longitude,
+             :lat,
+             :lng,
              :role,
              :demographic
 end

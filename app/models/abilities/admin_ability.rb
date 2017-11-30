@@ -11,7 +11,7 @@ class AdminAbility
     ], Admin, id: admin.id
 
     can [
-      :index, 
+      :index,
       :destroy,
     ], PartneringOrganization
 
@@ -21,7 +21,5 @@ class AdminAbility
     ], Veteran
 
     can :manage, Resource
-    can :manage, PartneringOrganization
-    can :manage, Veteran
   end
 end

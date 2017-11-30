@@ -14,7 +14,18 @@ Rails.application.routes.draw do
 
   resources :veterans do
     member do
+      get :requests
       patch 'connect_sign_up', to: 'veterans#connect_sign_up'
+    end
+    collection do
+      get 'get_military_branch'
+    end
+
+    # Friendships
+    resources :friendships, only: [:create] do
+      collection do
+        patch :reject
+      end
     end
   end
 

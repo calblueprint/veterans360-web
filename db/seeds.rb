@@ -35,9 +35,9 @@ end
 
 
 # Create Partering Orgs
-def create_partnering_orgs
+def create_partering_orgs
   rng = Random.new(934857239324211115710)
-
+  
   10.times do |i|
     po = PartneringOrganization.create(
       name: FFaker::Company.name,
@@ -60,4 +60,4 @@ end
 
 
 create_veterans
-create_partnering_orgs
+create_partering_orgs

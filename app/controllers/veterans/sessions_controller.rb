@@ -1,6 +1,7 @@
 class Veterans::SessionsController < Devise::SessionsController
   respond_to :json
   skip_before_action :verify_authenticity_token
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
