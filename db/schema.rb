@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20171128020202) do
     t.datetime "updated_at", null: false
     t.string "owner_type"
     t.bigint "owner_id"
+    t.string "description"
     t.index ["owner_type", "owner_id"], name: "index_resources_on_owner_type_and_owner_id"
   end
 
