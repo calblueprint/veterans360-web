@@ -32,5 +32,5 @@ Rails.application.routes.draw do
   resources :partnering_organizations
   resources :resources
 
-  root to: 'admins#index'
+  root to: 'static_pages#home'
 end
