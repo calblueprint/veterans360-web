@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     # Friendships
     resources :friendships, only: [:create] do
       collection do
-        patch :reject 
+        patch :reject
       end
     end
   end
@@ -32,5 +32,5 @@ Rails.application.routes.draw do
   resources :partnering_organizations
   resources :resources
 
-  root to: 'veterans#index'
+  root to: 'admins#index'
 end

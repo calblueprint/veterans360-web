@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     when resource.is_a?(Admin)
       "/admins/#{current_admin.id}"
     when resource.is_a?(PartneringOrganization)
-      partnering_organization_path
+      "/partnering_organizations/#{current_partnering_organization.id}"
     else
       super
     end
