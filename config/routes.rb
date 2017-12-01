@@ -3,13 +3,17 @@ Rails.application.routes.draw do
 	# post 'partnering_organizations/' => 'partnering_organizations#create'
 
   devise_for :partnering_organizations, controllers: {
+    sessions: 'partnering_organizations/sessions',
     registrations: 'partnering_organizations/registrations'
   }
   devise_for :veterans, controllers: {
     sessions: 'veterans/sessions',
     registrations: 'veterans/registrations',
   }
-  devise_for :admins
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    registrations: 'admins/registrations'
+  }
 
   resources :veterans do
     member do
