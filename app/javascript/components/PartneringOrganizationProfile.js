@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import * as Blueprint from "@blueprintjs/core";
-
 /**
 *
 @prop partnering_organization -partnering organization object
@@ -55,6 +54,12 @@ class PartneringOrganizationProfile extends React.Component {
 				<h2 className = "resources_list" > {resource_list} </h2>
 			</div>
 		);
+
+class PartneringOrganizationProfile extends React.Component {
+	render() {
+			return (
+				<div>HELLO THERE</div>
+			);
 	}
 }
 

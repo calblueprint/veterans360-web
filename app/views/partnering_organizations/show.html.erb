@@ -30,6 +30,7 @@
   <%= @partnering_organization.lng %>
 </p>
 
+
 <p>
   <strong>Role:</strong>
   <%= @partnering_organization.role %>
@@ -49,19 +50,17 @@
                                                         all_resources: @all_resources}) %> -->
 
  <!-- <strong>Upload File:</strong>
-  <%= form_for Resource.new, url: '/resources' do |f| %>
-    <%= f.label(:file_name, "File Name:") %>
-    <%= f.text_field(:file_name) %>
-    <%= f.label(:category, "Category:") %>
-    <%= f.text_field(:category) %> <br>
-    <%= f.file_field 'file' %> <br>
-    <%= f.submit 'Submit' %>
+</p>
+
+ <strong>Upload File:</strong>
+
   <% end %> -->
 
   <%= react_component("PartneringOrganization", {partneringOrganization: current_partnering_organization,
                                                           all_resources: @all_resources}) %>
   <%= react_component("PartneringOrganizationProfileStyle", {partneringOrganization: current_partnering_organization,
                                                           all_resources: @all_resources}) %>
+  <% end %>
 
  <!--
 #    <strong>Upload File:</strong>
@@ -77,6 +76,8 @@
   <strong>Image:</strong>
   <%= image_tag @partnering_organization.image.thumb.url %>
 </p>
+<%= react_component("PartneringOrganization", {}) %>
+<%= react_component("PartneringOrganizationProfile", {}) %>
 
  <%= link_to 'Edit', edit_partnering_organization_path(@partnering_organization) %> |
  <%= link_to 'Back', partnering_organizations_path %>
