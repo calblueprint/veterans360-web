@@ -15,9 +15,15 @@
 
 class Resource < ApplicationRecord
   belongs_to :owner, :polymorphic => true
+  has_many :upvotes, :dependent => :destroy
+  has_many :veterans, through: :upvotes
   mount_uploader :file, FilesUploader
 
   def url
     file.url
+  end
+
+  def upvoted_by?(veteran)
+    upvotes.exists?(veteran_id: veteran.id)
   end
 end
