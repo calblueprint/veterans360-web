@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
 	# get 'partnering_organizations/sign_up' => 'partnering_organizations#new'
 	# post 'partnering_organizations/' => 'partnering_organizations#create'
 
@@ -23,14 +24,27 @@ Rails.application.routes.draw do
     # Friendships
     resources :friendships, only: [:create] do
       collection do
-        patch :reject 
+        patch :reject
       end
+    end
+  end
+
+  resources :resources do
+    member do
+      get 'num_upvotes', to: 'resources#num_upvotes'
+    end
+  end
+
+  resources :upvotes do
+    collection do
+      patch 'delete_upvote', to: 'upvotes#delete_upvote'
     end
   end
 
   resources :admins
   resources :partnering_organizations
   resources :resources
+  resources :upvotes
 
   root to: 'veterans#index'
 end
