@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(user)
     case
     when user.is_a?(Admin)
-      "/admins/#{current_admin.id}"
+      admin_path(current_admin.id)
     when user.is_a?(PartneringOrganization)
-      "/partnering_organizations/#{current_partnering_organization.id}"
+      partnering_organization_path(current_partnering_organization.id)
     else
       super
     end
