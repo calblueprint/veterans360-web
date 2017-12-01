@@ -8,9 +8,9 @@ import PropTypes from "prop-types"
 
 class PartneringOrganizationProfile extends React.Component {
 	render() {
-			return (
-				<div>HELLO THERE</div>
-			);
+		return (
+			<div>HELLO THERE</div>
+		);
 	}
 }
 
