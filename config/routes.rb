@@ -33,6 +33,10 @@ Rails.application.routes.draw do
     member do
       get 'num_upvotes', to: 'resources#num_upvotes'
     end
+    collection do
+      get 'get_resource_categories', to: 'resources#get_resource_categories'
+      get 'filter_resources/:categories', to: 'resources#filter_resources'
+    end
   end
 
   resources :upvotes do

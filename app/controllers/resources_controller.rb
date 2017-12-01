@@ -75,6 +75,18 @@ class ResourcesController < ApplicationController
     render :json => {:count => @resource.upvotes.count}.to_json
   end
 
+  def get_resource_categories
+    render json: Resource.resource_categories
+  end
+
+  def filter_resources
+    filter = JSON.parse(params[:categories])
+    @resources = Resource.where(category: filter)
+    render json: @resources, each_serializer: ResourceSerializer, scope: {
+      current_veteran: current_veteran
+    }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_resource
