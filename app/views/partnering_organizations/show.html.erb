@@ -20,18 +20,18 @@
   <%= @partnering_organization.address %>
 </p>
 
-<p>
- 
 
 <p>
   <strong>Role:</strong>
   <%= @partnering_organization.role %>
 </p>
 
+
 <p>
   <strong>Demographic:</strong>
   <%= @partnering_organization.demographic %>
 </p>
+
  <strong>Upload File:</strong>
   <%= form_for Resource.new, url: '/resources' do |f| %>
     <%= f.label(:file_name, "File Name:") %>
@@ -41,9 +41,9 @@
     <%= f.file_field 'file' %> <br>
     <%= f.submit 'Submit' %>
   <% end %>
-</p>
 
-<%
+<%= react_component("PartneringOrganization", {}) %>
+<%= react_component("PartneringOrganizationProfile", {}) %>
 
 <%= link_to 'Edit', edit_partnering_organization_path(@partnering_organization) %> |
 <%= link_to 'Back', partnering_organizations_path %>
