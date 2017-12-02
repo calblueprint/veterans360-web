@@ -1,6 +1,10 @@
 @import "./colors";
 @import "./layout";
 
+* {
+  font-family: $font-stack;
+}
+
 input, textarea {
   width: 100%;
   padding: 10px 20px;
@@ -80,6 +84,7 @@ label {
 
 .flex-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: inherit;
@@ -93,4 +98,10 @@ label {
   background-color: $snow;
   border: 1px solid $transparent;
   border-radius: 4px;
+}
+
+.floating-header-text {
+  font-size: 42px;
+  font-weight: $regular;
+  color: $white;
 }

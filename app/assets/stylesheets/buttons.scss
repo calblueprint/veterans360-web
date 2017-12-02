@@ -194,3 +194,12 @@
     opacity: 0.5;
   }
 }
+
+button {
+  @extend .button;
+  @extend .button--white;
+
+  &:hover {
+    background-color: $white-60;
+  }
+}
