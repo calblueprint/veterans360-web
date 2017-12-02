@@ -25,20 +25,20 @@ class PartneringOrganizationProfile extends React.Component {
 	render() {
 		let resource_list;
 		console.log(this.state.resources)
-			resource_list = this.state.resources.map((resource) => {
-				return (
-					<Card interactive={true} elevation={Card.ELEVATION_TWO}>
-    					<div>
-							{resource.file_name}
-							{resource.file}
-							</div>
+		resource_list = this.state.resources.map((resource) => {
+			return (
+				<Card interactive={true} elevation={Card.ELEVATION_TWO}>
+  					<div>
+						{resource.file_name}
+						{resource.file}
+						</div>
 
-					</Card>
-					// <div>
-					//  {resource.file_name}
-					//  </div>
-				)
-			});
+				</Card>
+				// <div>
+				//  {resource.file_name}
+				//  </div>
+			)
+		});
 
 		return (
 			<Button>
@@ -54,12 +54,6 @@ class PartneringOrganizationProfile extends React.Component {
 				<h2 className = "resources_list" > {resource_list} </h2>
 			</div>
 		);
-
-class PartneringOrganizationProfile extends React.Component {
-	render() {
-			return (
-				<div>HELLO THERE</div>
-			);
 	}
 }
 
