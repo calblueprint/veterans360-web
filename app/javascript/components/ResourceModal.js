@@ -1,15 +1,8 @@
-/**
- * Card for displaying groups of generated codes and allowing download
- *
- * @prop code_csv  - code_csv object with id, name, and created_at
- */
-
 import React from 'react'
 import PropTypes from "prop-types"
 import { Card, Button } from "@blueprintjs/core"
 import request from '../shared/requests/request'
 
-// import CodeCsvModal from './CodeCsvModal'
 
 class ResourceModal extends React.Component {
   constructor(props) {

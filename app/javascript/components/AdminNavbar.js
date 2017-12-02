@@ -12,7 +12,7 @@ class AdminNavbar extends React.Component {
           </div>
           <div class="pt-navbar-group pt-align-right">
             <a href={`/admins/applications`}><button class="pt-button pt-minimal pt-icon-comparison">Applications</button></a>
-            <a href={`/admins/view_resources`}><button class="pt-button pt-minimal pt-icon-document">Resources</button></a>
+            <a href={`/admins/resources`}><button class="pt-button pt-minimal pt-icon-document">Resources</button></a>
             <span class="pt-navbar-divider"></span>
             <button class="pt-button pt-minimal pt-icon-user">Profile</button>
             <button class="pt-button pt-minimal pt-icon-log-out">Log out</button>
