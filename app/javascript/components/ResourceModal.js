@@ -6,8 +6,9 @@
 
 import React from 'react'
 import PropTypes from "prop-types"
-
+import { Card, Button } from "@blueprintjs/core"
 import request from '../shared/requests/request'
+
 // import CodeCsvModal from './CodeCsvModal'
 
 class ResourceModal extends React.Component {
@@ -18,21 +19,22 @@ class ResourceModal extends React.Component {
   }
 
   render() {
-    console.log(this.props.resource)
     return (
-      <div className='flex resource-modal-card'>
-        <div className='resource-name'>
-          {this.props.resource.file_name}
-        </div>
+      <Card interactive={true} elevation={Card.ELEVATION_TWO}>
+        <p>
+          File Name: {this.props.resource.file_name}
+        </p>
         <a href={this.props.resource.file.url}>
-          <button className='show-resource'>
+          <Button className='show-resource'>
             Show
-          </button>
+          </Button>
         </a>
-        <button className='delete-resource'>
-          Delete
-        </button>
-      </div>
+        <a href={`/resources/` + this.props.resource.id} data-method="delete" data-confirm="Are you sure">
+          <Button className='delete-resource'>
+            Delete
+          </Button>
+        </a>
+      </Card>
     )
   }
 }
