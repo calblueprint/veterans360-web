@@ -58,6 +58,13 @@ label {
   letter-spacing: 1px;
 }
 
+.application-container {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 10px;
+}
+
 .checkbox-field {
   display: flex;
   flex-direction: row;
