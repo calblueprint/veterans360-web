@@ -62,6 +62,15 @@ label {
   letter-spacing: 1px;
 }
 
+select {
+  padding: 10px;
+  font-size: 18px;
+  color: $charcoal-80;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background-color: $light-charcoal-20;
+}
+
 .application-container {
   position: absolute;
   top: 0px;
