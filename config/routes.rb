@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :resources
   root to: 'veterans#index'
   get 'admins/view_resources', to: 'admins#view_resources'
-
+  get 'admins/view_applications', to: 'admins#view_applications'
   namespace :api, defaults: { format: [:json, :csv] } do
     resources :resources, only: [:index, :show] do
     end
