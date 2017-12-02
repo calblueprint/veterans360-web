@@ -47,6 +47,7 @@ class Navbar extends React.Component {
   }
 
   renderChildren() {
+    console.log(this.props.children)
     if (_.isArray(this.props.children)) {
       return this.props.children.map(this.renderTab)
     } else if (_.isObject(this.props.children)) {
@@ -59,7 +60,7 @@ class Navbar extends React.Component {
       <nav className='nav'>
         <div className='flex center'>
           <div className='container'>
-            {this.renderChildren()}
+            "hi"
           </div>
         </div>
       </nav>

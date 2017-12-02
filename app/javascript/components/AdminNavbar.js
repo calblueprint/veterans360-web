@@ -6,31 +6,18 @@ class AdminNavbar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar>
-          <Link
-            to='/'>
-            <div className="nav-element right">Applications</div>
-          </Link>
-
-          <Link
-            to='/'>
-            <div className="nav-element right">Resources</div>
-          </Link>
-
-          <Link
-            to='/'>
-            <div className="nav-element right">Profile</div>
-          </Link>
-
-          <Link
-            to='/'>
-            <div className="nav-element right">Log Out</div>
-          </Link>
-        </Navbar>
-
-        <div className='flex center'>
-          {this.props.children}
-        </div>
+        <nav class="pt-navbar .modifier">
+          <div class="pt-navbar-group pt-align-left">
+            <div class="pt-navbar-heading">Veterans 360</div>
+          </div>
+          <div class="pt-navbar-group pt-align-right">
+            <a href={`/admins/applications`}><button class="pt-button pt-minimal pt-icon-comparison">Applications</button></a>
+            <a href={`/admins/view_resources`}><button class="pt-button pt-minimal pt-icon-document">Resources</button></a>
+            <span class="pt-navbar-divider"></span>
+            <button class="pt-button pt-minimal pt-icon-user">Profile</button>
+            <button class="pt-button pt-minimal pt-icon-log-out">Log out</button>
+          </div>
+        </nav>
       </div>
     )
   }

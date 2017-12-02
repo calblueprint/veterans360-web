@@ -45,13 +45,11 @@ class ViewResources extends React.Component {
 
   render () {
     return (
-      <div className='flex center'>
-        <div className='container marginTop-xxl'>
-          <h2 className='h2'>List of Resources</h2>
-          <ul>
-            {this.renderResources()}
-          </ul>
-        </div>
+      <div className='container'>
+        <h2 className='container-header'>List of Resources</h2>
+        <ul>
+          {this.renderResources()}
+        </ul>
       </div>
     )
   }
