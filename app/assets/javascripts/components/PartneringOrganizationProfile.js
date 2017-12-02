@@ -24,15 +24,14 @@ class PartneringOrganizationProfile extends React.Component {
 				<div>
 					<h1 className = "po-profile-title" > Your Partnering Organization Profile </h1>
 				</div>
-					
+
 				);
 
 		}
-	
+
 	} export default PartneringOrganizationProfile
 
 
 	PartneringOrganizationProfile.propTypes = {
 		partnering_organization: React.propTypes.object.isRequired,
 	}
-
