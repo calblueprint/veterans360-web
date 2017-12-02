@@ -1,0 +1,196 @@
+/* Styles for buttons go here
+ * Every button should have the .button class,
+ * and can be modified using additional styles */
+@import "./colors";
+@import "./layout";
+
+.button {
+  background: $blue;
+  border: 1px solid $blue;
+  border-radius: 3px;
+  color: $snow;
+  display: inline-block;
+  font-family: $font-stack;
+  font-size: 14px;
+  font-weight: $semi-bold;
+  letter-spacing: 0.5px;
+  outline: none;
+  padding: 8px 20px;
+  transition: 100ms;
+  cursor: pointer;
+
+  &.disabled {
+    background: $dark-blue;
+    border: 1px solid $dark-blue;
+    text-decoration: none;
+    pointer-events: none;
+
+    &:hover {
+      background: $dark-blue;
+      border: 1px solid $dark-blue;
+      text-decoration: none;
+      box-shadow: none;
+    }
+  }
+
+  &:hover {
+    background: $light-blue;
+    border: 1px solid $light-blue;
+    text-decoration: none;
+  }
+
+  &:active {
+    background: $dark-blue;
+    border: 1px solid $dark-blue;
+  }
+}
+
+.button--lg {
+  font-size: 16px;
+  padding: 12px 26px;
+}
+
+.button--sm {
+  font-size: 12px;
+  padding: 5px 14px;
+}
+
+.button--lg-sq {
+  font-size: 16px;
+  padding: 12px 12px;
+}
+
+.button--sm-sq {
+  font-size: 12px;
+  padding: 5px 5px;
+}
+
+/* Button colors */
+.button--red {
+  background: $red;
+  border-color: $red;
+  color: $snow;
+}
+
+.button--green {
+  background: $green;
+  border-color: $green;
+  color: $snow;
+}
+
+.button--black {
+  background: $charcoal;
+  border-color: $charcoal;
+  color: $snow;
+}
+
+.button--white {
+  background: $white;
+  border: 1px solid $light-charcoal-20;
+  color: $light-charcoal;
+  font-weight: 700;
+  opacity: 0.95;
+
+  &:hover {
+    background-color: $light-charcoal-20;
+    border: 1px solid $light-charcoal-20;
+  }
+}
+
+.button--blue-dark {
+  background: $blue-dark;
+  border-color: $blue-dark;
+  color: $snow;
+  font-weight: 700;
+  opacity: 0.95
+}
+
+.button--blue {
+  background: $blue;
+  border-color: $blue;
+  color: $snow;
+  font-weight: 700;
+  opacity: 0.95
+}
+
+.button--outline {
+  background: transparent;
+  border-color: $blue-60;
+  color: $blue;
+
+  &:hover {
+    border-color: $blue;
+    box-shadow: none;
+  }
+
+  &:active {
+    background-color: $blue-20;
+  }
+}
+
+.button--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: $light-charcoal-40;
+  font-weight: 500;
+
+  &:hover {
+    color: $light-charcoal-80;
+    background-color: $white-80;
+    border-color: $light-charcoal-80;
+  }
+}
+
+.button--text-blue {
+  background: transparent;
+  border-color: transparent;
+  color: $blue;
+  font-weight: 700;
+  opacity: 0.8;
+
+  &:hover {
+    background: $blue-10;
+    box-shadow: none;
+    opacity: 1;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+}
+
+.button--text-black {
+  background: transparent;
+  border-color: transparent;
+  color: $charcoal;
+  font-weight: 700;
+  opacity: 0.8;
+
+  &:hover {
+    background: $charcoal-10;
+    box-shadow: none;
+    opacity: 1;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+}
+
+.button--text-white {
+  background: transparent;
+  border-color: transparent;
+  color: white;
+  font-weight: 600;
+  opacity: 0.85;
+
+  &:hover {
+    background: $snow-10;
+    box-shadow: none;
+    opacity: 1;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+}
