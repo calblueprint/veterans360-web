@@ -12,6 +12,7 @@ class AdminsController < ApplicationController
   # GET /admins/1
   # GET /admins/1.json
   def show
+    @partnering_organizations = PartneringOrganization.all
   end
 
   # GET /admins/new
