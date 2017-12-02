@@ -19,6 +19,18 @@ class Resource < ApplicationRecord
   has_many :veterans, through: :upvotes
   mount_uploader :file, FilesUploader
 
+  enum resource_categories: {
+    Financial: 1,
+    Volunteerism: 2,
+    Housing: 3,
+    Benefits: 4,
+    Career_Advice: 5,
+    Employment: 6,
+    Education: 7,
+    Peer_Groups: 8,
+    Crisis_Support: 9
+  }
+
   def url
     file.url
   end
