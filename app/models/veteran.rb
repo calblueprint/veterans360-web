@@ -108,6 +108,10 @@ class Veteran < ApplicationRecord
     follows.exists?(other.id)
   end
 
+  def is_subscribed_to?(po)
+    po_follows.exists?(po.id)
+  end
+
   private
 
   def correctly_serialized_roles

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'subscriptions/create'
+
 	# get 'partnering_organizations/sign_up' => 'partnering_organizations#new'
 	# post 'partnering_organizations/' => 'partnering_organizations#create'
 
