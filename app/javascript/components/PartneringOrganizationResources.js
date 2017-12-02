@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-class PartneringOrganization extends React.Component {
+class PartneringOrganizationResources extends React.Component {
   render () {
     return (
       <div>Hello</div>
@@ -8,4 +8,4 @@ class PartneringOrganization extends React.Component {
   }
 }
 
-export default PartneringOrganization
+export default PartneringOrganizationResources

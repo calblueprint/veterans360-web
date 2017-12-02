@@ -1,4 +1,4 @@
-class PartneringOrganizationsController < ApplicationController 
+class PartneringOrganizationsController < ApplicationController
   before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy]
 
   # GET /partnering_organizations
@@ -10,6 +10,7 @@ class PartneringOrganizationsController < ApplicationController
   # GET /partnering_organizations/1
   # GET /partnering_organizations/1.json
   def show
+    @all_resources = @partnering_organization.resources
   end
 
   # GET /partnering_organizations/new
