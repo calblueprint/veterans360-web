@@ -1,5 +1,6 @@
 class SubscriptionsController < ApplicationController
-
+  skip_before_action :verify_authenticity_token
+  
   # POST /veterans/1/subscriptions
   def create
     po_id = subscription_params[:partnering_organization_id]

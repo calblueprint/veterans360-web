@@ -33,6 +33,9 @@ Rails.application.routes.draw do
         patch :reject
       end
     end
+
+    # Subscriptions
+    resources :subscriptions, only: [:create]
   end
 
   resources :resources do
