@@ -1,7 +1,8 @@
 @import "./colors";
 @import "./layout";
 
-input {
+input, textarea {
+  width: 100%;
   padding: 10px 20px;
   border: 1px solid $transparent;
   border-radius: 2px;
@@ -11,6 +12,7 @@ input {
   font-family: $font-stack;
   letter-spacing: 0.5px;
   transition: 100ms;
+  box-sizing: border-box;
 
   &:focus {
     border: 1px solid $green-80;
@@ -21,12 +23,67 @@ input {
   }
 }
 
+input[type="checkbox"] {
+  padding: 0px;
+  margin: 5px 0px;
+  height: 1.2em;
+  width: 1.2em;
+}
+
+input[type="password"] {
+  font-family: caption;
+  letter-spacing: 2px;
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: $bold;
+  background-color: $blue;
+  color: $white;
+
+  &:hover {
+    background-color: $light-blue;
+    cursor: pointer;
+  }
+}
+
 label {
-  margin-top: 15px;
+  margin-top: 20px;
   margin-bottom: 5px;
   color: $charcoal-80;
   font-size: 16px;
   font-family: $font-stack;
   font-weight: $bold;
   letter-spacing: 1px;
+}
+
+.checkbox-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0px;
+
+  label {
+    margin: 0px;
+    margin-left: 10px;
+  }
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: inherit;
+  background: $green-80;
+  background: linear-gradient(45deg, $dark-green-80, $green-80);
+}
+
+.content-container {
+  min-width: 30%;
+  padding: 100px;
+  background-color: $snow;
+  border: 1px solid $transparent;
+  border-radius: 4px;
 }
