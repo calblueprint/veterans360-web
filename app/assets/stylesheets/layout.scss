@@ -1,0 +1,43 @@
+@import "./colors";
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700,900');
+
+/* Font weights */
+$extra-bold                     : 900;
+$bold                           : 700;
+$semi-bold                      : 600;
+$regular                        : 400;
+$light                          : 300;
+
+$font-stack                     : 'Source Sans Pro', 'Helvetica', sans-serif;
+
+body {
+  color: $charcoal;
+  font-family: $font-stack;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+::selection {
+  background: $charcoal-80;
+  color: white;
+}
+::-moz-selection {
+  background: $charcoal-80;
+  color: white;
+}
+
+a,
+.link {
+  color: $blue;
+  font-size: inherit;
+  font-weight: $regular;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.link--no-underline:hover {
+  text-decoration: none;
+}

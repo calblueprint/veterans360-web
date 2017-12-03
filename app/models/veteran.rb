@@ -25,6 +25,8 @@
 #  accept_messages        :boolean
 #  share_profile          :boolean
 #  accept_notices         :boolean
+#  lat                    :decimal(10, 6)
+#  lng                    :decimal(10, 6)
 #
 
 class Veteran < ApplicationRecord
@@ -33,8 +35,11 @@ class Veteran < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :upvotes, :dependent => :destroy
+  has_many :resources, through: :upvotes
+
   has_many :friendships
-  has_many :follows, through: :friendships
+  has_many :follows, through: :friendships, source: :friend
 
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :followers, through: :inverse_friendships, source: :veteran
@@ -49,28 +54,55 @@ class Veteran < ApplicationRecord
 
   serialize :roles
 
-  def self.role_names
-    [
-      :active_duty,
-      :veteran,
-      :post_911,
-      :family_member,
-      :caregiver,
-      :other,
-    ]
-  end
+  enum military_branch: {
+    Army: 1,
+    Navy: 2,
+    Marines: 3,
+    Air_Force: 4,
+    Coast_Guard: 5,
+    First_Responder: 6
+  }
+
+  ROLE_KEYS = [
+    :active_duty,
+    :veteran,
+    :post_911,
+    :family_member,
+    :caregiver,
+    :other,
+  ]
+
+  ROLE_NAMES = {
+    active_duty:    'Active Duty',
+    veteran:        'Veteran',
+    post_911:       'Post 911',
+    family_member:  'Family Member',
+    caregiver:      'Caregiver',
+    other:          'Other',
+  }
 
   # Accepts an array of string roles and returns the serialized integer version
   def self.serialize_string_roles(arr)
     if arr.nil?
       return
     end
-    arr.map { |s| Veteran.role_names.index(s.to_sym) }
+    arr.map { |s| ROLE_KEYS.index(s.to_sym) }
   end
 
   def string_roles
-    role = Veteran.role_names
-    roles.map { |r| role[r].to_s }
+    roles.map { |r| ROLE_KEYS[r].to_s }
+  end
+
+  def readable_roles
+    roles.map { |r| ROLE_NAMES[ROLE_KEYS[r]] }
+  end
+
+  def is_friend_of?(other)
+    follows.exists?(other.id) && followers.exists?(other.id)
+  end
+
+  def sent_friend_request_to?(other)
+    follows.exists?(other.id)
   end
 
   private
@@ -81,7 +113,7 @@ class Veteran < ApplicationRecord
       return
     end
     self.roles.each do |r|
-      unless r.is_a?(Integer) && r < Veteran.role_names.length
+      unless r.is_a?(Integer) && r < ROLE_KEYS.length
         errors.add(:roles, 'are not well defined.')
       end
     end

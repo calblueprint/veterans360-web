@@ -1,52 +1,60 @@
-<h2>Sign up</h2>
+<div class="flex-container">
+  <h2 class="floating-header-text">Partnering Org Sign Up</h2>
+  <div class="content-container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+     <div><%= f.label :name %><br />
+            <%= f.text_field :name, autofocus: true %></div>
 
- <div><%= f.label :name %><br />
-        <%= f.text_field :name, autofocus: true %></div>
+     <div><%= f.label :website %><br />
+            <%= f.text_field :website, autofocus: true %></div>
 
- <div><%= f.label :website %><br />
-        <%= f.text_field :website, autofocus: true %></div>
+     <div><%= f.label :phone_number %><br />
+            <%= f.text_field :phone_number, autofocus: true %></div>
 
- <div><%= f.label :phone_number %><br />
-        <%= f.text_field :phone_number, autofocus: true %></div>
-   
-  <div><%= f.label :address %><br />
-        <%= f.text_field :address, autofocus: true %></div>
+      <div><%= f.label :address %><br />
+            <%= f.text_field :address, autofocus: true %></div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div>
+      <%= f.label :role %><br />
+        <%= f.select(:role, PartneringOrganization.roles.keys.map {|role| [role.titleize,role]}) %>
+      </div>
+
+      <div>
+      <%= f.label :demographic %><br />
+        <%= f.select(:demographic, PartneringOrganization.demographics.keys.map {|demographic| [demographic.titleize,demographic]}) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :image %><br />
+        <%= f.file_field :image %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div>
-  <%= f.label :role %><br />
-    <%= f.select(:role, PartneringOrganization.roles.keys.map {|role| [role.titleize,role]}) %>
-  </div>
-
-  <div>
-  <%= f.label :demographic %><br />
-    <%= f.select(:demographic, PartneringOrganization.demographics.keys.map {|demographic| [demographic.titleize,demographic]}) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

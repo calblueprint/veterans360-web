@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108025941) do
+ActiveRecord::Schema.define(version: 20171201052031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20171108025941) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["veteran_id", "friend_id"], name: "index_friendships_on_veteran_id_and_friend_id", unique: true
     t.index ["veteran_id"], name: "index_friendships_on_veteran_id"
   end
 
@@ -49,8 +50,8 @@ ActiveRecord::Schema.define(version: 20171108025941) do
     t.string "phone_number"
     t.string "website"
     t.string "address"
-    t.float "latitude"
-    t.float "longitude"
+    t.decimal "lat", precision: 10, scale: 6
+    t.decimal "lng", precision: 10, scale: 6
     t.integer "role"
     t.integer "demographic"
     t.datetime "created_at", null: false
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 20171108025941) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.string "image"
     t.index ["email"], name: "index_partnering_organizations_on_email", unique: true
     t.index ["reset_password_token"], name: "index_partnering_organizations_on_reset_password_token", unique: true
   end
@@ -73,12 +75,21 @@ ActiveRecord::Schema.define(version: 20171108025941) do
   create_table "resources", force: :cascade do |t|
     t.string "file_name"
     t.string "file"
-    t.string "category"
+    t.integer "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "owner_type"
     t.bigint "owner_id"
     t.index ["owner_type", "owner_id"], name: "index_resources_on_owner_type_and_owner_id"
+  end
+
+  create_table "upvotes", force: :cascade do |t|
+    t.bigint "veteran_id"
+    t.bigint "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resource_id"], name: "index_upvotes_on_resource_id"
+    t.index ["veteran_id"], name: "index_upvotes_on_veteran_id"
   end
 
   create_table "veterans", force: :cascade do |t|
@@ -98,6 +109,8 @@ ActiveRecord::Schema.define(version: 20171108025941) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.decimal "lat", precision: 10, scale: 6
+    t.decimal "lng", precision: 10, scale: 6
     t.integer "military_branch"
     t.string "unit"
     t.string "notes"
@@ -108,4 +121,7 @@ ActiveRecord::Schema.define(version: 20171108025941) do
     t.index ["reset_password_token"], name: "index_veterans_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "resources", "partnering_organizations", column: "partnering_organizations_id"
+  add_foreign_key "upvotes", "resources"
+  add_foreign_key "upvotes", "veterans"
 end

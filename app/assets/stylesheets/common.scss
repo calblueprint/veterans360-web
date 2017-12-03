@@ -1,0 +1,121 @@
+@import "./colors";
+@import "./layout";
+
+* {
+  font-family: $font-stack;
+  color: $charcoal;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px 20px;
+  border: 1px solid $transparent;
+  border-radius: 2px;
+  background-color: $light-charcoal-20;
+  color: $charcoal-80;
+  font-size: 18px;
+  font-family: $font-stack;
+  letter-spacing: 0.5px;
+  transition: 100ms;
+  box-sizing: border-box;
+
+  &:focus {
+    border: 1px solid $green-80;
+    box-shadow: 0px 0px 1px 1px $green-60;
+    background-color: $green-10;
+    color: $dark-green;
+    outline: none;
+  }
+}
+
+input[type="checkbox"] {
+  padding: 0px;
+  margin: 5px 0px;
+  height: 1.2em;
+  width: 1.2em;
+}
+
+input[type="password"] {
+  font-family: caption;
+  letter-spacing: 2px;
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: $bold;
+  background-color: $blue;
+  color: $white;
+
+  &:hover {
+    background-color: $light-blue;
+    cursor: pointer;
+  }
+}
+
+label {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  color: $charcoal-80;
+  font-size: 16px;
+  font-family: $font-stack;
+  font-weight: $bold;
+  letter-spacing: 1px;
+}
+
+select {
+  padding: 10px;
+  font-size: 18px;
+  color: $charcoal-80;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background-color: $light-charcoal-20;
+}
+
+.application-container {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 10px;
+}
+
+.checkbox-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0px;
+
+  label {
+    margin: 0px;
+    margin-left: 10px;
+  }
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: inherit;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background: $green-80;
+  background: linear-gradient(45deg, $dark-green-80, $green-80);
+  box-sizing: border-box;
+}
+
+.content-container {
+  min-width: 30%;
+  padding: 100px;
+  background-color: $snow;
+  border: 1px solid $transparent;
+  border-radius: 4px;
+  box-shadow: 5px 5px 20px 5px $charcoal-20;
+}
+
+.floating-header-text {
+  font-size: 42px;
+  font-weight: $regular;
+  color: $white;
+}

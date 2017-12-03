@@ -21,7 +21,14 @@
 </p>
 
 <p>
- 
+  <strong>Latitude:</strong>
+  <%= @partnering_organization.lat %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @partnering_organization.lng %>
+</p>
 
 <p>
   <strong>Role:</strong>
@@ -43,7 +50,10 @@
   <% end %>
 </p>
 
-<%
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @partnering_organization.image.thumb.url %>
+</p>
 
 <%= link_to 'Edit', edit_partnering_organization_path(@partnering_organization) %> |
 <%= link_to 'Back', partnering_organizations_path %>
