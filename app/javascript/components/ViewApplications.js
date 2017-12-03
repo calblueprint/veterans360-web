@@ -22,12 +22,10 @@ class ViewApplications extends React.Component {
   }
 
   getApplications() {
-    console.log("here")
     // this is hacky, should use the api so it can format as json but couldn't get the route to work :(
     const path = `/partnering_organizations/`
 
     request.get(path, (response) => {
-      console.log(response)
       this._mounted && this.setState({ applications: response })
     }, (error) => {
       console.log(error)
@@ -45,7 +43,6 @@ class ViewApplications extends React.Component {
   }
 
   render () {
-    console.log('here')
     return (
       <div className='container'>
         <h2 className='container-header'>List of Applications</h2>

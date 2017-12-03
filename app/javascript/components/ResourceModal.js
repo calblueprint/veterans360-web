@@ -17,6 +17,12 @@ class ResourceModal extends React.Component {
         <p>
           File Name: {this.props.resource.file_name}
         </p>
+        <p>
+          Category: {this.props.resource.category}
+        </p>
+        <p>
+          Created at: {this.props.resource.created_at}
+        </p>
         <a href={this.props.resource.file.url}>
           <Button className='show-resource'>
             Show

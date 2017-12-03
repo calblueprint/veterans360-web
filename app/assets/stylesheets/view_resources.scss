@@ -7,3 +7,10 @@ li {
 .container-header {
   -webkit-margin-start: 40px;
 }
+ul {
+  padding-right: 40px;
+}
+a, a:hover, a:active, a:visited{
+  color: transparent;
+  background-color: transparent;
+}
