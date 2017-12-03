@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20171201052031) do
     t.datetime "updated_at", null: false
     t.string "owner_type"
     t.bigint "owner_id"
+    t.string "description"
     t.index ["owner_type", "owner_id"], name: "index_resources_on_owner_type_and_owner_id"
   end
 
@@ -109,19 +110,18 @@ ActiveRecord::Schema.define(version: 20171201052031) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.decimal "lat", precision: 10, scale: 6
-    t.decimal "lng", precision: 10, scale: 6
     t.integer "military_branch"
     t.string "unit"
     t.string "notes"
     t.boolean "accept_messages"
     t.boolean "share_profile"
     t.boolean "accept_notices"
+    t.decimal "lat", precision: 10, scale: 6
+    t.decimal "lng", precision: 10, scale: 6
     t.index ["email"], name: "index_veterans_on_email", unique: true
     t.index ["reset_password_token"], name: "index_veterans_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "resources", "partnering_organizations", column: "partnering_organizations_id"
   add_foreign_key "upvotes", "resources"
   add_foreign_key "upvotes", "veterans"
 end
