@@ -40,4 +40,6 @@ class Resource < ApplicationRecord
   def upvoted_by?(veteran)
     upvotes.exists?(veteran_id: veteran.id)
   end
+
+  
 end
