@@ -47,3 +47,4 @@ bower.json
 application.yml
 /public/packs
 /public/packs-test
+/app/assets/.DS_Store
