@@ -8,10 +8,10 @@ class ResourceModal extends React.Component {
     super(props)
     this.state = {
     }
+
   }
 
-  render() {
-    console.log(this.props.application)
+  render_approved_resource() {
     return (
       <Card interactive={true} elevation={Card.ELEVATION_TWO}>
         <p>
@@ -21,20 +21,62 @@ class ResourceModal extends React.Component {
           Phone Number: {this.props.application.phone_number}
         </p>
         <p>
-          Approval Satus: {this.props.application.approval_status.toString()}
+          Web Site: {this.props.application.website}
         </p>
-        <a href='/'>
+        <p>
+          Role: {this.props.application.role}
+        </p>
+        <p className="approved-status">
+          Approved Application!
+        </p>
+        <a href={`/partnering_organizations/` + this.props.application.id} data-method="delete" data-confirm="This will delete the resource, are you sure?">
+          <Button className='reject-po'>
+            Delete
+          </Button>
+        </a>
+      </Card>
+    )
+  }
+
+  render_unapproved_resource() {
+    return (
+      <Card interactive={true} elevation={Card.ELEVATION_TWO}>
+        <p>
+          Name: {this.props.application.name}
+        </p>
+        <p>
+          Phone Number: {this.props.application.phone_number}
+        </p>
+        <p>
+          Web Site: {this.props.application.website}
+        </p>
+        <p>
+          Role: {this.props.application.role}
+        </p>
+        <p className="pending-status">
+          Pending Approval
+        </p>
+        <a href={`/partnering_organizations/` + this.props.application.id + `/approve`} data-method="patch">
           <Button className='approve-po'>
             Approve
           </Button>
         </a>
-        <a href='/'>
+        <a href={`/partnering_organizations/` + this.props.application.id} data-method="delete" data-confirm="This will delete the resource, are you sure?">
           <Button className='reject-po'>
             Reject
           </Button>
         </a>
       </Card>
     )
+  }
+
+  render() {
+    if (this.props.application.approval_status) {
+      return this.render_approved_resource()
+    }
+    else {
+      return this.render_unapproved_resource()
+    }
   }
 }
 
@@ -44,6 +86,8 @@ ResourceModal.propTypes = {
     name: PropTypes.string.isRequired,
     phone_number: PropTypes.string.isRequired,
     approval_status: PropTypes.bool.isRequired,
+    website: PropTypes.string.isRequired,
+    phone_number: PropTypes.number.isRequired,
   })
 }
 
