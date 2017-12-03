@@ -7,8 +7,10 @@
     "coffeescript": "1.12.7",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
+    "react-bootstrap": "^0.31.5",
     "react-dom": "^16.1.1",
-    "react_ujs": "^2.4.2"
+    "react_ujs": "^2.4.2",
+    "tcomb-form": "^0.9.17"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.9.4"
