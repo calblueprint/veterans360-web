@@ -31,6 +31,10 @@ class PartneringOrganization < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 	has_many :resources, :as => :owner, dependent: :destroy
+
+	has_many :subscriptions
+	has_many :subscribers, through: :subscriptions, source: :veteran
+
   mount_uploader :image, ImageUploader
 
 	enum role: [

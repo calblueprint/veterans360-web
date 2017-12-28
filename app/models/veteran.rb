@@ -35,7 +35,7 @@ class Veteran < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :upvotes, :dependent => :destroy
+  has_many :upvotes, dependent: :destroy
   has_many :resources, through: :upvotes
 
   has_many :friendships
@@ -43,6 +43,9 @@ class Veteran < ApplicationRecord
 
   has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
   has_many :followers, through: :inverse_friendships, source: :veteran
+
+  has_many :subscriptions
+  has_many :po_follows, through: :subscriptions, source: :partnering_organization
 
   EMAIL_PATTERN = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates_confirmation_of :password
