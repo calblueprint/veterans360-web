@@ -1,11 +1,14 @@
 class ResourcesController < ApplicationController
   # before_action :authenticate_veteran!
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
+  before_action :parse_categories, only: [:index]
+
+  has_scope :by_category, type: :array
 
   # GET /resources
   # GET /resources.json
   def index
-    @resources = Resource.all
+    @resources = apply_scopes(Resource).all
     render json: @resources, each_serializer: ResourceSerializer, scope: {
       current_veteran: current_veteran
     }
@@ -79,14 +82,6 @@ class ResourcesController < ApplicationController
     render json: Resource.resource_categories
   end
 
-  def filter_resources
-    filter = JSON.parse(params[:categories])
-    @resources = Resource.where(category: filter)
-    render json: @resources, each_serializer: ResourceSerializer, scope: {
-      current_veteran: current_veteran
-    }
-  end
-
   def get_home_resources
     @resources = Resource.select('resources.*, count(upvotes.id) AS upvotes_count').joins(:upvotes).where('upvotes.created_at >= ?', Time.now - 1.day).group('resources.id').order('upvotes_count DESC')
     render json: @resources, each_serializer: ResourceSerializer, scope: {
@@ -103,6 +98,17 @@ class ResourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params
-      params.require(:resource).permit(:file_name, :file, :category, :description)
+      params.require(:resource).permit(
+        :file_name,
+        :file,
+        :category,
+        :description
+      )
+    end
+
+    def parse_categories
+      if params.has_key?(:by_category)
+        params[:by_category] = JSON.parse(params[:by_category])
+      end
     end
 end
