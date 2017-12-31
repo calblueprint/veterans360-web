@@ -5,11 +5,13 @@ class PartneringOrganizationsController < ApplicationController
   # GET /partnering_organizations.json
   def index
     @partnering_organizations = PartneringOrganization.all
+    serializer = veteran_signed_in? ? PartneringOrganizationSubscriptionsSerializer : PartneringOrganizationSerializer
     respond_to do |format|
       format.html { render :index }
       format.json {
         render json: @partnering_organizations,
-               each_serializer: PartneringOrganizationSerializer
+               each_serializer: PartneringOrganizationSubscriptionsSerializer,
+               scope: { current_veteran: current_veteran }
       }
     end
   end

@@ -5850,7 +5850,6 @@ tar@^2.0.0, tar@^2.2.1:
     fstream "^1.0.2"
     inherits "2"
 
-<<<<<<< HEAD
 tether@^1.4:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/tether/-/tether-1.4.3.tgz#fd547024c47b6e5c9b87e1880f997991a9a6ad54"
@@ -5862,8 +5861,6 @@ through2@^2.0.0:
     readable-stream "^2.1.5"
     xtend "~4.0.1"
 
-=======
->>>>>>> finished merge, change some things to keep functionalities for both web and mobile
 tcomb-form-templates-bootstrap@^0.2.0:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/tcomb-form-templates-bootstrap/-/tcomb-form-templates-bootstrap-0.2.3.tgz#96706075437ac8a08f594767f86ccf30ecf2bf29"
