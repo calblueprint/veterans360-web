@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201052031) do
+ActiveRecord::Schema.define(version: 20171202201757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,15 @@ ActiveRecord::Schema.define(version: 20171201052031) do
     t.index ["owner_type", "owner_id"], name: "index_resources_on_owner_type_and_owner_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "veteran_id"
+    t.bigint "partnering_organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["partnering_organization_id"], name: "index_subscriptions_on_partnering_organization_id"
+    t.index ["veteran_id"], name: "index_subscriptions_on_veteran_id"
+  end
+
   create_table "upvotes", force: :cascade do |t|
     t.bigint "veteran_id"
     t.bigint "resource_id"
@@ -122,6 +131,8 @@ ActiveRecord::Schema.define(version: 20171201052031) do
     t.index ["reset_password_token"], name: "index_veterans_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "subscriptions", "partnering_organizations"
+  add_foreign_key "subscriptions", "veterans"
   add_foreign_key "upvotes", "resources"
   add_foreign_key "upvotes", "veterans"
 end

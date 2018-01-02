@@ -24,6 +24,7 @@
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
 #  approval_status        :boolean          default(false)
+#  image                  :string
 #
 class PartneringOrganization < ApplicationRecord
 
@@ -31,6 +32,10 @@ class PartneringOrganization < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 	has_many :resources, :as => :owner, dependent: :destroy
+
+	has_many :subscriptions
+	has_many :subscribers, through: :subscriptions, source: :veteran
+
   mount_uploader :image, ImageUploader
 
 	enum role: [

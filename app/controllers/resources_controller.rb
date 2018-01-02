@@ -90,6 +90,14 @@ class ResourcesController < ApplicationController
     }
   end
 
+  def get_home_resources
+    @resources = Resource.select('resources.*, count(upvotes.id) AS upvotes_count').joins(:upvotes).where('upvotes.created_at >= ?', Time.now - 1.day).group('resources.id').order('upvotes_count DESC')
+    render json: @resources, each_serializer: ResourceSerializer, scope: {
+      current_veteran: current_veteran
+    }
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_resource

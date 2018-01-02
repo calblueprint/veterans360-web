@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'subscriptions/create'
+
 	# get 'partnering_organizations/sign_up' => 'partnering_organizations#new'
 	# post 'partnering_organizations/' => 'partnering_organizations#create'
 
@@ -31,6 +33,9 @@ Rails.application.routes.draw do
         patch :reject
       end
     end
+
+    # Subscriptions
+    resources :subscriptions, only: [:create]
   end
 
   resources :resources do
@@ -40,6 +45,7 @@ Rails.application.routes.draw do
     collection do
       get 'get_resource_categories', to: 'resources#get_resource_categories'
       get 'filter_resources/:categories', to: 'resources#filter_resources'
+      get 'get_home_resources', to: 'resources#get_home_resources'
     end
   end
 
