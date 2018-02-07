@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from "prop-types"
 import { Card, Button } from "@blueprintjs/core"
-import request from '../shared/requests/request'
+import request from '../../shared/requests/request'
 
 
 class ResourceModal extends React.Component {

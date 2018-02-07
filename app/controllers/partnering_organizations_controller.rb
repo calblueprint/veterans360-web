@@ -10,7 +10,7 @@ class PartneringOrganizationsController < ApplicationController
       format.html { render :index }
       format.json {
         render json: @partnering_organizations,
-               each_serializer: PartneringOrganizationSubscriptionsSerializer,
+               each_serializer: serializer,
                scope: { current_veteran: current_veteran }
       }
     end
