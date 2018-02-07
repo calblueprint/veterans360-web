@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20171202201757) do
     t.integer "demographic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "approval_status", default: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

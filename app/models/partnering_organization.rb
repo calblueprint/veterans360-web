@@ -23,9 +23,9 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+#  approval_status        :boolean          default(false)
 #  image                  :string
 #
-
 class PartneringOrganization < ApplicationRecord
 
 	devise :database_authenticatable, :registerable,
@@ -59,4 +59,15 @@ class PartneringOrganization < ApplicationRecord
 	geocoded_by :address, :latitude  => :lat, :longitude => :lng
 	after_validation :geocode
 
+  def active_for_authentication?
+    super && approval_status?
+  end
+
+  def inactive_message
+    if !approval_status?
+      :not_approval_status
+    else
+      super # Use whatever other message
+    end
+  end
 end

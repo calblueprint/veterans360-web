@@ -1,5 +1,5 @@
 class PartneringOrganizationsController < ApplicationController
-  before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy]
+  before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve]
 
   # GET /partnering_organizations
   # GET /partnering_organizations.json
@@ -10,7 +10,7 @@ class PartneringOrganizationsController < ApplicationController
       format.html { render :index }
       format.json {
         render json: @partnering_organizations,
-               each_serializer: PartneringOrganizationSubscriptionsSerializer,
+               each_serializer: serializer,
                scope: { current_veteran: current_veteran }
       }
     end
@@ -58,6 +58,11 @@ class PartneringOrganizationsController < ApplicationController
         format.json { render json: @partnering_organization.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def approve
+    @partnering_organization.approval_status = true
+    @partnering_organization.save
   end
 
   # DELETE /partnering_organizations/1
