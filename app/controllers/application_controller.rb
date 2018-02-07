@@ -11,4 +11,14 @@ class ApplicationController < ActionController::Base
       super
     end
   end
+
+  def after_sign_out_path_for(user)
+    if user == :admin
+      admins_path
+    elsif user == :partnering_organization
+      partnering_organizations_path
+    else
+      root_path
+    end
+  end
 end

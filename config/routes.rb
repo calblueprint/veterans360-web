@@ -59,14 +59,15 @@ Rails.application.routes.draw do
   resources :partnering_organizations
   resources :resources
   patch 'partnering_organizations/:id/approve' => 'partnering_organizations#approve', as: 'approve_partnering_organization'
-  root to: 'veterans#index'
+
   get 'admins/resources', to: 'admins#view_resources'
   get 'admins/applications', to: 'admins#view_applications'
+
   namespace :api, defaults: { format: [:json, :csv] } do
     resources :resources, only: [:index, :show] do
     end
   end
   resources :upvotes
 
-  root to: 'static_pages#home'
+  root to: 'partnering_organizations#index'
 end
