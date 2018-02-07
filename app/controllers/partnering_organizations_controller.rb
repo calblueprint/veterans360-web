@@ -19,7 +19,6 @@ class PartneringOrganizationsController < ApplicationController
   # GET /partnering_organizations/1
   # GET /partnering_organizations/1.json
   def show
-    puts @partnering_organization.approval_status
   end
 
   # GET /partnering_organizations/new
