@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import React from "react"
 import ApplicationModal from './ApplicationModal.js'
-import request from '../shared/requests/request'
+import request from '../../shared/requests/request'
 
 class ViewApplications extends React.Component {
   constructor(props) {

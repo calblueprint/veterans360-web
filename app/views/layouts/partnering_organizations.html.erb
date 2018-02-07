@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>V360</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_link_tag 'https://unpkg.com/normalize.css@^4.1.1' %>
+    <%= stylesheet_link_tag 'https://unpkg.com/@blueprintjs/core@^1.11.0/dist/blueprint.css' %>
+  </head>
+  <body>
+    <%= react_component("PartneringOrganizationNavbar") %>
+    <%= yield %>
+  </body>
+</html>

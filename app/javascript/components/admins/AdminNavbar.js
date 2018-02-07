@@ -1,5 +1,4 @@
 import { Link } from 'react-router'
-import Navbar from '../shared/components/Navbar'
 import React from 'react'
 
 class AdminNavbar extends React.Component {
@@ -15,7 +14,7 @@ class AdminNavbar extends React.Component {
             <a href={`/admins/resources`}><button className="pt-button pt-minimal pt-icon-document">Resources</button></a>
             <span className="pt-navbar-divider"></span>
             <button className="pt-button pt-minimal pt-icon-user">Profile</button>
-            <button className="pt-button pt-minimal pt-icon-log-out">Log out</button>
+            <a href={`/admins/sign_out`} data-method="delete"><button className="pt-button pt-minimal pt-icon-log-out">Log out</button></a>
           </div>
         </nav>
       </div>

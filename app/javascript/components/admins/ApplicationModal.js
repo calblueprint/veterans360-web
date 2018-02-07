@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from "prop-types"
 import { Card, Button } from "@blueprintjs/core"
+import request from '../../shared/requests/request'
 
 
 class ResourceModal extends React.Component {
@@ -8,11 +9,11 @@ class ResourceModal extends React.Component {
     super(props)
     this.state = {
     }
-
   }
 
   render() {
     return (
+      <div>
       <Card interactive={true} elevation={Card.ELEVATION_TWO}>
         <p>
           Name: {this.props.application.name}
@@ -55,6 +56,7 @@ class ResourceModal extends React.Component {
           </div>
         )}
       </Card>
+      </div>
     )
   }
 }
