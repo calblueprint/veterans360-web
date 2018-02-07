@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(user)
-    puts "here"
     if user == :admin
       admins_path
     elsif user == :partnering_organization
