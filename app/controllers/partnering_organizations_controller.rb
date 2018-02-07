@@ -1,6 +1,6 @@
 class PartneringOrganizationsController < ApplicationController
   before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve]
-  before_action :authenticate_partnering_organization!
+  before_action :authenticate!
 
   # GET /partnering_organizations
   # GET /partnering_organizations.json
@@ -86,4 +86,8 @@ class PartneringOrganizationsController < ApplicationController
     def partnering_organization_params
       params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :lat, :lng, :role, :demographic, :image)
     end
-end
+  end
+
+  def authenticate!
+    :authenticate_admin! || :authenticate_partnering_organization!
+  end
