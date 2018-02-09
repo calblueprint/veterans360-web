@@ -1,7 +1,7 @@
 Rails Setup Instructions
 -------
 
-1. Clone the Github repo `git clone https://github.com/calblueprint/veterans360-web.git` Make sure you have the right Ruby version running (2.4.0). Use rvm to download or update if necessary.
+1. Clone the Github repo `git clone https://github.com/calblueprint/veterans360-web.git` Make sure you have the right Ruby version running (2.3.3). Use rvm to download or update if necessary.
 
 2. Run command:`bundle install`. Run `gem install bundler` if you don't have bundler.
 
