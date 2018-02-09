@@ -7,8 +7,10 @@ Rails Setup Instructions
 
 3. Create `config/application.yml` using the template at `config/application.yml.sample`. Generate a new secret key using `rake secret` and paste the key into the file as `secret_key_base`. Generate a new secret test key using `rake secret test` and paste the key into the file as `secret_key_base_test`.
 
-4. Run `rake db:create` and `rake db:migrate` to properly set up the database.
+4. Run `rake db:create` and `rake db:migrate` to properly set up the database. (Make sure you have postgres downloaded and run pg start)
 
-5. Run `rails server` to start the server.
+5. Run `bundle exec rails webpacker:install` You made need to install yarn (`brew install yarn`).
+
+6. Run `rails server` to start the server.
 
 Happy developing!
