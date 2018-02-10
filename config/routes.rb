@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   get 'subscriptions/create'
 
-	# get 'partnering_organizations/sign_up' => 'partnering_organizations#new'
-	# post 'partnering_organizations/' => 'partnering_organizations#create'
+  # get 'partnering_organizations/sign_up' => 'partnering_organizations#new'
+  # post 'partnering_organizations/' => 'partnering_organizations#create'
 
   devise_for :partnering_organizations, controllers: {
     sessions: 'partnering_organizations/sessions',
@@ -55,19 +55,27 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :admins, only: [:index, :create]
-  resources :partnering_organizations
-  resources :resources
-  patch 'partnering_organizations/:id/approve' => 'partnering_organizations#approve', as: 'approve_partnering_organization'
+  resources :admins do
+    collection do
+      get 'resources'
+      get 'applications'
+    end
+  end
 
-  get 'admins/resources', to: 'admins#view_resources'
-  get 'admins/applications', to: 'admins#view_applications'
+  resources :partnering_organizations do
+    member do
+      patch 'approve'
+      # get ''
+    end
+    collection do
+      get 'resources'
+    end
+  end
 
   namespace :api, defaults: { format: [:json, :csv] } do
     resources :resources, only: [:index, :show] do
     end
   end
-  resources :upvotes
 
   root to: 'partnering_organizations#index'
 end
