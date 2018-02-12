@@ -1,6 +1,7 @@
 class PartneringOrganizationsController < ApplicationController
   before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve]
-  before_action :authenticate!
+  # before_action :authenticate!
+  load_and_authorize_resource
 
   # GET /partnering_organizations
   # GET /partnering_organizations.json
@@ -88,6 +89,6 @@ class PartneringOrganizationsController < ApplicationController
     end
   end
 
-  def authenticate!
-    :authenticate_admin! || :authenticate_partnering_organization!
-  end
+  # def authenticate
+  #   :authenticate_admin! || :authenticate_partnering_organization!
+  # end
