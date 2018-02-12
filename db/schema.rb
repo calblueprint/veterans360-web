@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20171202201757) do
     t.integer "demographic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "approval_status", default: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(version: 20171202201757) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
+    t.boolean "approval_status", default: false
     t.string "image"
     t.index ["email"], name: "index_partnering_organizations_on_email", unique: true
     t.index ["reset_password_token"], name: "index_partnering_organizations_on_reset_password_token", unique: true

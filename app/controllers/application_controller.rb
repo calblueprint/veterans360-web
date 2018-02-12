@@ -1,6 +1,20 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  def current_ability
+    if admin_signed_in?
+      @current_ability ||= Ability.new(current_admin)
+    elsif partnering_organization_signed_in?
+      @current_ability ||= Ability.new(current_partnering_organization)
+    else
+      @current_ability ||= Ability.new(current_veteran)
+    end
+  end
+
+  rescue_from CanCan::AccessDenied do
+    redirect_to '/partnering_organizations/sign_in'
+  end
+
   def after_sign_in_path_for(user)
     case
     when user.is_a?(Admin)
