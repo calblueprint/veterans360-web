@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import * as Blueprint from "@blueprintjs/core";
+
 /**
 *
 @prop partnering_organization -partnering organization object
@@ -25,20 +26,20 @@ class PartneringOrganizationProfile extends React.Component {
 	render() {
 		let resource_list;
 		console.log(this.state.resources)
-		resource_list = this.state.resources.map((resource) => {
-			return (
-				<Card interactive={true} elevation={Card.ELEVATION_TWO}>
-  					<div>
-						{resource.file_name}
-						{resource.file}
-						</div>
+			resource_list = this.state.resources.map((resource) => {
+				return (
+					<Card interactive={true} elevation={Card.ELEVATION_TWO}>
+    					<div>
+							{resource.file_name}
+							{resource.file}
+							</div>
 
-				</Card>
-				// <div>
-				//  {resource.file_name}
-				//  </div>
-			)
-		});
+					</Card>
+					// <div>
+					//  {resource.file_name}
+					//  </div>
+				)
+			});
 
 		return (
 			<Button>
