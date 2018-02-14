@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import * as Blueprint from "@blueprintjs/core";
 
 /**
 *
@@ -28,16 +29,22 @@ class PartneringOrganizationProfile extends React.Component {
 
 			resource_list = this.state.resources.map((resource) => {
 				return (
-					<div>
-					 {resource.file_name}
-					 					</div>
-				)
-				console.log(resource)
+					<Card interactive={true} elevation={Card.ELEVATION_TWO}>
+    					<div>
+							{resource.file_name}
+							</div>
 
+					</Card>
+					// <div>
+					//  {resource.file_name}
+					//  </div>
+				)
 			});
 
-console.log(resource_list)
 		return (
+			<Button>
+			Submit
+			</Button>
 			<div className = "po_profile" > Your Profile
 				<h4 className = "partnering_organization_email" > Name: {this.state.name} </h4>
 				<h4 className = "po_role" > Email: {this.state.email} </h4>
@@ -46,15 +53,9 @@ console.log(resource_list)
 				<h4 className = "po_role" > Phone Number: {this.state.phone_number} </h4>
 				<h4 className = "po_role" > {this.state.role} </h4>
 				<h2 className = "resources_list" > {resource_list} </h2>
+			</div>
 		);
 	}
 }
 
 export default PartneringOrganizationProfile;
-
-
-	// PartneringOrganizationProfile.propTypes = {
-	// 	partnering_organization: React.propTypes.object,
-	// }
-
-	// export default PartneringOrganizationProfile

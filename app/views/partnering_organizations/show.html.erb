@@ -33,11 +33,13 @@
 </p> -->
 
 <!--  <%= react_component("PartneringOrganizationResources", {}) %>
- -->
+-->
+
+
 <%= react_component("PartneringOrganizationProfile", {partneringOrganization: current_partnering_organization,
                                                         all_resources: @all_resources}) %>
 
- <!-- <strong>Upload File:</strong>
+ <strong>Upload File:</strong>
   <%= form_for Resource.new, url: '/resources' do |f| %>
     <%= f.label(:file_name, "File Name:") %>
     <%= f.text_field(:file_name) %>
@@ -45,7 +47,7 @@
     <%= f.text_field(:category) %> <br>
     <%= f.file_field 'file' %> <br>
     <%= f.submit 'Submit' %>
-  <% end %> -->
+  <% end %>
 
 
 <%= link_to 'Edit', edit_partnering_organization_path(@partnering_organization) %> |
