@@ -26,12 +26,12 @@ class PartneringOrganizationProfile extends React.Component {
 	render() {
 		let resource_list;
 		console.log(this.state.resources)
-
 			resource_list = this.state.resources.map((resource) => {
 				return (
 					<Card interactive={true} elevation={Card.ELEVATION_TWO}>
     					<div>
 							{resource.file_name}
+							{resource.file}
 							</div>
 
 					</Card>
@@ -47,7 +47,7 @@ class PartneringOrganizationProfile extends React.Component {
 			</Button>
 			<div className = "po_profile" > Your Profile
 				<h4 className = "partnering_organization_email" > Name: {this.state.name} </h4>
-				<h4 className = "po_role" > Email: {this.state.email} </h4>
+				<h4 className = "po_profile" > Email: {this.state.email} </h4>
 				<h4 className = "po_role" > Address: {this.state.address} </h4>
 				<h4 className = "po_role" > Demographic: {this.state.demographic} </h4>
 				<h4 className = "po_role" > Phone Number: {this.state.phone_number} </h4>
