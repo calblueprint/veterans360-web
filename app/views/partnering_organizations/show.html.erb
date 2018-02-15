@@ -48,6 +48,12 @@
                                                           all_resources: @all_resources}) %>
 
 
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @partnering_organization.image.thumb.url %>
+</p>
+<%= react_component("PartneringOrganization", {}) %>
+<%= react_component("PartneringOrganizationProfile", {}) %>
  <!--
 #    <strong>Upload File:</strong>
 #     <%= form_for Resource.new, url: '/resources' do |f| %>
