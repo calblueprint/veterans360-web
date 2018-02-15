@@ -8,7 +8,7 @@ import * as Blueprint from "@blueprintjs/core";
 @prop all_resources
 */
 
-class PartneringOrganization extends React.Component {
+class PartneringOrganizationProfileStyle extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -58,4 +58,4 @@ class PartneringOrganization extends React.Component {
 	}
 }
 
-export default PartneringOrganization;
+export default PartneringOrganizationProfileStyle;
