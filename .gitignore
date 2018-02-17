@@ -50,3 +50,6 @@ application.yml
 /public/packs
 /public/packs-test
 /app/assets/.DS_Store
+/public/packs
+/public/packs-test
+/node_modules
