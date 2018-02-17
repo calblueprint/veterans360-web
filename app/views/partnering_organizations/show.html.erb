@@ -16,6 +16,17 @@
   <strong>Address:</strong>
   <%= @partnering_organization.address %>
 </p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @partnering_organization.lat %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @partnering_organization.lng %>
+</p>
+
 <p>
   <strong>Role:</strong>
   <%= @partnering_organization.role %>
@@ -46,7 +57,6 @@
                                                           all_resources: @all_resources}) %>
   <%= react_component("PartneringOrganizationProfileStyle", {partneringOrganization: current_partnering_organization,
                                                           all_resources: @all_resources}) %>
-
 
 <p>
   <strong>Image:</strong>

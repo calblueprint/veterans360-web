@@ -14,7 +14,8 @@
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
     "react_ujs": "^2.4.2",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "tcomb-form": "^0.9.17"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.11.1"

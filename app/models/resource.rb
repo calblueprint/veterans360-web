@@ -40,5 +40,5 @@ class Resource < ApplicationRecord
     upvotes.exists?(veteran_id: veteran.id)
   end
 
-  
+
 end

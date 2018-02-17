@@ -38,7 +38,6 @@ Rails.application.routes.draw do
     resources :subscriptions, only: [:create]
   end
 
-  resources :admins, only: [:index, :create]
   resources :resources do
     member do
       get 'num_upvotes', to: 'resources#num_upvotes'
