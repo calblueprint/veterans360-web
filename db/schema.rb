@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202201757) do
+ActiveRecord::Schema.define(version: 20180217003247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,10 @@ ActiveRecord::Schema.define(version: 20171202201757) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "image"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.index ["confirmation_token"], name: "index_partnering_organizations_on_confirmation_token", unique: true
     t.index ["email"], name: "index_partnering_organizations_on_email", unique: true
     t.index ["reset_password_token"], name: "index_partnering_organizations_on_reset_password_token", unique: true
   end
@@ -127,6 +131,8 @@ ActiveRecord::Schema.define(version: 20171202201757) do
     t.boolean "accept_notices"
     t.decimal "lat", precision: 10, scale: 6
     t.decimal "lng", precision: 10, scale: 6
+    t.string "address"
+    t.string "phone_number"
     t.index ["email"], name: "index_veterans_on_email", unique: true
     t.index ["reset_password_token"], name: "index_veterans_on_reset_password_token", unique: true
   end
