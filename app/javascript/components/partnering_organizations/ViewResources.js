@@ -41,7 +41,7 @@ class ViewResources extends React.Component {
       console.log(response)
     }, (error) => {
       console.log(error)
-    }, 'multipart/form-data')
+    })
   }
 
   toggleAddResource() {
