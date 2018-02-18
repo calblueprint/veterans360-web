@@ -7,8 +7,17 @@ import request from '../../shared/requests/request'
 class ResourceModal extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-    }
+    this.state = {}
+    this.deleteResource = this.deleteResource.bind(this)
+  }
+
+  deleteResource() {
+    const path = `/resources/` + this.props.resource.id
+    request.delete(path, (response) => {
+      window.location.reload()
+    }, (error) => {
+      alert("There was an error")
+    })
   }
 
   render() {
@@ -28,11 +37,9 @@ class ResourceModal extends React.Component {
             Show
           </Button>
         </a>
-        <a href={`/resources/` + this.props.resource.id} data-method="delete" data-confirm="Are you sure">
-          <Button className='delete-resource'>
-            Delete
-          </Button>
-        </a>
+        <Button className='delete-resource' onClick={this.deleteResource}>
+          Delete
+        </Button>
       </Card>
     )
   }

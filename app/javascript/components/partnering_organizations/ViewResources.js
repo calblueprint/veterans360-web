@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { Button, Classes, Dialog, Intent } from "@blueprintjs/core"
 
-import { getCSRFFieldName, getCSRFToken } from '../../shared/helpers/form_helpers'
+import { getCSRFToken, getCSRFFieldName } from '../../shared/helpers/form_helpers'
 import ResourceModal from '../shared/ResourceModal.js'
 import request from '../../shared/requests/request'
 
@@ -12,32 +12,36 @@ class ViewResources extends React.Component {
     super(props)
     this.state = {
       isOpen: false,
-      resources: [],
-      // formFields: this.getInitialForm(),
+      resource: {
+        file_name: '',
+        category: '',
+        description: '',
+        file: '',
+      },
     }
     this.toggleAddResource = this.toggleAddResource.bind(this)
-    this.createResource = this.createResource.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  /* getInitialForm() {
-    return {
-      file_name: {
-        value: '',
-        onChange: _.bind(this.handleChange, this, 'file_name'),
-      },
-      category: {
-        value: '',
-        onChange: _.bind(this.handleChange, this, 'category'),
-      },
-      file: {
-        value: '',
-        onChange: _.bind(this.handleChange, this, 'file'),
-      }
-    }
-  } */
+  handleChange(event) {
+    const resource = this.state.resource
+    resource[event.target.name] = event.target.value
+    this.setState({ resource: resource })
+  }
 
-  createResource(e) {
-    console.log(e)
+  handleSubmit(event) {
+    event.preventDefault()
+    let params = {
+      resource: this.state.resource,
+    }
+    params.resource.file = this.file.files[0]
+    const path = `/resources/`
+    request.post(path, params, (response) => {
+      console.log(response)
+    }, (error) => {
+      console.log(error)
+    }, 'multipart/form-data')
   }
 
   toggleAddResource() {
@@ -56,17 +60,49 @@ class ViewResources extends React.Component {
         onClose={this.toggleAddResource}
         title="Add Resource"
       >
-        <form action='/resources' method='POST' onSubmit={this.createResource}>
+        <form action='/resources' method='POST' onSubmit={this.handleSubmit}>
           <div className="pt-dialog-body">
-            <p className="pt-ui-text">File Name: <input name="file_name" type="text" className="pt-input"></input></p>
-            <p className="pt-ui-text">Category: <input name="category" type="text" className="pt-input"></input></p>
-            <p className="pt-ui-text">Description: <textarea name="description" type="text" className="pt-input"></textarea></p>
-
-          <p className="pt-ui-text">File: <input name="file" role="button" type="file" className='pt-button-small'></input></p>
+            <p className="pt-ui-text">File Name:
+              <input
+                value={this.state.resource.file_name}
+                onChange={this.handleChange}
+                name="file_name"
+                type="text"
+                className="pt-input"
+              />
+            </p>
+            <p className="pt-ui-text">Category:
+              <input
+                value={this.state.resource.category}
+                onChange={this.handleChange}
+                name="category"
+                type="text"
+                className="pt-input"
+              />
+            </p>
+            <p className="pt-ui-text">Description:
+              <textarea
+                value={this.state.resource.description}
+                onChange={this.handleChange}
+                name="description"
+                type="text"
+                className="pt-input">
+              </textarea>
+            </p>
+            <p className="pt-ui-text">File:
+              <input
+                name="file"
+                role="button"
+                type="file"
+                ref={input => {this.file = input}}
+                className='pt-button-small'
+              />
+            </p>
             <input
               type='hidden'
               name={getCSRFFieldName()}
-              value={getCSRFToken()} />
+              value={getCSRFToken()}
+            />
           </div>
           <div className="pt-dialog-footer">
             <div className="pt-dialog-footer-actions">
