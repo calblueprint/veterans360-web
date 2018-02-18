@@ -15,7 +15,7 @@
     tether "^1.4"
     tslib "^1.5.0"
 
-"@rails/webpacker@^3.0.2":
+"@rails/webpacker@^3.2.2":
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-3.2.2.tgz#6d60e1cf729dc2ccc52053c9b6b8d30c9a48a297"
   dependencies:

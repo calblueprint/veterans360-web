@@ -1,69 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<!-- <p>
-  <strong>Name:</strong>
-  <%= @partnering_organization.name %>
-</p>
-<p>
-  <strong>Phone number:</strong>
-  <%= @partnering_organization.phone_number %>
-</p>
-<p>
-  <strong>Website:</strong>
-  <%= @partnering_organization.website %>
-</p>
-<p>
-  <strong>Address:</strong>
-  <%= @partnering_organization.address %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @partnering_organization.lat %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @partnering_organization.lng %>
-</p>
-
-<p>
-  <strong>Role:</strong>
-  <%= @partnering_organization.role %>
-</p>
-<p>
-  <strong>Demographic:</strong>
-  <%= @partnering_organization.demographic %>
-</p> -->
-
-<!--  <%= react_component("PartneringOrganizationResources", {}) %>
--->
-
-<!--
-<%= react_component("PartneringOrganizationProfile", {partneringOrganization: current_partnering_organization,
-                                                        all_resources: @all_resources}) %> -->
-
- <!-- <strong>Upload File:</strong>
-  <%= form_for Resource.new, url: '/resources' do |f| %>
-    <%= f.label(:file_name, "File Name:") %>
-    <%= f.text_field(:file_name) %>
-    <%= f.label(:category, "Category:") %>
-    <%= f.text_field(:category) %> <br>
-    <%= f.file_field 'file' %> <br>
-    <%= f.submit 'Submit' %>
-  <% end %> -->
-
-  <%= react_component("PartneringOrganization", {partneringOrganization: current_partnering_organization,
-                                                          all_resources: @all_resources}) %>
-  <%= react_component("PartneringOrganizationProfileStyle", {partneringOrganization: current_partnering_organization,
-                                                          all_resources: @all_resources}) %>
-
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @partnering_organization.image.thumb.url %>
-</p>
-<%= react_component("PartneringOrganization", {}) %>
-<%= react_component("PartneringOrganizationProfile", {}) %>
+<%= react_component("PartneringOrganizationProfile", {partneringOrganization: current_partnering_organization, all_resources: @all_resources}) %>
  <!--
 #    <strong>Upload File:</strong>
 #     <%= form_for Resource.new, url: '/resources' do |f| %>
@@ -75,5 +12,3 @@
 #       <%= f.submit 'Submit' %>
 #     <% end %> -->
 
- <%= link_to 'Edit', edit_partnering_organization_path(@partnering_organization) %> |
- <%= link_to 'Back', partnering_organizations_path %>

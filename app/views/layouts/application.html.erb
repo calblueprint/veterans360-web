@@ -11,38 +11,6 @@
     <%= stylesheet_link_tag 'https://unpkg.com/@blueprintjs/core@^1.11.0/dist/blueprint.css' %>
   </head>
   <body>
-    <%= react_component("AdminNavbar") %>
-
-    <% if admin_signed_in? %>
-      <button>
-        <%= link_to('Admin Logout', destroy_admin_session_path, method: :delete) %>
-      </button>
-    <% else %>
-       <% if not partnering_organization_signed_in? %>
-    <div class="application-container">
-      <% if admin_signed_in? %>
-        <button>
-          <%= link_to('Admin Logout', destroy_admin_session_path, method: :delete) %>
-        </button>
-      <% else %>
-         <% if not partnering_organization_signed_in? %>
-          <button>
-            <%= link_to('Admin Login', new_admin_session_path) %>
-          </button>
-        <% end %>
-      <% end %>
-      <% if partnering_organization_signed_in? %>
-        <button>
-          <%= link_to('Partnering Organization Logout', destroy_partnering_organization_session_path, method: :delete) %>
-        </button>
-      <% else %>
-        <% if not admin_signed_in? %>
-          <button>
-            <%= link_to('Partnering Organization Login', new_partnering_organization_session_path) %>
-          </button>
-        <% end %>
-      <% end %>
-    </div>
     <%= yield %>
   </body>
 </html>
