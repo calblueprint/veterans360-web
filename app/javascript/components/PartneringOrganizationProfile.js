@@ -39,9 +39,6 @@ class PartneringOrganizationProfile extends React.Component {
 
     return (
       <div>
-        <Button>
-        Submit
-        </Button>
         <div className = "po_profile" > Your Profile
           <h4 className = "partnering_organization_email" > Name: {this.state.name} </h4>
           <h4 className = "po_profile" > Email: {this.state.email} </h4>
