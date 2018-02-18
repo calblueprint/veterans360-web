@@ -21,6 +21,7 @@ class PartneringOrganizationsController < ApplicationController
   # GET /partnering_organizations/1
   # GET /partnering_organizations/1.json
   def show
+    @po_resources = @partnering_organization.resources
   end
 
   # GET /partnering_organizations/new
