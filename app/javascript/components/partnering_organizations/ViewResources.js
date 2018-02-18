@@ -36,16 +36,8 @@ class ViewResources extends React.Component {
     }
   } */
 
-  createResource() {
-    const path = `/resources/`
-    const params = {
-      resource: get
-    }
-    request.post(path, (response) => {
-      this._mounted && this.setState({ applications: response })
-    }, (error) => {
-      console.log(error)
-    })
+  createResource(e) {
+    console.log(e)
   }
 
   toggleAddResource() {
@@ -64,11 +56,13 @@ class ViewResources extends React.Component {
         onClose={this.toggleAddResource}
         title="Add Resource"
       >
-        <form>
+        <form action='/resources' method='POST' onSubmit={this.createResource}>
           <div className="pt-dialog-body">
-            <p className="pt-ui-text">File Name: <input type="text" className="pt-input"></input></p>
-            <p className="pt-ui-text">Category: <input type="text" className="pt-input"></input></p>
-            <p className="pt-ui-text">File: <input role="button" type="file" className='pt-button-small'></input></p>
+            <p className="pt-ui-text">File Name: <input name="file_name" type="text" className="pt-input"></input></p>
+            <p className="pt-ui-text">Category: <input name="category" type="text" className="pt-input"></input></p>
+            <p className="pt-ui-text">Description: <textarea name="description" type="text" className="pt-input"></textarea></p>
+
+          <p className="pt-ui-text">File: <input name="file" role="button" type="file" className='pt-button-small'></input></p>
             <input
               type='hidden'
               name={getCSRFFieldName()}
@@ -78,7 +72,7 @@ class ViewResources extends React.Component {
             <div className="pt-dialog-footer-actions">
               <Button
                 intent={Intent.SECONDARY}
-                onClick={this.createResource}
+                type="submit"
                 text="Submit"
               />
               <Button
@@ -94,7 +88,7 @@ class ViewResources extends React.Component {
   }
 
   renderResources() {
-    return this.state.resources.map((resource) => {
+    return this.props.resources.map((resource) => {
       return (
         <li key={resource.id}>
           <ResourceModal resource={resource} />
