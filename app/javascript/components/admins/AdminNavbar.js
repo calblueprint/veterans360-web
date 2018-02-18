@@ -21,26 +21,26 @@ class AdminNavbar extends React.Component {
   renderProfile() {
     return (
       <Dialog
-          iconName="user"
-          isOpen={this.state.isOpen}
-          onClose={this.toggleProfile}
-          title="Profile"
-        >
-          <div className="pt-dialog-body">
-            <h6>Name</h6> {this.props.admin.first_name + " " + this.props.admin.last_name}
-            <h6>Email</h6> {this.props.admin.email}
-            <h6>Description</h6> {this.props.admin.description}
+        iconName="user"
+        isOpen={this.state.isOpen}
+        onClose={this.toggleProfile}
+        title="Profile"
+      >
+        <div className="pt-dialog-body">
+          <h6>Name</h6> {this.props.admin.first_name + " " + this.props.admin.last_name}
+          <h6>Email</h6> {this.props.admin.email}
+          <h6>Description</h6> {this.props.admin.description}
+        </div>
+        <div className="pt-dialog-footer">
+          <div className="pt-dialog-footer-actions">
+            <Button
+              intent={Intent.PRIMARY}
+              onClick={this.toggleProfile}
+              text="Close"
+            />
           </div>
-          <div className="pt-dialog-footer">
-            <div className="pt-dialog-footer-actions">
-              <Button
-                intent={Intent.PRIMARY}
-                onClick={this.toggleProfile}
-                text="Close"
-              />
-            </div>
-          </div>
-        </Dialog>
+        </div>
+      </Dialog>
     )
   }
   render() {

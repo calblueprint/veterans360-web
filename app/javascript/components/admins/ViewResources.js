@@ -1,4 +1,4 @@
-import Modal from 'react-bootstrap-modal'
+// import Modal from 'react-bootstrap-modal'
 import PropTypes from "prop-types"
 import React from "react"
 import ResourceModal from './ResourceModal.js'
