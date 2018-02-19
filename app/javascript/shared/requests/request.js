@@ -50,8 +50,8 @@ class Request {
     request.send()
   }
 
-  post(route, params, resolve, reject) {
-    const request = this.initialize('POST', route)
+  post(route, params, resolve, reject, content='application/json') {
+    const request = this.initialize('POST', route, content)
     request.onreadystatechange = () => {
       if (request.readyState === XMLHttpRequest.DONE) {
         if (request.status === 200 && resolve) {
