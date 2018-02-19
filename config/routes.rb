@@ -77,5 +77,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do 
+    resources :partnering_organizations, only: :show do 
+      post :generate_new_password_email 
+     end 
+   end
+
   root to: 'partnering_organizations#index'
 end
