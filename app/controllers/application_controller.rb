@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     when user.is_a?(Admin)
       admins_path
     when user.is_a?(PartneringOrganization)
-      partnering_organization_path(current_partnering_organization.id)
+      partnering_organizations_path
     else
       super
     end
