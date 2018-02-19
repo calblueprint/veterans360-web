@@ -1,7 +1,6 @@
 class PartneringOrganizationsController < ApplicationController
   before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve]
-  # before_action :authenticate!
-  load_and_authorize_resource
+  before_action :authenticate_partnering_organization!
 
   # GET /partnering_organizations
   # GET /partnering_organizations.json
