@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import ResourceModal from '../shared/ResourceModal.js'
 import request from '../../shared/requests/request'
-// abstract this so it works for all "view card" methods (view resources and view applications)
+
 class ViewResources extends React.Component {
   constructor(props) {
     super(props)

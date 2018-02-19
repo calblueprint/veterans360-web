@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { Button, Classes, Dialog, Intent } from "@blueprintjs/core"
 
-import { getCSRFToken, getCSRFFieldName } from '../../shared/helpers/form_helpers'
+import { getCSRFToken } from '../../shared/helpers/form_helpers'
 import ResourceModal from '../shared/ResourceModal.js'
 import request from '../../shared/requests/request'
 
@@ -18,6 +18,7 @@ class ViewResources extends React.Component {
         description: '',
         file: '',
       },
+      passed_categories: _.invert(this.props.categories)
     }
     this.toggleAddResource = this.toggleAddResource.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -60,6 +61,14 @@ class ViewResources extends React.Component {
     }
   }
 
+  renderCategories() {
+    return Object.entries(this.props.categories).map((category) => {
+      return (
+        <option key={category[1]} value={category[1]}>{category[0]}</option>
+      )
+    })
+  }
+
   renderAddResource() {
     return (
       <Dialog
@@ -80,13 +89,14 @@ class ViewResources extends React.Component {
               />
             </p>
             <p className="pt-ui-text">Category:
-              <input
+              <select
                 value={this.state.resource.category}
                 onChange={this.handleChange}
                 name="category"
-                type="text"
                 className="pt-input"
-              />
+              >
+                {this.renderCategories()}
+              </select>
             </p>
             <p className="pt-ui-text">Description:
               <textarea
@@ -106,11 +116,6 @@ class ViewResources extends React.Component {
                 className='pt-button-small'
               />
             </p>
-            <input
-              type='hidden'
-              name={getCSRFFieldName()}
-              value={getCSRFToken()}
-            />
           </div>
           <div className="pt-dialog-footer">
             <div className="pt-dialog-footer-actions">
@@ -135,7 +140,7 @@ class ViewResources extends React.Component {
     return this.props.resources.map((resource) => {
       return (
         <li key={resource.id}>
-          <ResourceModal resource={resource} />
+          <ResourceModal resource={resource} categories={this.state.passed_categories}/>
         </li>
       )
     })
