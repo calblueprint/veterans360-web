@@ -9,6 +9,7 @@ class ResourceModal extends React.Component {
     super(props)
     this.state = {}
     this.deleteResource = this.deleteResource.bind(this)
+    console.log(this.props)
   }
 
   deleteResource() {
@@ -27,7 +28,10 @@ class ResourceModal extends React.Component {
           File Name: {this.props.resource.file_name}
         </p>
         <p>
-          Category: {this.props.resource.category}
+          Category: {this.props.categories[this.props.resource.category]}
+        </p>
+        <p>
+          Description: {this.props.resource.description}
         </p>
         <p>
           Created at: {this.props.resource.created_at}
