@@ -101,12 +101,12 @@ Rails.application.configure do
   Rails.application.routes.default_url_options[:host] = 'veterans360.herokuapp.com'
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: 'smtp.gmail.com',
     port: 587,
-    domain: "gmail.com",
-    authentication: "plain",
+    domain: 'gmail.com',
+    authentication: 'plain',
     enable_starttls_auto: true,
-    user_name: 'veterans360mailer@gmail.com',
-    password: 'blueprintvets'
+    user_name: ENV['MAIL_USER'],
+    password: ENV['MAIL_PASS']
   }
 end
