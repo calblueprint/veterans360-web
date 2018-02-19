@@ -1,11 +1,10 @@
 import _ from 'underscore'
 import PropTypes from "prop-types"
 import React from "react"
-import { Button, Classes, Dialog, Intent } from "@blueprintjs/core"
+import { Button, Dialog, Intent } from "@blueprintjs/core"
 
 import { getCSRFToken } from '../../shared/helpers/form_helpers'
 import ResourceModal from '../shared/ResourceModal.js'
-import request from '../../shared/requests/request'
 
 class ViewResources extends React.Component {
   constructor(props) {

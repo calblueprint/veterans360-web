@@ -26,12 +26,12 @@ class PartneringOrganizationNavbar extends React.Component {
         title="Profile"
       >
         <div className="pt-dialog-body">
-          <h4 className = "partnering_organization_email" > Name: {this.props.partneringOrganization.name} </h4>
-          <h4 className = "po_profile" > Email: {this.props.partneringOrganization.email} </h4>
-          <h4 className = "po_role" > Address: {this.props.partneringOrganization.address} </h4>
-          <h4 className = "po_role" > Demographic: {this.props.partneringOrganization.demographic} </h4>
-          <h4 className = "po_role" > Phone Number: {this.props.partneringOrganization.phone_number} </h4>
-          <h4 className = "po_role" > Role: {this.props.partneringOrganization.role} </h4>
+          <h4> Name: {this.props.partneringOrganization.name} </h4>
+          <h4> Email: {this.props.partneringOrganization.email} </h4>
+          <h4> Address: {this.props.partneringOrganization.address} </h4>
+          <h4> Demographic: {this.props.partneringOrganization.demographic} </h4>
+          <h4> Phone Number: {this.props.partneringOrganization.phone_number} </h4>
+          <h4> Role: {this.props.partneringOrganization.role} </h4>
         </div>
         <div className="pt-dialog-footer">
           <div className="pt-dialog-footer-actions">

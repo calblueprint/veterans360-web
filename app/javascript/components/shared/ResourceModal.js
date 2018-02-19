@@ -9,7 +9,6 @@ class ResourceModal extends React.Component {
     super(props)
     this.state = {}
     this.deleteResource = this.deleteResource.bind(this)
-    console.log(this.props)
   }
 
   deleteResource() {
