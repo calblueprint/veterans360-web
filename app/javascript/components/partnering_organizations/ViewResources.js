@@ -32,15 +32,23 @@ class ViewResources extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    let params = {
-      resource: this.state.resource,
-    }
-    params.resource.file = this.file.files[0]
-    const path = `/resources/`
-    request.post(path, params, (response) => {
-      console.log(response)
-    }, (error) => {
-      console.log(error)
+    let formData = new FormData()
+    formData.append('resource[file]', this.file.files[0], this.file.files[0].name)
+    formData.append('resource[file_name]', this.state.resource.file_name)
+    formData.append('resource[category]', this.state.resource.category)
+    formData.append('resource[description]', this.state.resource.description)
+    fetch('/resources', {
+      method: 'POST',
+      body: formData,
+      credentials: 'same-origin',
+      headers: {
+        "X_CSRF-Token": getCSRFToken()
+      }
+    }).then((resp) => {
+      if (resp.status != 200) {
+        alert("There was an error. Try again!")
+      }
+      window.location.reload()
     })
   }
 
