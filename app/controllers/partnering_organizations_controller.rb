@@ -93,4 +93,3 @@ class PartneringOrganizationsController < ApplicationController
    partnering_organization.send_reset_password_instructions flash[:notice] = 'Reset password instructions have been sent to #{user.email}.'
    redirect_to admin_user_path(partnering_organization)
   end
->>>>>>> d47f8f03dea2f37f56d69f009290b97ea35c8283
