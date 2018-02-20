@@ -20,7 +20,7 @@ class PartneringOrganizationsController < ApplicationController
  #GET /partnering_organization/subscriptions
  def subscriptions
    # @current_partnering_organization = PartneringOrganization.find(params[:id])
-   @subscriptions = @current_partnering_organization.resources
+   @subscriptions = @current_partnering_organization.subscribers
    respond_to do |format|
      format.html
      format.json {render json:@subscriptions}
