@@ -8,18 +8,19 @@ class AdminNavbar extends React.Component {
     super(props)
     this.state = {
       isOpen: false,
-      values: {}
+      values: {
+        first_name: this.props.admin.first_name,
+        last_name: this.props.admin.last_name,
+        email: this.props.admin.email,
+        description: this.props.admin.description,
+      }
     }
-
-    this.state.values['first_name'] = this.props.admin.first_name,
-    this.state.values['last_name'] = this.props.admin.last_name,
-    this.state.values['birthday'] = this.props.admin.email,
-    this.state.values['address'] = this.props.admin.description
 
     this.toggleProfile = this.toggleProfile.bind(this)
     this.renderProfileEdit = this.renderProfileEdit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
+
   toggleProfile() {
     if (this.state.isOpen == true) {
       this.setState({ isOpen: false })
@@ -35,10 +36,6 @@ class AdminNavbar extends React.Component {
   }
 
   renderProfile() {
-    const first_name = 'first_name'
-    const last_name = 'last_name'
-    const email = 'email'
-    const description = 'description'
 
     return (
       <Dialog
@@ -50,27 +47,27 @@ class AdminNavbar extends React.Component {
           <div className="pt-dialog-body">
             <h6>First Name</h6>
             <EditableText
-              defaultValue = {this.state.values[first_name]}
+              defaultValue = {this.state.values.first_name}
               // disabled = true
-              onChange = {event => this.handleChange(first_name, event.target.value)}
+              onChange = {event => this.handleChange('first_name', event.target.value)}
               />
             <h6>Last Name</h6>
             <EditableText
-              defaultValue = {event => this.state.values[last_name]}
+              defaultValue = {event => this.state.values.last_name}
               // disabled = true
-              onChange = {event => this.handleChange(last_name, event.target.value)}
+              onChange = {event => this.handleChange('last_name', event.target.value)}
             />
             <h6>Email</h6>
             <EditableText
-              defaultValue = {this.state.values['email']}
+              defaultValue = {this.state.values.email}
               // disabled = true
-              onChange = {event => this.handleChange(email, event.target.value)}
+              onChange = {event => this.handleChange('email', event.target.value)}
             />
             <h6>Description</h6>
             <EditableText
-              defaultValue = {this.state.values['description']}
+              defaultValue = {this.state.values.description}
               // disabled = true
-              onChange = {this.handleChange(description, event.target.value)}
+              onChange = {event => this.handleChange('description', event.target.value)}
               />
           </div>
           <div className="pt-dialog-footer">
@@ -81,7 +78,7 @@ class AdminNavbar extends React.Component {
                 text="Close"
               />
               <Button
-                onClick={this.renderProfileEdit}
+                onClick={this.renderProfile}
                 text="Edit"
               />
             </div>
