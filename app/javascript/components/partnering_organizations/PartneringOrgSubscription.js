@@ -7,7 +7,7 @@ class PartneringOrgSubscriptions extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      subscriptions = this.props.subscriptions,
+      subscriptions = [],
     };
   }
 
@@ -20,13 +20,12 @@ class PartneringOrgSubscriptions extends React.Component {
         </div>
       )
   });
+
     return {
       <div>
       <div className = "po_profile" > Your Subscribers
       <h4>  {subscription_list}</h4>
       </div>
     }
-
-
 }
 export default PartneringOrgSubscriptions;
