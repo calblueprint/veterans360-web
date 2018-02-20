@@ -62,16 +62,18 @@ Rails.application.routes.draw do
   resources :partnering_organizations do
     member do
       patch 'approve'
-      post :generate_new_password_email 
+      post :generate_new_password_email
+      get 'subscriptions'
     end
     collection do
       get 'resources'
+      get 'subscriptions'
     end
   end
 
   namespace :api, defaults: { format: [:json, :csv] } do
     resources :resources, only: [:index, :show] do
-    end
+     end
   end
 
   root to: redirect('/partnering_organizations/sign_in')

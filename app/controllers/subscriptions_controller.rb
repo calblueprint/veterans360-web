@@ -1,5 +1,8 @@
 class SubscriptionsController < ApplicationController
   skip_before_action :verify_authenticity_token
+
+  def show
+  end
   
   # POST /veterans/1/subscriptions
   def create
