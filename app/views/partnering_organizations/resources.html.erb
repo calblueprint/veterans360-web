@@ -1,1 +1,4 @@
-<%= react_component("partnering_organizations/ViewResources", {resources: current_partnering_organization.resources, categories: Resource.resource_categories}) %>
+<!-- <%= react_component("partnering_organizations/ViewResources", {resources: current_partnering_organization.resources, categories: Resource.resource_categories}) %> -->
+
+<%= react_component("partnering_organization/PartneringOrgSubscriptions",
+  {partnering_organization: current_partnering_organization}) %>
