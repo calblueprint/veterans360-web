@@ -1,15 +1,24 @@
 import { Link } from 'react-router'
 import React from 'react'
-import { Button, Dialog, Intent } from "@blueprintjs/core"
+import { Button, Dialog, Intent, EditableText } from "@blueprintjs/core"
 
 
 class AdminNavbar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isOpen: false
+      isOpen: false,
+      values: {}
     }
+
+    this.state.values['first_name'] = this.props.admin.first_name,
+    this.state.values['last_name'] = this.props.admin.last_name,
+    this.state.values['birthday'] = this.props.admin.email,
+    this.state.values['address'] = this.props.admin.description
+
     this.toggleProfile = this.toggleProfile.bind(this)
+    this.renderProfileEdit = this.renderProfileEdit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
   toggleProfile() {
     if (this.state.isOpen == true) {
@@ -18,7 +27,19 @@ class AdminNavbar extends React.Component {
       this.setState({ isOpen: true })
     }
   }
+
+  handleChange(attribute, value) {
+    const values = this.state.values
+    values[attribute] = value
+    this.setState({ values: values });
+  }
+
   renderProfile() {
+    const first_name = 'first_name'
+    const last_name = 'last_name'
+    const email = 'email'
+    const description = 'description'
+
     return (
       <Dialog
           iconName="user"
@@ -27,9 +48,30 @@ class AdminNavbar extends React.Component {
           title="Profile"
         >
           <div className="pt-dialog-body">
-            <h6>Name</h6> {this.props.admin.first_name + " " + this.props.admin.last_name}
-            <h6>Email</h6> {this.props.admin.email}
-            <h6>Description</h6> {this.props.admin.description}
+            <h6>First Name</h6>
+            <EditableText
+              defaultValue = {this.state.values[first_name]}
+              // disabled = true
+              onChange = {event => this.handleChange(first_name, event.target.value)}
+              />
+            <h6>Last Name</h6>
+            <EditableText
+              defaultValue = {event => this.state.values[last_name]}
+              // disabled = true
+              onChange = {event => this.handleChange(last_name, event.target.value)}
+            />
+            <h6>Email</h6>
+            <EditableText
+              defaultValue = {this.state.values['email']}
+              // disabled = true
+              onChange = {event => this.handleChange(email, event.target.value)}
+            />
+            <h6>Description</h6>
+            <EditableText
+              defaultValue = {this.state.values['description']}
+              // disabled = true
+              onChange = {this.handleChange(description, event.target.value)}
+              />
           </div>
           <div className="pt-dialog-footer">
             <div className="pt-dialog-footer-actions">
@@ -38,11 +80,45 @@ class AdminNavbar extends React.Component {
                 onClick={this.toggleProfile}
                 text="Close"
               />
+              <Button
+                onClick={this.renderProfileEdit}
+                text="Edit"
+              />
             </div>
           </div>
         </Dialog>
     )
   }
+
+  renderProfileEdit() {
+  console.log("edit is pressed")
+  // return (
+  //   <Dialog
+  //       iconName="user"
+  //       // isOpen={this.state.isOpen}
+  //       // onClose={this.toggleProfile}
+  //       title="Profile"
+  //     >
+  //       <div className="pt-dialog-body">
+  //         <h6>Name</h6>
+  //         <textarea> {this.props.admin.first_name + " " + this.props.admin.last_name} </textarea>
+  //         <h6>Email</h6>
+  //         <textarea> {this.props.admin.email} </textarea>
+  //         <h6>Description</h6>
+  //         <textarea> {this.props.admin.description} </textarea>
+  //       </div>
+  //       <div className="pt-dialog-footer">
+  //         <div className="pt-dialog-footer-actions">
+  //           <Button
+  //             text="Save"
+  //             onClick={}
+  //           />
+  //           </div>
+  //         </div>
+  //       </Dialog>
+  // )
+}
+
   render() {
     return (
       <div>
