@@ -19,8 +19,11 @@ class PartneringOrganizationsController < ApplicationController
 
  #GET /partnering_organization/subscriptions
  def subscriptions
-   @subscriptions = @current_partnering_organization[params:id]
-
+   # @current_partnering_organization = PartneringOrganization.find(params[:id])
+   @subscriptions = @current_partnering_organization.resources
+   respond_to do |format|
+     format.html
+     format.json {render json:@subscriptions}
  end
 
   # GET /partnering_organizations/1
@@ -99,3 +102,4 @@ class PartneringOrganizationsController < ApplicationController
    partnering_organization.send_reset_password_instructions flash[:notice] = 'Reset password instructions have been sent to #{user.email}.'
    redirect_to admin_user_path(partnering_organization)
   end
+end
