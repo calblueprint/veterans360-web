@@ -73,10 +73,6 @@ Rails.application.routes.draw do
     end
   end
 
-<<<<<<< HEAD
   root to: redirect('/partnering_organizations/sign_in')
-=======
 
-  root to: 'partnering_organizations#index'
->>>>>>> Cleanup
 end
