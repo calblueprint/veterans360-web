@@ -34,11 +34,9 @@ gem 'devise'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem "font-awesome-rails"
-# Use CanCan for authorization
-gem "cancan"
+# Use CanCanCan for authorization
+gem 'cancancan', '1.15.0'
 gem 'active_model_serializers'
-# Use CanCan for authorization
-gem "cancan"
 gem "mini_magick"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -47,7 +45,6 @@ gem 'carrierwave', '~> 1.0'
 gem 'fog-aws'
 gem 'figaro'
 gem 'geocoder'
-gem 'mini_magick'
 gem 'webpacker'
 gem 'react-rails'
 gem 'ffaker'
