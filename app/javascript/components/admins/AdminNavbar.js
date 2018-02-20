@@ -86,34 +86,6 @@ class AdminNavbar extends React.Component {
         </Dialog>
     )
   }
-
-  renderProfileEdit() {
-  console.log("edit is pressed")
-  // return (
-  //   <Dialog
-  //       iconName="user"
-  //       // isOpen={this.state.isOpen}
-  //       // onClose={this.toggleProfile}
-  //       title="Profile"
-  //     >
-  //       <div className="pt-dialog-body">
-  //         <h6>Name</h6>
-  //         <textarea> {this.props.admin.first_name + " " + this.props.admin.last_name} </textarea>
-  //         <h6>Email</h6>
-  //         <textarea> {this.props.admin.email} </textarea>
-  //         <h6>Description</h6>
-  //         <textarea> {this.props.admin.description} </textarea>
-  //       </div>
-  //       <div className="pt-dialog-footer">
-  //         <div className="pt-dialog-footer-actions">
-  //           <Button
-  //             text="Save"
-  //             onClick={}
-  //           />
-  //           </div>
-  //         </div>
-  //       </Dialog>
-  // )
 }
 
   render() {
