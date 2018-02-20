@@ -17,6 +17,12 @@ class PartneringOrganizationsController < ApplicationController
     end
   end
 
+ #GET /partnering_organization/subscriptions
+ def subscriptions
+   @subscriptions = @current_partnering_organization[params:id]
+
+ end
+
   # GET /partnering_organizations/1
   # GET /partnering_organizations/1.json
   def show

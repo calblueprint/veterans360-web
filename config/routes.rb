@@ -65,16 +65,18 @@ Rails.application.routes.draw do
   resources :partnering_organizations do
     member do
       patch 'approve'
+      get 'subscriptions'
       # get ''
     end
     collection do
       get 'resources'
+      get 'subscriptions'
     end
   end
 
   namespace :api, defaults: { format: [:json, :csv] } do
     resources :resources, only: [:index, :show] do
-    end
+     end
   end
 
   root to: 'partnering_organizations#index'
