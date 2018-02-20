@@ -1,3 +1,4 @@
+import _ from 'underscore'
 import Modal from 'react-bootstrap-modal'
 import PropTypes from "prop-types"
 import React from "react"
@@ -9,35 +10,16 @@ class ViewResources extends React.Component {
     super(props)
     this.state = {
       resources: [],
+      passed_categories: _.invert(this.props.categories)
     }
     this._mounted = false
   }
 
-  componentDidMount() {
-    this._mounted = true
-    this.getResources()
-  }
-
-  componentWillUnmount() {
-    this._mounted = false
-  }
-
-  getResources() {
-    // this is hacky, should use the api so it can format as json but couldn't get the route to work :(
-    const path = `/resources/`
-
-    request.get(path, (response) => {
-      this._mounted && this.setState({ resources: response })
-    }, (error) => {
-      console.log(error)
-    })
-  }
-
   renderResources() {
-    return this.state.resources.map((resource) => {
+    return this.props.resources.map((resource) => {
       return (
         <li key={resource.id}>
-          <ResourceModal resource={resource} />
+          <ResourceModal resource={resource} categories={this.state.passed_categories}/>
         </li>
       )
     })
