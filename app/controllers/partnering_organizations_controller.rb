@@ -91,3 +91,9 @@ class PartneringOrganizationsController < ApplicationController
   def authenticate!
     :authenticate_admin! || :authenticate_partnering_organization!
   end
+
+  def generate_new_password_email
+   partnering_organization = PartneringOrganization.find(params[:user_id])
+   partnering_organization.send_reset_password_instructions flash[:notice] = 'Reset password instructions have been sent to #{user.email}.'
+   redirect_to admin_user_path(partnering_organization)
+  end

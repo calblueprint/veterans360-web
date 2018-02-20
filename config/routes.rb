@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   resources :partnering_organizations do
     member do
       patch 'approve'
+      post :generate_new_password_email 
       # get ''
     end
     collection do
@@ -76,6 +77,7 @@ Rails.application.routes.draw do
     resources :resources, only: [:index, :show] do
     end
   end
+
 
   root to: 'partnering_organizations#index'
 end
