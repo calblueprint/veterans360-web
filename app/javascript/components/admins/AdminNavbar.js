@@ -44,7 +44,6 @@ class AdminNavbar extends React.Component {
   editProfile() {
     let params = this.state.values
     const route = `/admins/` + this.props.admin.id
-    console.log(params)
     request.update(route, params, (response) => {
       window.location.reload()
     }, (error) => {
