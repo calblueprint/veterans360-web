@@ -17,7 +17,6 @@ class AdminNavbar extends React.Component {
       },
       edit_style: "pt-disabled"
     }
-    console.log(this.props.admin.id)
     this.toggleProfile = this.toggleProfile.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.editProfile = this.editProfile.bind(this)

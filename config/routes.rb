@@ -61,8 +61,7 @@ Rails.application.routes.draw do
 
   resources :partnering_organizations do
     member do
-      patch 'approve'
-      post :generate_new_password_email 
+      post :generate_new_password_email
     end
     collection do
       get 'resources'
