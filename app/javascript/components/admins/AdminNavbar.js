@@ -1,5 +1,6 @@
-import { Link } from 'react-router'
-import React from 'react'
+import { Link } from "react-router"
+import React from "react"
+import request from "../../shared/requests/request"
 import { Button, Dialog, Intent, EditableText } from "@blueprintjs/core"
 
 
@@ -13,12 +14,13 @@ class AdminNavbar extends React.Component {
         last_name: this.props.admin.last_name,
         email: this.props.admin.email,
         description: this.props.admin.description,
-      }
+      },
+      edit_style: "pt-disabled"
     }
-
+    console.log(this.props.admin.id)
     this.toggleProfile = this.toggleProfile.bind(this)
-    this.renderProfileEdit = this.renderProfileEdit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.editProfile = this.editProfile.bind(this)
   }
 
   toggleProfile() {
@@ -32,7 +34,23 @@ class AdminNavbar extends React.Component {
   handleChange(attribute, value) {
     const values = this.state.values
     values[attribute] = value
-    this.setState({ values: values });
+    if (this.state.edit_style === "pt-disabled") {
+      this.setState({ values: values, edit_style: "default"})
+    }
+    else {
+      this.setState({ values: values });
+    }
+  }
+
+  editProfile() {
+    let params = this.state.values
+    const route = `/admins/` + this.props.admin.id
+    console.log(params)
+    request.update(route, params, (response) => {
+      window.location.reload()
+    }, (error) => {
+      alert("There was an error")
+    })
   }
 
   renderProfile() {
@@ -45,29 +63,29 @@ class AdminNavbar extends React.Component {
           title="Profile"
         >
           <div className="pt-dialog-body">
-            <h6>First Name</h6>
+            <h5 className="profile-titles">First Name</h5>
             <EditableText
               defaultValue = {this.state.values.first_name}
-              // disabled = true
-              onChange = {event => this.handleChange('first_name', event.target.value)}
+              className="profile-text"
+              onChange = {str => this.handleChange("first_name", str)}
               />
-            <h6>Last Name</h6>
+            <h5 className="profile-titles">Last Name</h5>
             <EditableText
-              defaultValue = {event => this.state.values.last_name}
-              // disabled = true
-              onChange = {event => this.handleChange('last_name', event.target.value)}
+              defaultValue = {this.state.values.last_name}
+              className="profile-text"
+              onChange = {str => this.handleChange("last_name", str)}
             />
-            <h6>Email</h6>
+            <h5 className="profile-titles">Email</h5>
             <EditableText
               defaultValue = {this.state.values.email}
-              // disabled = true
-              onChange = {event => this.handleChange('email', event.target.value)}
+              className="profile-text"
+              onChange = {str => this.handleChange("email", str)}
             />
-            <h6>Description</h6>
+            <h5 className="profile-titles">Description</h5>
             <EditableText
               defaultValue = {this.state.values.description}
-              // disabled = true
-              onChange = {event => this.handleChange('description', event.target.value)}
+              className="profile-text"
+              onChange = {str => this.handleChange("description", str)}
               />
           </div>
           <div className="pt-dialog-footer">
@@ -78,43 +96,15 @@ class AdminNavbar extends React.Component {
                 text="Close"
               />
               <Button
-                onClick={this.renderProfile}
+                onClick={this.editProfile}
                 text="Edit"
+                className={this.state.edit_style}
               />
             </div>
           </div>
         </Dialog>
     )
   }
-
-  renderProfileEdit() {
-  console.log("edit is pressed")
-  // return (
-  //   <Dialog
-  //       iconName="user"
-  //       // isOpen={this.state.isOpen}
-  //       // onClose={this.toggleProfile}
-  //       title="Profile"
-  //     >
-  //       <div className="pt-dialog-body">
-  //         <h6>Name</h6>
-  //         <textarea> {this.props.admin.first_name + " " + this.props.admin.last_name} </textarea>
-  //         <h6>Email</h6>
-  //         <textarea> {this.props.admin.email} </textarea>
-  //         <h6>Description</h6>
-  //         <textarea> {this.props.admin.description} </textarea>
-  //       </div>
-  //       <div className="pt-dialog-footer">
-  //         <div className="pt-dialog-footer-actions">
-  //           <Button
-  //             text="Save"
-  //             onClick={}
-  //           />
-  //           </div>
-  //         </div>
-  //       </Dialog>
-  // )
-}
 
   render() {
     return (
