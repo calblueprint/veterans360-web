@@ -22,6 +22,11 @@
       </div>
 
       <div>
+        <%= f.label :description %> <br />
+        <%= f.text_area :description, autofocus: true %>
+      </div>
+
+      <div>
       <%= f.label :role %><br />
         <%= f.select(:role, PartneringOrganization.roles.keys.map {|role| [role.titleize,role]}) %>
       </div>

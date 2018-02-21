@@ -51,6 +51,9 @@ class ApplicationModal extends React.Component {
         <p>
           Role: {this.props.application.role}
         </p>
+        <p>
+          Description: {this.props.application.description}
+        </p>
         {this.props.application.approval_status ? (
           <div>
             <p className="approved-status">

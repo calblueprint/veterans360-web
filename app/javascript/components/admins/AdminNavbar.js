@@ -3,7 +3,6 @@ import React from "react"
 import request from "../../shared/requests/request"
 import { Button, Dialog, Intent, EditableText } from "@blueprintjs/core"
 
-
 class AdminNavbar extends React.Component {
   constructor(props) {
     super(props)

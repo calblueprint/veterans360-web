@@ -15,6 +15,7 @@ class PartneringOrganizationNavbar extends React.Component {
         address: this.props.partneringOrganization.address,
         role: this.props.partneringOrganization.role,
         demographic: this.props.partneringOrganization.demographic,
+        description: this.props.partneringOrganization.description
       },
       edit_style: "pt-disabled"
     }
@@ -95,6 +96,12 @@ class PartneringOrganizationNavbar extends React.Component {
             defaultValue = {this.state.values.demographic}
             className="profile-text"
             onChange = {str => this.handleChange("demographic", str)}
+            />
+          <h5 className="profile-titles">Description</h5>
+          <EditableText
+            defaultValue = {this.state.values.description}
+            className="profile-text"
+            onChange = {str => this.handleChange("description", str)}
             />
         </div>
         <div className="pt-dialog-footer">
