@@ -4,11 +4,35 @@ import { Card, Button } from "@blueprintjs/core"
 import request from '../../shared/requests/request'
 
 
-class ResourceModal extends React.Component {
+class ApplicationModal extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
+    this.state = {}
+    this.deletePartneringOrganization = this.deletePartneringOrganization.bind(this)
+    this.approvePartneringOrganization = this.approvePartneringOrganization.bind(this)
+  }
+
+  deletePartneringOrganization() {
+    if (confirm("This will delete the Partnering Organization Permanently")) {
+      const route = `/partnering_organizations/` + this.props.application.id
+      request.delete(route, (response) => {
+        window.location.reload()
+      }, (error) => {
+        alert("There was an error")
+      })
     }
+  }
+
+  approvePartneringOrganization() {
+    const route = `/partnering_organizations/` + this.props.application.id
+    let params = {
+      approval_status: true
+    }
+    request.update(route, params, (response) => {
+      window.location.reload()
+    }, (error) => {
+      alert("There was an error")
+    })
   }
 
   render() {
@@ -32,27 +56,21 @@ class ResourceModal extends React.Component {
             <p className="approved-status">
               Approved Application!
             </p>
-            <a href={`/partnering_organizations/` + this.props.application.id} data-method="delete" data-confirm="This will delete the resource, are you sure?">
-              <Button className='reject-po'>
-                Delete
-              </Button>
-            </a>
+            <Button className='reject-po' onClick={this.deletePartneringOrganization}>
+              Delete
+            </Button>
           </div>
         ) : (
           <div>
             <p className="pending-status">
               Pending Approval
             </p>
-            <a href={`/partnering_organizations/` + this.props.application.id + `/approve`} data-method="patch">
-              <Button className='approve-po'>
-                Approve
-              </Button>
-            </a>
-            <a href={`/partnering_organizations/` + this.props.application.id} data-method="delete" data-confirm="This will delete the resource, are you sure?">
-              <Button className='reject-po'>
+            <Button className='approve-po' onClick={this.approvePartneringOrganization}>
+              Approve
+            </Button>
+            <Button className='reject-po' onClick={this.deletePartneringOrganization}>
                 Reject
-              </Button>
-            </a>
+            </Button>
           </div>
         )}
       </Card>
@@ -61,7 +79,7 @@ class ResourceModal extends React.Component {
   }
 }
 
-ResourceModal.propTypes = {
+ApplicationModal.propTypes = {
   application: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
@@ -71,4 +89,4 @@ ResourceModal.propTypes = {
   })
 }
 
-export default ResourceModal
+export default ApplicationModal

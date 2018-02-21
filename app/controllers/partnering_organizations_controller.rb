@@ -61,11 +61,6 @@ class PartneringOrganizationsController < ApplicationController
     end
   end
 
-  def approve
-    @partnering_organization.approval_status = true
-    @partnering_organization.save
-  end
-
   # DELETE /partnering_organizations/1
   # DELETE /partnering_organizations/1.json
   def destroy
@@ -83,8 +78,9 @@ class PartneringOrganizationsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    # I think if we want to make this secure, we can't have approval status here and should have approve in the admin controller (ask ken)
     def partnering_organization_params
-      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :lat, :lng, :role, :demographic, :image)
+      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :lat, :lng, :role, :demographic, :image, :approval_status)
     end
   end
 

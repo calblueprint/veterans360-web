@@ -6,7 +6,7 @@ class Ability
       can :read, Resource
       can :manage, Resource, user_id: user.id
       can :read, PartneringOrganization
-      can :manage, PartneringOrganization, user_id: user.id
+      can :manage, PartneringOrganization, id: user.id
       can :read, Veteran
     elsif user.is_a?(Veteran)
       can :read, Resource
