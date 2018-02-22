@@ -23,6 +23,7 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
+#  image                  :string
 #
 
 class PartneringOrganizationSerializer < BaseSerializer
@@ -34,5 +35,6 @@ class PartneringOrganizationSerializer < BaseSerializer
              :lat,
              :lng,
              :role,
-             :demographic
+             :demographic,
+             :approval_status
 end

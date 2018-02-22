@@ -8,10 +8,14 @@ class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
   def index
-    @resources = apply_scopes(Resource).all
-    render json: @resources, each_serializer: ResourceSerializer, scope: {
-      current_veteran: current_veteran
-    }
+    if admin_signed_in?
+      @resources = Resource.all
+    else
+      @resources = apply_scopes(Resource).all
+      render json: @resources, each_serializer: ResourceSerializer, scope: {
+        current_veteran: current_veteran
+      }
+    end
   end
 
   # GET /resources/1

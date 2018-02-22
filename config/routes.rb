@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-	# get 'partnering_organizations/sign_up' => 'partnering_organizations#new'
-	# post 'partnering_organizations/' => 'partnering_organizations#create'
+  get 'subscriptions/create'
 
   devise_for :partnering_organizations, controllers: {
     sessions: 'partnering_organizations/sessions',
@@ -31,6 +30,9 @@ Rails.application.routes.draw do
         patch :reject
       end
     end
+
+    # Subscriptions
+    resources :subscriptions, only: [:create]
   end
 
   resources :resources do
@@ -49,10 +51,26 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :admins
-  resources :partnering_organizations
-  resources :resources
-  resources :upvotes
+  resources :admins do
+    collection do
+      get 'resources'
+      get 'applications'
+    end
+  end
 
-  root to: 'static_pages#home'
+  resources :partnering_organizations do
+    member do
+      post :generate_new_password_email
+    end
+    collection do
+      get 'resources'
+    end
+  end
+
+  namespace :api, defaults: { format: [:json, :csv] } do
+    resources :resources, only: [:index, :show] do
+    end
+  end
+
+  root to: redirect('/partnering_organizations/sign_in')
 end

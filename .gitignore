@@ -1,4 +1,5 @@
 *.rbc
+*.DS_Store
 capybara-*.html
 .rspec
 /log
@@ -12,17 +13,17 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
-
+/node_modules
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
-
+.DS_Store
 # Only include if you have production secrets in this file, which is no longer a Rails default
 # config/secrets.yml
 
 # dotenv
 # TODO Comment out this rule if environment variables can be committed
 .env
-
+/node_modules
 ## Environment normalization:
 /.bundle
 /vendor/bundle
@@ -46,6 +47,9 @@ bower.json
 
 # Application environment
 application.yml
+/public/packs
+/public/packs-test
+/app/assets/.DS_Store
 /public/packs
 /public/packs-test
 /node_modules

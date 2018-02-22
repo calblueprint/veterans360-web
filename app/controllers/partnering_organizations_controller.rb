@@ -1,15 +1,18 @@
 class PartneringOrganizationsController < ApplicationController
-  before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy]
+  before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve]
+  load_and_authorize_resource
 
   # GET /partnering_organizations
   # GET /partnering_organizations.json
   def index
     @partnering_organizations = PartneringOrganization.all
+    serializer = veteran_signed_in? ? PartneringOrganizationSubscriptionsSerializer : PartneringOrganizationSerializer
     respond_to do |format|
       format.html { render :index }
       format.json {
         render json: @partnering_organizations,
-               each_serializer: PartneringOrganizationSerializer
+               each_serializer: serializer,
+               scope: { current_veteran: current_veteran }
       }
     end
   end
@@ -75,7 +78,14 @@ class PartneringOrganizationsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    # I think if we want to make this secure, we can't have approval status here and should have approve in the admin controller (ask ken)
     def partnering_organization_params
-      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :lat, :lng, :role, :demographic, :image)
+      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :lat, :lng, :role, :demographic, :image, :approval_status)
     end
-end
+  end
+
+  def generate_new_password_email
+   partnering_organization = PartneringOrganization.find(params[:user_id])
+   partnering_organization.send_reset_password_instructions flash[:notice] = 'Reset password instructions have been sent to #{user.email}.'
+   redirect_to admin_user_path(partnering_organization)
+  end

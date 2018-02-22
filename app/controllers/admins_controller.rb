@@ -12,6 +12,7 @@ class AdminsController < ApplicationController
   # GET /admins/1
   # GET /admins/1.json
   def show
+    @partnering_organizations = PartneringOrganization.all
   end
 
   # GET /admins/new
@@ -45,7 +46,7 @@ class AdminsController < ApplicationController
     respond_to do |format|
       if @admin.update(admin_params)
         format.html { redirect_to @admin, notice: 'Admin was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin }
+        format.json { render :index, status: :ok, location: @admin }
       else
         format.html { render :edit }
         format.json { render json: @admin.errors, status: :unprocessable_entity }
