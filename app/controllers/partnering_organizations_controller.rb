@@ -1,5 +1,5 @@
 class PartneringOrganizationsController < ApplicationController
-  before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve]
+  before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve, :subscriptions]
   before_action :authenticate!
 
   # GET /partnering_organizations
@@ -19,7 +19,7 @@ class PartneringOrganizationsController < ApplicationController
 
  #GET /partnering_organization/subscriptions
  def subscriptions
-   @subscriptions = @current_partnering_organization[params:id]
+   @subscribers = @partnering_organization.subscribers
 
  end
 
