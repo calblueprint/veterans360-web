@@ -13,11 +13,13 @@ class ViewResources extends React.Component {
       isOpen: false,
       resource: {
         file_name: '',
-        category: '',
+        category: 1,
         description: '',
+        section: 0,
         file: '',
       },
-      passed_categories: _.invert(this.props.categories)
+      passed_categories: _.invert(this.props.categories),
+      passed_sections: _.invert(this.props.sections)
     }
     this.toggleAddResource = this.toggleAddResource.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -37,6 +39,7 @@ class ViewResources extends React.Component {
     formData.append('resource[file_name]', this.state.resource.file_name)
     formData.append('resource[category]', this.state.resource.category)
     formData.append('resource[description]', this.state.resource.description)
+    formData.append('resource[section]', this.state.resource.section)
     fetch('/resources', {
       method: 'POST',
       body: formData,
@@ -68,6 +71,14 @@ class ViewResources extends React.Component {
     })
   }
 
+  renderSections() {
+    return Object.entries(this.props.sections).map((section) => {
+      return (
+        <option key={section[1]} value={section[1]}>{section[0]}</option>
+      )
+    })
+  }
+
   renderAddResource() {
     return (
       <Dialog
@@ -95,6 +106,16 @@ class ViewResources extends React.Component {
                 className="pt-input"
               >
                 {this.renderCategories()}
+              </select>
+            </p>
+            <p className="pt-ui-text">Section:
+            <select
+                value={this.state.resource.section}
+                onChange={this.handleChange}
+                name="section"
+                className="pt-input"
+              >
+                {this.renderSections()}
               </select>
             </p>
             <p className="pt-ui-text">Description:
@@ -139,7 +160,7 @@ class ViewResources extends React.Component {
     return this.props.resources.map((resource) => {
       return (
         <li key={resource.id}>
-          <ResourceModal resource={resource} categories={this.state.passed_categories}/>
+          <ResourceModal resource={resource} categories={this.state.passed_categories} sections={this.state.passed_sections}/>
         </li>
       )
     })

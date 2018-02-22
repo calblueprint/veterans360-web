@@ -106,7 +106,8 @@ class ResourcesController < ApplicationController
         :file_name,
         :file,
         :category,
-        :description
+        :description,
+        :section
       )
     end
 

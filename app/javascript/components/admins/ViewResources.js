@@ -10,16 +10,20 @@ class ViewResources extends React.Component {
     super(props)
     this.state = {
       resources: [],
-      passed_categories: _.invert(this.props.categories)
+      passed_categories: _.invert(this.props.categories),
+      passed_sections: _.invert(this.props.types)
     }
-    this._mounted = false
   }
 
   renderResources() {
     return this.props.resources.map((resource) => {
       return (
         <li key={resource.id}>
-          <ResourceModal resource={resource} categories={this.state.passed_categories}/>
+          <ResourceModal
+            resource={resource}
+            categories={this.state.passed_categories}
+            sections={this.state.passed_sections}
+          />
         </li>
       )
     })

@@ -33,6 +33,9 @@ class ResourceModal extends React.Component {
           Description: {this.props.resource.description}
         </p>
         <p>
+          Section: {this.props.sections[this.props.resource.section]}
+        </p>
+        <p>
           Created at: {this.props.resource.created_at}
         </p>
         <a href={this.props.resource.file.url}>
