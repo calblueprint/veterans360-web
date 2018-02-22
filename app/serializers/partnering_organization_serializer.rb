@@ -37,5 +37,5 @@ class PartneringOrganizationSerializer < BaseSerializer
              :role,
              :demographic,
              :approval_status
-             :subscriptions
+             :subscribers
 end

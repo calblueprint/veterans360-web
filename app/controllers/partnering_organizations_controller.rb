@@ -1,6 +1,6 @@
 class PartneringOrganizationsController < ApplicationController
-  before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve]
   load_and_authorize_resource
+  before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve, :subscriptions]
 
   # GET /partnering_organizations
   # GET /partnering_organizations.json
@@ -19,7 +19,7 @@ class PartneringOrganizationsController < ApplicationController
 
  #GET /partnering_organization/subscriptions
  def subscriptions
-   @subscriptions = @current_partnering_organization[params:id]
+   @subscribers = @partnering_organization.subscribers
 
  end
 
