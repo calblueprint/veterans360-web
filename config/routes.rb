@@ -70,7 +70,6 @@ Rails.application.routes.draw do
     end
     collection do
       get 'resources'
-      get 'subscriptions'
     end
   end
 

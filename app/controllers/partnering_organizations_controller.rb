@@ -18,10 +18,10 @@ class PartneringOrganizationsController < ApplicationController
   end
 
  #GET /partnering_organization/subscriptions
- def subscriptions
-   @subscribers = @partnering_organization.subscribers
-
- end
+ # def subscriptions
+ #   @subscribers = @partnering_organization.subscribers
+ #
+ # end
 
   # GET /partnering_organizations/1
   # GET /partnering_organizations/1.json

@@ -7,9 +7,7 @@ import { Card, Button } from "@blueprintjs/core"
 class PartneringOrgSubscriptions extends React.Component {
   constructor(props) {
     super(props)
-
   };
-
   render() {
     let subscription_list;
     subscription_list = this.props.subscribers.map((subscriber, i) => {
@@ -17,7 +15,6 @@ class PartneringOrgSubscriptions extends React.Component {
         <Card interactive={true} elevation={Card.ELEVATION_TWO}>
         <div key={i}>
           <h4> {subscriber.first_name} </h4>
-
           <h4>  {subscriber.last_name} </h4>
           <p> {subscriber.email} </p>
           <p> {subscriber.military_branch} </p>
@@ -25,11 +22,9 @@ class PartneringOrgSubscriptions extends React.Component {
         </Card>
       )
     });
-
+    
     return (
-      <div>
-        <div className="po_profile"> 
-        </div>
+        <div>
         {subscription_list}
       </div>
     )
