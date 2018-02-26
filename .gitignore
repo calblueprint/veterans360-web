@@ -53,3 +53,7 @@ application.yml
 /public/packs
 /public/packs-test
 /node_modules
+
+# Ignore development.rb and production.rb
+/config/environments/development.rb
+/config/environments/production.rb

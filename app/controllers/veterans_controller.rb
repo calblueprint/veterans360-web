@@ -97,6 +97,14 @@ class VeteransController < ApplicationController
     render json: Veteran.military_branches
   end
 
+  def get_phone_numer
+    render json: Veteran.phone_number
+  end
+
+  def get_address
+    render json: Veteran.address
+  end
+
   # Returns a list of all users that follow this user unreciprocated
   # GET /veterans/1/requests
   def requests
@@ -123,6 +131,8 @@ class VeteransController < ApplicationController
       params.require(:veteran).permit(:military_branch,
                                       :unit,
                                       :notes,
+                                      :phone_number,
+                                      :address,
                                       :accept_messages,
                                       :share_profile,
                                       :accept_notices,
