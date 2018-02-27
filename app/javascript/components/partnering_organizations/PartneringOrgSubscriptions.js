@@ -22,7 +22,7 @@ class PartneringOrgSubscriptions extends React.Component {
         </Card>
       )
     });
-    
+
     return (
         <div>
         {subscription_list}

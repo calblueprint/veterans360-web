@@ -1,6 +1,11 @@
 class PartneringOrganizationsController < ApplicationController
+<<<<<<< HEAD
   before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve, :subscriptions]
   before_action :authenticate!
+=======
+  load_and_authorize_resource
+  before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve, :subscriptions]
+>>>>>>> 0623dcf7bcb2173d2e5918a7da9e10ebaded5a07
 
   # GET /partnering_organizations
   # GET /partnering_organizations.json
@@ -18,10 +23,17 @@ class PartneringOrganizationsController < ApplicationController
   end
 
  #GET /partnering_organization/subscriptions
+<<<<<<< HEAD
  # def subscriptions
  #   @subscribers = @partnering_organization.subscribers
  #
  # end
+=======
+ def subscriptions
+   @subscribers = @partnering_organization.subscribers
+
+ end
+>>>>>>> 0623dcf7bcb2173d2e5918a7da9e10ebaded5a07
 
   # GET /partnering_organizations/1
   # GET /partnering_organizations/1.json
@@ -67,11 +79,6 @@ class PartneringOrganizationsController < ApplicationController
     end
   end
 
-  def approve
-    @partnering_organization.approval_status = true
-    @partnering_organization.save
-  end
-
   # DELETE /partnering_organizations/1
   # DELETE /partnering_organizations/1.json
   def destroy
@@ -89,11 +96,14 @@ class PartneringOrganizationsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    # I think if we want to make this secure, we can't have approval status here and should have approve in the admin controller (ask ken)
     def partnering_organization_params
-      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :lat, :lng, :role, :demographic, :image)
+      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :lat, :lng, :role, :demographic, :image, :approval_status)
     end
   end
 
-  def authenticate!
-    :authenticate_admin! || :authenticate_partnering_organization!
+  def generate_new_password_email
+   partnering_organization = PartneringOrganization.find(params[:user_id])
+   partnering_organization.send_reset_password_instructions flash[:notice] = 'Reset password instructions have been sent to #{user.email}.'
+   redirect_to admin_user_path(partnering_organization)
   end

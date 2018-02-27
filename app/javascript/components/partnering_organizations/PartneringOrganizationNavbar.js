@@ -1,21 +1,55 @@
-import { Link } from 'react-router'
-import React from 'react'
-import { Button, Dialog, Intent } from "@blueprintjs/core"
+import { Link } from "react-router"
+import React from "react"
+import request from "../../shared/requests/request"
+import { Button, Dialog, Intent, EditableText } from "@blueprintjs/core"
 
 class PartneringOrganizationNavbar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      isOpen: false
+      isOpen: false,
+      values: {
+        name: this.props.partneringOrganization.name,
+        phone_number: this.props.partneringOrganization.phone_number,
+        website: this.props.partneringOrganization.website,
+        address: this.props.partneringOrganization.address,
+        role: this.props.partneringOrganization.role,
+        demographic: this.props.partneringOrganization.demographic,
+      },
+      edit_style: "pt-disabled"
     }
     this.toggleProfile = this.toggleProfile.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.editProfile = this.editProfile.bind(this)
   }
+
   toggleProfile() {
     if (this.state.isOpen == true) {
       this.setState({ isOpen: false })
     } else {
       this.setState({ isOpen: true })
     }
+  }
+
+  handleChange(attribute, value) {
+    const values = this.state.values
+    values[attribute] = value
+    if (this.state.edit_style === "pt-disabled") {
+      this.setState({ values: values, edit_style: "default"})
+    }
+    else {
+      this.setState({ values: values });
+    }
+  }
+
+  editProfile() {
+    let params = this.state.values
+    const route = `/partnering_organizations/` + this.props.partneringOrganization.id
+    request.update(route, params, (response) => {
+      window.location.reload()
+    }, (error) => {
+      alert("There was an error")
+    })
   }
   renderProfile() {
     return (
@@ -26,12 +60,42 @@ class PartneringOrganizationNavbar extends React.Component {
         title="Profile"
       >
         <div className="pt-dialog-body">
-          <h4> Name: {this.props.partneringOrganization.name} </h4>
-          <h4> Email: {this.props.partneringOrganization.email} </h4>
-          <h4> Address: {this.props.partneringOrganization.address} </h4>
-          <h4> Demographic: {this.props.partneringOrganization.demographic} </h4>
-          <h4> Phone Number: {this.props.partneringOrganization.phone_number} </h4>
-          <h4> Role: {this.props.partneringOrganization.role} </h4>
+          <h5 className="profile-titles">Name</h5>
+          <EditableText
+            defaultValue = {this.state.values.name}
+            className="profile-text"
+            onChange = {str => this.handleChange("name", str)}
+            />
+          <h5 className="profile-titles">Phone Number</h5>
+          <EditableText
+            defaultValue = {this.state.values.phone_number}
+            className="profile-text"
+            onChange = {str => this.handleChange("phone_number", str)}
+          />
+          <h5 className="profile-titles">Website</h5>
+          <EditableText
+            defaultValue = {this.state.values.website}
+            className="profile-text"
+            onChange = {str => this.handleChange("website", str)}
+          />
+          <h5 className="profile-titles">Address</h5>
+          <EditableText
+            defaultValue = {this.state.values.address}
+            className="profile-text"
+            onChange = {str => this.handleChange("address", str)}
+            />
+          <h5 className="profile-titles">Role</h5>
+          <EditableText
+            defaultValue = {this.state.values.role}
+            className="profile-text"
+            onChange = {str => this.handleChange("role", str)}
+            />
+          <h5 className="profile-titles">Demographic</h5>
+          <EditableText
+            defaultValue = {this.state.values.demographic}
+            className="profile-text"
+            onChange = {str => this.handleChange("demographic", str)}
+            />
         </div>
         <div className="pt-dialog-footer">
           <div className="pt-dialog-footer-actions">
@@ -40,6 +104,11 @@ class PartneringOrganizationNavbar extends React.Component {
               onClick={this.toggleProfile}
               text="Close"
             />
+            <Button
+                onClick={this.editProfile}
+                text="Edit"
+                className={this.state.edit_style}
+              />
           </div>
         </div>
       </Dialog>

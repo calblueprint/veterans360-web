@@ -2,9 +2,6 @@ Rails.application.routes.draw do
 
   get 'subscriptions/create'
 
-  # get 'partnering_organizations/sign_up' => 'partnering_organizations#new'
-  # post 'partnering_organizations/' => 'partnering_organizations#create'
-
   devise_for :partnering_organizations, controllers: {
     sessions: 'partnering_organizations/sessions',
     registrations: 'partnering_organizations/registrations'
@@ -64,12 +61,13 @@ Rails.application.routes.draw do
 
   resources :partnering_organizations do
     member do
+      post :generate_new_password_email
       patch 'approve'
       get 'subscriptions'
-      # get ''
     end
     collection do
       get 'resources'
+      get 'subscriptions'
     end
   end
 
@@ -78,5 +76,5 @@ Rails.application.routes.draw do
      end
   end
 
-  root to: 'partnering_organizations#index'
+  root to: redirect('/partnering_organizations/sign_in')
 end
