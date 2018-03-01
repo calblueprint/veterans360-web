@@ -81,7 +81,7 @@ class PartneringOrganizationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     # I think if we want to make this secure, we can't have approval status here and should have approve in the admin controller (ask ken)
     def partnering_organization_params
-      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :lat, :lng, :role, :demographic, :image, :approval_status)
+      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :lat, :lng, :role, :demographic, :description, :image, :approval_status)
     end
   end
 

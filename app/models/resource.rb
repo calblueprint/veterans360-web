@@ -15,6 +15,8 @@
 #
 
 class Resource < ApplicationRecord
+  scope :by_category, -> cat { where(category: cat) }
+
   belongs_to :owner, :polymorphic => true
 
   has_many :upvotes, :dependent => :destroy
@@ -42,5 +44,4 @@ class Resource < ApplicationRecord
     upvotes.exists?(veteran_id: veteran.id)
   end
 
-  
 end

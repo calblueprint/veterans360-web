@@ -41,7 +41,6 @@ Rails.application.routes.draw do
     end
     collection do
       get 'get_resource_categories', to: 'resources#get_resource_categories'
-      get 'filter_resources/:categories', to: 'resources#filter_resources'
       get 'get_home_resources', to: 'resources#get_home_resources'
     end
   end

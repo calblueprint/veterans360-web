@@ -38,4 +38,5 @@ class PartneringOrganizationSerializer < BaseSerializer
              :demographic,
              :approval_status
              :subscribers
+             :description
 end
