@@ -123,8 +123,8 @@ class PartneringOrganizationNavbar extends React.Component {
           </div>
           <div className="pt-navbar-group pt-align-right">
             <a href={`/partnering_organizations/resources`}><button className="pt-button pt-minimal pt-icon-document">Resources</button></a>
+            <a href={`/partnering_organizations/veterans`}><button className="pt-button pt-minimal pt-icon-document">Veterans</button></a>
             <span className="pt-navbar-divider"></span>
-            <a href={`/partnering_organizations/${this.props.partneringOrganization.id}/subscriptions`}><button className="pt-button pt-minimal pt-icon-document">Subscribers</button></a>
             <Button className="pt-button pt-minimal pt-icon-user" onClick={this.toggleProfile}>Profile</Button>
             <a href={`/partnering_organizations/sign_out`} data-method="delete"><button className="pt-button pt-minimal pt-icon-log-out">Log out</button></a>
           </div>

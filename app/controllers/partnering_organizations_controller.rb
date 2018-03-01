@@ -1,11 +1,6 @@
 class PartneringOrganizationsController < ApplicationController
-<<<<<<< HEAD
-  before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve, :subscriptions]
-  before_action :authenticate!
-=======
   load_and_authorize_resource
   before_action :set_partnering_organization, only: [:show, :edit, :update, :destroy, :approve, :subscriptions]
->>>>>>> 0623dcf7bcb2173d2e5918a7da9e10ebaded5a07
 
   # GET /partnering_organizations
   # GET /partnering_organizations.json
@@ -22,18 +17,6 @@ class PartneringOrganizationsController < ApplicationController
     end
   end
 
- #GET /partnering_organization/subscriptions
-<<<<<<< HEAD
- # def subscriptions
- #   @subscribers = @partnering_organization.subscribers
- #
- # end
-=======
- def subscriptions
-   @subscribers = @partnering_organization.subscribers
-
- end
->>>>>>> 0623dcf7bcb2173d2e5918a7da9e10ebaded5a07
 
   # GET /partnering_organizations/1
   # GET /partnering_organizations/1.json

@@ -63,11 +63,10 @@ Rails.application.routes.draw do
     member do
       post :generate_new_password_email
       patch 'approve'
-      get 'subscriptions'
     end
     collection do
       get 'resources'
-      get 'subscriptions'
+      get 'veterans'
     end
   end
 
