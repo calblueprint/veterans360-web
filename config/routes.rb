@@ -64,12 +64,13 @@ Rails.application.routes.draw do
     end
     collection do
       get 'resources'
+      get 'veterans'
     end
   end
 
   namespace :api, defaults: { format: [:json, :csv] } do
     resources :resources, only: [:index, :show] do
-    end
+     end
   end
 
   root to: redirect('/partnering_organizations/sign_in')
