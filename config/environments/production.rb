@@ -106,7 +106,7 @@ Rails.application.configure do
     domain: 'gmail.com',
     authentication: 'plain',
     enable_starttls_auto: true,
-    user_name: 'veterans360mailer@gmail.com',
-    password: 'blueprintvets'
+    user_name: ENV['MAIL_USER'],
+    password: ENV['MAIL_PASS']
   }
 end

@@ -92,17 +92,13 @@ class VeteransController < ApplicationController
     end
   end
 
-
   def get_military_branch
     render json: Veteran.military_branches
   end
 
-  def get_phone_numer
-    render json: Veteran.phone_number
-  end
-
-  def get_address
-    render json: Veteran.address
+  def get_secret_fields
+    render json: @veteran,
+           serializer: VeteranSecretFieldsSerializer
   end
 
   # Returns a list of all users that follow this user unreciprocated
