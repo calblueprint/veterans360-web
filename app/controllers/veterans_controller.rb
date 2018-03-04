@@ -96,10 +96,17 @@ class VeteransController < ApplicationController
     render json: Veteran.military_branches
   end
 
-  def get_secret_fields
-    render json: @veteran,
-           serializer: VeteranSecretFieldsSerializer,
-           scope: { current_veteran: current_veteran }
+  # If the veterans are friends, returns all the fields, else returns only some
+  def get_veteran_info
+    if current_veteran.is_friend_of?(@veteran)
+      render json: @veteran,
+             serializer: VeteranSecretFieldsSerializer,
+             scope: { current_veteran: current_veteran }
+    else
+      render json: @veteran,
+             serializer: VeteranFriendSerializer,
+             scope: { current_veteran: current_veteran }
+    end
   end
 
   # Returns a list of all users that follow this user unreciprocated
