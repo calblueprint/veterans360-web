@@ -1,7 +1,7 @@
 class VeteransController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_veteran!
-  before_action :set_veteran, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  before_action :set_veteran, only: [:show, :edit, :update, :destroy, :get_secret_fields]
 
 
   # GET /veterans
@@ -98,7 +98,8 @@ class VeteransController < ApplicationController
 
   def get_secret_fields
     render json: @veteran,
-           serializer: VeteranSecretFieldsSerializer
+           serializer: VeteranSecretFieldsSerializer,
+           scope: { current_veteran: current_veteran }
   end
 
   # Returns a list of all users that follow this user unreciprocated
