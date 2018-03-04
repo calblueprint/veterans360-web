@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     member do
       get :requests
       patch 'connect_sign_up', to: 'veterans#connect_sign_up'
+      get 'get_secret_fields'
     end
     collection do
       get 'get_military_branch'
