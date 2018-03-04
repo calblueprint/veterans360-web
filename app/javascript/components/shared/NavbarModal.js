@@ -14,6 +14,7 @@ class NavbarModal extends React.Component {
     }
     this.toggleProfile = this.toggleProfile.bind(this)
     this.editProfile = this.editProfile.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   toggleProfile() {
@@ -24,9 +25,9 @@ class NavbarModal extends React.Component {
     }
   }
 
-  handleChange(attribute, value) {
+  handleChange(event) {
     const profile = this.state.profile
-    profile[attribute] = value
+    profile[event.target.name] = event.target.value
     if (this.state.edit_style === "pt-disabled") {
       this.setState({ profile: profile, edit_style: "default"})
     }
@@ -54,10 +55,12 @@ class NavbarModal extends React.Component {
       return (
         <div key={profile[0]}>
           <h5 className="profile-titles">{this.formatString(profile[0])}</h5>
-          <EditableText
-            defaultValue = {profile[1]}
-            className="profile-text"
-            onChange = {str => this.handleChange(profile[0], str)}
+          <input
+            value={profile[1]}
+            name={profile[0]}
+            className="profile-text pt-input"
+            type="text"
+            onChange={this.handleChange}
           />
         </div>
       )
@@ -103,7 +106,7 @@ class NavbarModal extends React.Component {
           <div className="pt-navbar-group pt-align-right">
             {this.props.renderNavbarElements()}
             <span className="pt-navbar-divider"></span>
-            <Button text="Profile" className="pt-button pt-minimal pt-icon-user" onClick={this.toggleProfile} />
+            <Button text="Edit Profile" className="pt-button pt-minimal pt-icon-user" onClick={this.toggleProfile} />
             <a href={this.props.edit_route + `sign_out`} data-method="delete"><button className="pt-button pt-minimal pt-icon-log-out">Log out</button></a>
           </div>
         </nav>
