@@ -1,9 +1,9 @@
 import _ from 'underscore'
-import Modal from 'react-bootstrap-modal'
 import PropTypes from "prop-types"
 import React from "react"
+
 import ResourceModal from '../shared/ResourceModal.js'
-import request from '../../shared/requests/request'
+
 
 class ViewResources extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class ViewResources extends React.Component {
     this.state = {
       resources: [],
       passed_categories: _.invert(this.props.categories),
-      passed_sections: _.invert(this.props.types)
+      passed_sections: _.invert(this.props.sections)
     }
   }
 
