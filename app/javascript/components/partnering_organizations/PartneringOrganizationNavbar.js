@@ -22,6 +22,8 @@ class PartneringOrganizationNavbar extends React.Component {
   renderNavbarElements() {
     return (
       <a href={`/partnering_organizations/resources`}><button className="pt-button pt-minimal pt-icon-document">Resources</button></a>
+      <a href={`/partnering_organizations/veterans`}><button className="pt-button pt-minimal pt-icon-document">Veterans</button></a>
+
     )
   }
 
