@@ -15,6 +15,7 @@ class NavbarModal extends React.Component {
     this.toggleProfile = this.toggleProfile.bind(this)
     this.editProfile = this.editProfile.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    console.log('asdafsdsasdf')
   }
 
   toggleProfile() {
