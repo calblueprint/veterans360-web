@@ -74,7 +74,7 @@ class NavbarModal extends React.Component {
         iconName="user"
         isOpen={this.state.isOpen}
         onClose={this.toggleProfile}
-        title="Profile"
+        title="Edit Profile"
       >
         <div className="pt-dialog-body">
           {this.renderProfileElements()}
