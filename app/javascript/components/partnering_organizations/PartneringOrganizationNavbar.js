@@ -21,9 +21,10 @@ class PartneringOrganizationNavbar extends React.Component {
 
   renderNavbarElements() {
     return (
-      <a href={`/partnering_organizations/resources`}><button className="pt-button pt-minimal pt-icon-document">Resources</button></a>
-      <a href={`/partnering_organizations/veterans`}><button className="pt-button pt-minimal pt-icon-document">Veterans</button></a>
-
+      <div>
+        <a href={`/partnering_organizations/resources`}><button className="pt-button pt-minimal pt-icon-document">Resources</button></a>
+        <a href={`/partnering_organizations/veterans`}><button className="pt-button pt-minimal pt-icon-document">Veterans</button></a>
+      </div>
     )
   }
 
@@ -34,6 +35,8 @@ class PartneringOrganizationNavbar extends React.Component {
         profile_id={this.props.partneringOrganization.id}
         edit_route="/partnering_organizations/"
         renderNavbarElements={this.renderNavbarElements}
+        role={this.props.roles}
+        demographic={this.props.demographics}
       />
     )
   }

@@ -50,20 +50,46 @@ class NavbarModal extends React.Component {
     return (str.charAt(0).toUpperCase() + str.slice(1)).replace("_"," ")
   }
 
+  renderSelect(items) {
+    return Object.entries(this.props[items]).map((item) => {
+      return (
+        <option key={item[1]} value={item[0]}>{item[0]}</option>
+      )
+    })
+  }
+
   renderProfileElements() {
     return Object.entries(this.state.profile).map((profile) => {
-      return (
-        <div key={profile[0]}>
-          <h5 className="profile-titles">{this.formatString(profile[0])}</h5>
-          <input
-            value={profile[1]}
-            name={profile[0]}
-            className="profile-text pt-input"
-            type="text"
-            onChange={this.handleChange}
-          />
-        </div>
-      )
+      if (profile[0] == "role" || profile[0] == "demographic") {
+        return (
+          <div key={profile[0]}>
+            <h5 className="profile-titles">{this.formatString(profile[0])}</h5>
+            <select
+              value={profile[1]}
+              onChange={this.handleChange}
+              name={profile[0]}
+              className="pt-input"
+              required
+            >
+              {this.renderSelect(profile[0])}
+            </select>
+          </div>
+        )
+      } else {
+        return (
+          <div key={profile[0]}>
+            <h5 className="profile-titles">{this.formatString(profile[0])}</h5>
+            <input
+              value={profile[1]}
+              name={profile[0]}
+              className="profile-text pt-input"
+              type="text"
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+        )
+      }
     })
   }
 
@@ -73,7 +99,7 @@ class NavbarModal extends React.Component {
         iconName="user"
         isOpen={this.state.isOpen}
         onClose={this.toggleProfile}
-        title="Profile"
+        title="Edit Profile"
       >
         <div className="pt-dialog-body">
           {this.renderProfileElements()}

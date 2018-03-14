@@ -12,6 +12,10 @@
         <%= f.password_field :password, autocomplete: "off" %>
       </div>
 
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+      <%- end -%>
+
       <% if devise_mapping.rememberable? -%>
         <div class="checkbox-field">
           <%= f.check_box :remember_me %>
