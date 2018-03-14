@@ -15,7 +15,6 @@ class NavbarModal extends React.Component {
     this.toggleProfile = this.toggleProfile.bind(this)
     this.editProfile = this.editProfile.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    console.log('asdafsdsasdf')
   }
 
   toggleProfile() {
@@ -70,6 +69,7 @@ class NavbarModal extends React.Component {
               onChange={this.handleChange}
               name={profile[0]}
               className="pt-input"
+              required
             >
               {this.renderSelect(profile[0])}
             </select>
@@ -85,6 +85,7 @@ class NavbarModal extends React.Component {
               className="profile-text pt-input"
               type="text"
               onChange={this.handleChange}
+              required
             />
           </div>
         )
