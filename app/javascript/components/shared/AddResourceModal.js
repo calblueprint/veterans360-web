@@ -59,18 +59,10 @@ class AddResourceModal extends React.Component {
     }
   }
 
-  renderCategories() {
-    return Object.entries(this.props.categories).map((category) => {
+  renderSelect(items) {
+    return Object.entries(this.props[items]).map((item) => {
       return (
-        <option key={category[1]} value={category[1]}>{category[0]}</option>
-      )
-    })
-  }
-
-  renderSections() {
-    return Object.entries(this.props.sections).map((section) => {
-      return (
-        <option key={section[1]} value={section[1]}>{section[0]}</option>
+        <option key={item[1]} value={item[1]}>{item[0]}</option>
       )
     })
   }
@@ -103,17 +95,17 @@ class AddResourceModal extends React.Component {
                   name="category"
                   className="pt-input"
                 >
-                  {this.renderCategories()}
+                  {this.renderSelect("categories")}
                 </select>
               </p>
               <p className="pt-ui-text">Section:
-              <select
+                <select
                   value={this.state.resource.section}
                   onChange={this.handleChange}
                   name="section"
                   className="pt-input"
                 >
-                  {this.renderSections()}
+                  {this.renderSelect("sections")}
                 </select>
               </p>
               <p className="pt-ui-text">Description:
