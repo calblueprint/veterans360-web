@@ -15,6 +15,8 @@ class VeteranModal extends React.Component {
             <h4> {this.props.veteran.first_name} {this.props.veteran.last_name}</h4>
             <p> {this.props.veteran.email} </p>
             <p> {this.props.veteran.military_branch} </p>
+            <p> {this.props.veteran.address} </p>
+            <p> {this.props.veteran.phone_number} </p>
           </div>
         </Card>
       </div>
