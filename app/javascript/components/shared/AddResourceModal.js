@@ -86,6 +86,7 @@ class AddResourceModal extends React.Component {
                   name="file_name"
                   type="text"
                   className="pt-input"
+                  required
                 />
               </p>
               <p className="pt-ui-text">Category:
@@ -114,7 +115,8 @@ class AddResourceModal extends React.Component {
                   onChange={this.handleChange}
                   name="description"
                   type="text"
-                  className="pt-input">
+                  className="pt-input"
+                  required>
                 </textarea>
               </p>
               <p className="pt-ui-text">File:
@@ -124,6 +126,7 @@ class AddResourceModal extends React.Component {
                   type="file"
                   ref={input => {this.file = input}}
                   className='pt-button-small'
+                  required
                 />
               </p>
             </div>
