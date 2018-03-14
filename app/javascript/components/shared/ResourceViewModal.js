@@ -12,8 +12,13 @@ class ResourceViewModal extends React.Component {
     super(props)
     this.state = {
       passed_categories: _.invert(this.props.categories),
-      passed_sections: _.invert(this.props.sections)
+      passed_sections: _.invert(this.props.sections),
+      current_categories: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
+  }
+
+  componentDidMount() {
+
   }
 
   handleChange(event, s) {
