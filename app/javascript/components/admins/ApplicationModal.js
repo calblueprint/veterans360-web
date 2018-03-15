@@ -49,9 +49,6 @@ class ApplicationModal extends React.Component {
           Web Site: {this.props.application.website}
         </p>
         <p>
-          Role: {this.props.application.role}
-        </p>
-        <p>
           Description: {this.props.application.description}
         </p>
         {this.props.application.approval_status ? (

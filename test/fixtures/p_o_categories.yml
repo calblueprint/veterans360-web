@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  partnering_organization: one
+  category: one
+
+two:
+  partnering_organization: two
+  category: two
