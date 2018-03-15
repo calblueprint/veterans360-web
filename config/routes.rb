@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     collection do
       get 'resources'
       get 'applications'
+      get 'categories'
     end
   end
 
@@ -68,6 +69,8 @@ Rails.application.routes.draw do
       get 'veterans'
     end
   end
+
+  resources :categories, only: [:create, :destroy]
 
   namespace :api, defaults: { format: [:json, :csv] } do
     resources :resources, only: [:index, :show] do
