@@ -38,42 +38,42 @@ class ApplicationModal extends React.Component {
   render() {
     return (
       <div>
-      <Card interactive={true} elevation={Card.ELEVATION_TWO}>
-        <p>
-          Name: {this.props.application.name}
-        </p>
-        <p>
-          Phone Number: {this.props.application.phone_number}
-        </p>
-        <p>
-          Web Site: {this.props.application.website}
-        </p>
-        <p>
-          Description: {this.props.application.description}
-        </p>
-        {this.props.application.approval_status ? (
-          <div>
-            <p className="approved-status">
-              Approved Application!
-            </p>
-            <Button className='reject-po' onClick={this.deletePartneringOrganization}>
-              Delete
-            </Button>
-          </div>
-        ) : (
-          <div>
-            <p className="pending-status">
-              Pending Approval
-            </p>
-            <Button className='approve-po' onClick={this.approvePartneringOrganization}>
-              Approve
-            </Button>
-            <Button className='reject-po' onClick={this.deletePartneringOrganization}>
-                Reject
-            </Button>
-          </div>
-        )}
-      </Card>
+        <Card interactive={true} elevation={Card.ELEVATION_TWO}>
+          <p>
+            Name: {this.props.application.name}
+          </p>
+          <p>
+            Phone Number: {this.props.application.phone_number}
+          </p>
+          <p>
+            Web Site: {this.props.application.website}
+          </p>
+          <p>
+            Description: {this.props.application.description}
+          </p>
+          {this.props.application.approval_status ? (
+            <div>
+              <p className="approved-status">
+                Approved Application!
+              </p>
+              <Button className='reject-po' onClick={this.deletePartneringOrganization}>
+                Delete
+              </Button>
+            </div>
+          ) : (
+            <div>
+              <p className="pending-status">
+                Pending Approval
+              </p>
+              <Button className='approve-po' onClick={this.approvePartneringOrganization}>
+                Approve
+              </Button>
+              <Button className='reject-po' onClick={this.deletePartneringOrganization}>
+                  Reject
+              </Button>
+            </div>
+          )}
+        </Card>
       </div>
     )
   }

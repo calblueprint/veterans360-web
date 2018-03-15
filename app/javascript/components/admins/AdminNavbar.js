@@ -19,6 +19,7 @@ class AdminNavbar extends React.Component {
     return (
       <div>
         <a href={`/admins/applications`}><button className="pt-button pt-minimal pt-icon-comparison">Applications</button></a>
+        <a href={`/admins/categories`}><button className="pt-button pt-minimal pt-icon-filter-list">Categories</button></a>
         <a href={`/admins/resources`}><button className="pt-button pt-minimal pt-icon-document">Resources</button></a>
       </div>
     )
