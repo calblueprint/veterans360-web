@@ -9,8 +9,6 @@
 #  address                :string
 #  lat                    :decimal(10, 6)
 #  lng                    :decimal(10, 6)
-#  role                   :integer
-#  demographic            :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  email                  :string           default(""), not null
@@ -37,24 +35,6 @@ class PartneringOrganization < ApplicationRecord
 	has_many :subscribers, through: :subscriptions, source: :veteran
 
   mount_uploader :image, ImageUploader
-
-	enum role: [
-		:caregiver,
-		:support_team,
-		:educator,
-		:volunteer_organization,
-		:awareness_team
-	]
-
-  enum demographic: [
-		:active_duty,
-		:veterans,
-		:family_members,
-		:children,
-		:victims_of_violence,
-		:suicide_prevention,
-		:drugs_and_alcohol
-	]
 
 	geocoded_by :address, :latitude  => :lat, :longitude => :lng
 	after_validation :geocode

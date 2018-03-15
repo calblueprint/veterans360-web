@@ -12,8 +12,6 @@ class PartneringOrganizationNavbar extends React.Component {
         phone_number: this.props.partneringOrganization.phone_number,
         website: this.props.partneringOrganization.website,
         address: this.props.partneringOrganization.address,
-        role: this.props.partneringOrganization.role,
-        demographic: this.props.partneringOrganization.demographic,
         description: this.props.partneringOrganization.description
       },
     }
@@ -35,8 +33,6 @@ class PartneringOrganizationNavbar extends React.Component {
         profile_id={this.props.partneringOrganization.id}
         edit_route="/partnering_organizations/"
         renderNavbarElements={this.renderNavbarElements}
-        role={this.props.roles}
-        demographic={this.props.demographics}
       />
     )
   }
