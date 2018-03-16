@@ -13,10 +13,10 @@
 
   </head>
   <body>
-    <%= react_component("partnering_organizations/PartneringOrganizationNavbar",
-      {
-        partneringOrganization: current_partnering_organization,
-      } ) %>
+    <%= react_component("partnering_organizations/PartneringOrganizationNavbar", {
+      partneringOrganization: current_partnering_organization,
+      categories: Category.all
+    })%>
     <%= yield %>
   </body>
 </html>

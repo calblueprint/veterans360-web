@@ -99,6 +99,7 @@ class ApplicationModal extends React.Component {
           edit_route="/partnering_organizations/"
           profile_id={this.props.application.id}
           isOpen={this.state.isOpen}
+          categories={this.props.categories}
         />
       </div>
     )

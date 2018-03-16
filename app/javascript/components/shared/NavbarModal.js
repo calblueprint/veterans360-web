@@ -42,6 +42,7 @@ class NavbarModal extends React.Component {
           edit_route={this.props.edit_route}
           profile_id={this.props.profile_id}
           isOpen={this.state.isOpen}
+          categories={this.props.categories}
         />
       </div>
     )

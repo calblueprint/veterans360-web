@@ -32,6 +32,7 @@ class AdminNavbar extends React.Component {
         profile_id={this.props.admin.id}
         edit_route="/admins/"
         renderNavbarElements={this.renderNavbarElements}
+        categories={this.props.categories}
       />
     )
   }

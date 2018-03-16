@@ -4,7 +4,7 @@ import { Button, Dialog, Intent, EditableText } from "@blueprintjs/core"
 import request from "../../shared/requests/request"
 
 
-class NavbarModal extends React.Component {
+class ProfileModal extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -13,6 +13,7 @@ class NavbarModal extends React.Component {
     }
     this.editProfile = this.editProfile.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleCheck = this.handleCheck.bind(this)
   }
 
   handleChange(event) {
@@ -24,6 +25,10 @@ class NavbarModal extends React.Component {
     else {
       this.setState({ profile: profile });
     }
+  }
+
+  handleCheck(event) {
+    console.log(event)
   }
 
   editProfile() {
@@ -58,6 +63,18 @@ class NavbarModal extends React.Component {
     })
   }
 
+  renderCategorySelection() {
+    return this.props.categories.map((cat) => {
+      return (
+        <label key={cat.id} className="pt-control pt-checkbox">
+          <input type="checkbox" name={cat.id} onChange={this.handleCheck}/>
+          <span className="pt-control-indicator"></span>
+          {cat.name}
+        </label>
+      )
+    })
+  }
+
   render() {
     return (
       <Dialog
@@ -68,6 +85,10 @@ class NavbarModal extends React.Component {
       >
         <div className="pt-dialog-body">
           {this.renderProfileElements()}
+          <div id="category_seclection">
+            <h5 className="profile-titles">Categories</h5>
+            {this.renderCategorySelection()}
+          </div>
         </div>
         <div className="pt-dialog-footer">
           <div className="pt-dialog-footer-actions">
@@ -88,4 +109,4 @@ class NavbarModal extends React.Component {
   }
 }
 
-export default NavbarModal
+export default ProfileModal
