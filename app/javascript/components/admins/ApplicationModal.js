@@ -2,14 +2,25 @@ import React from 'react'
 import PropTypes from "prop-types"
 import { Card, Button } from "@blueprintjs/core"
 import request from '../../shared/requests/request'
+import ProfileModal from '../shared/ProfileModal.js'
 
 
 class ApplicationModal extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      isOpen: false,
+      profile: {
+        name: this.props.application.name,
+        phone_number: this.props.application.phone_number,
+        website: this.props.application.website,
+        address: this.props.application.address,
+        description: this.props.application.description
+      },
+    }
     this.deletePartneringOrganization = this.deletePartneringOrganization.bind(this)
     this.approvePartneringOrganization = this.approvePartneringOrganization.bind(this)
+    this.toggleProfile = this.toggleProfile.bind(this)
   }
 
   deletePartneringOrganization() {
@@ -35,10 +46,18 @@ class ApplicationModal extends React.Component {
     })
   }
 
+  toggleProfile() {
+    if (this.state.isOpen == true) {
+      this.setState({ isOpen: false })
+    } else {
+      this.setState({ isOpen: true })
+    }
+  }
+
   render() {
     return (
       <div>
-        <Card interactive={true} elevation={Card.ELEVATION_TWO}>
+        <Card interactive={true} elevation={Card.ELEVATION_TWO} onClick={this.toggleProfile}>
           <p>
             Name: {this.props.application.name}
           </p>
@@ -74,6 +93,13 @@ class ApplicationModal extends React.Component {
             </div>
           )}
         </Card>
+        <ProfileModal
+          toggle={this.toggleProfile}
+          profile={this.state.profile}
+          edit_route="/partnering_organizations/"
+          profile_id={this.props.application.id}
+          isOpen={this.state.isOpen}
+        />
       </div>
     )
   }
