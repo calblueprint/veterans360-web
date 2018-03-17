@@ -56,18 +56,22 @@ Rails.application.routes.draw do
     collection do
       get 'resources'
       get 'applications'
+      get 'categories'
     end
   end
 
   resources :partnering_organizations do
     member do
       post :generate_new_password_email
+      get 'categories'
     end
     collection do
       get 'resources'
       get 'veterans'
     end
   end
+
+  resources :categories, only: [:create, :destroy]
 
   namespace :api, defaults: { format: [:json, :csv] } do
     resources :resources, only: [:index, :show] do

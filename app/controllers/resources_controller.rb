@@ -38,9 +38,9 @@ class ResourcesController < ApplicationController
     if admin_signed_in?
       user = Admin.find(current_admin.id)
     end
-     if partnering_organization_signed_in?
-       user = PartneringOrganization.find(current_partnering_organization.id)
-     end
+    if partnering_organization_signed_in?
+      user = PartneringOrganization.find(current_partnering_organization.id)
+    end
     @resource = user.resources.new(resource_params)
     respond_to do |format|
       if @resource.save
@@ -106,7 +106,8 @@ class ResourcesController < ApplicationController
         :file_name,
         :file,
         :category,
-        :description
+        :description,
+        :section
       )
     end
 
