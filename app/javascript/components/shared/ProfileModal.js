@@ -9,7 +9,6 @@ class ProfileModal extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      edit_style: "pt-disabled",
       profile: this.props.profile
     }
     this.editProfile = this.editProfile.bind(this)
@@ -20,12 +19,7 @@ class ProfileModal extends React.Component {
   handleChange(event) {
     const profile = this.state.profile
     profile[event.target.name] = event.target.value
-    if (this.state.edit_style === "pt-disabled") {
-      this.setState({ profile: profile, edit_style: "default"})
-    }
-    else {
-      this.setState({ profile: profile });
-    }
+    this.setState({ profile: profile });
   }
 
   handleCheck(event) {
@@ -117,7 +111,6 @@ class ProfileModal extends React.Component {
             <Button
               onClick={this.editProfile}
               text="Edit"
-              className={this.state.edit_style}
             />
           </div>
         </div>

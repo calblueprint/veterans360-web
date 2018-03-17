@@ -51,6 +51,7 @@ class PartneringOrganizationsController < ApplicationController
   # PATCH/PUT /partnering_organizations/1.json
   def update
     respond_to do |format|
+      # TODO: Make this more efficient, this is a little hacky
       PartnerCategory.where(partnering_organization_id: @partnering_organization.id).delete_all
       params[:category_ids].each do |i|
         @po_cat = PartnerCategory.new(partnering_organization_id: @partnering_organization.id, category_id: i)
@@ -92,7 +93,8 @@ class PartneringOrganizationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def partnering_organization_params
       params.require(:partnering_organization).permit(
-        :name, :phone_number, :website, :address, :lat, :lng, :description, :image, :approval_status, :category_ids => [])
+        :name, :phone_number, :website, :address, :lat, :lng, :description, :image, :approval_status, :category_ids => []
+      )
     end
   end
 
