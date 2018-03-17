@@ -36,7 +36,9 @@ class PartneringOrganizationSerializer < BaseSerializer
              :lng,
              :role,
              :demographic,
-             :approval_status
-             :subscribers
+             :approval_status,
+             :subscribers,
              :description
+  has_many :resources, serializer: ResourcePoSerializer
+
 end
