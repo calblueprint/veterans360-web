@@ -33,6 +33,8 @@ class PartneringOrganization < ApplicationRecord
 
 	has_many :subscriptions
 	has_many :subscribers, through: :subscriptions, source: :veteran
+  has_many :partner_categories
+  has_many :categories, through: :partner_categories
 
   mount_uploader :image, ImageUploader
 

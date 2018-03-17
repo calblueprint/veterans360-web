@@ -36,7 +36,6 @@ class PartneringOrganizationsController < ApplicationController
   # POST /partnering_organizations.json
   def create
     @partnering_organization = PartneringOrganization.new(partnering_organization_params)
-
     respond_to do |format|
       if @partnering_organization.save
         format.html { redirect_to @partnering_organization, notice: 'Partnering organization was successfully created.' }
@@ -52,6 +51,11 @@ class PartneringOrganizationsController < ApplicationController
   # PATCH/PUT /partnering_organizations/1.json
   def update
     respond_to do |format|
+      PartnerCategory.where(partnering_organization_id: @partnering_organization.id).delete_all
+      params[:category_ids].each do |i|
+        @po_cat = PartnerCategory.new(partnering_organization_id: @partnering_organization.id, category_id: i)
+        @po_cat.save
+      end
       if @partnering_organization.update(partnering_organization_params)
         format.html { redirect_to @partnering_organization, notice: 'Partnering organization was successfully updated.' }
         format.json { render :show, status: :ok, location: @partnering_organization }
@@ -72,6 +76,13 @@ class PartneringOrganizationsController < ApplicationController
     end
   end
 
+  # GET /partnering_organizations/1/categories
+  def categories
+    respond_to do |format|
+      format.json { render json: @partnering_organization.categories, each_serializer: CategorySerializer }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_partnering_organization
@@ -79,9 +90,9 @@ class PartneringOrganizationsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    # I think if we want to make this secure, we can't have approval status here and should have approve in the admin controller (ask ken)
     def partnering_organization_params
-      params.require(:partnering_organization).permit(:name, :phone_number, :website, :address, :lat, :lng, :description, :image, :approval_status)
+      params.require(:partnering_organization).permit(
+        :name, :phone_number, :website, :address, :lat, :lng, :description, :image, :approval_status, :category_ids => [])
     end
   end
 

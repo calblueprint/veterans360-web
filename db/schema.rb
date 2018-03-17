@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180315002356) do
+ActiveRecord::Schema.define(version: 20180317165011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,13 +51,13 @@ ActiveRecord::Schema.define(version: 20180315002356) do
     t.index ["veteran_id"], name: "index_friendships_on_veteran_id"
   end
 
-  create_table "p_o_categories", force: :cascade do |t|
+  create_table "partner_categories", force: :cascade do |t|
     t.bigint "partnering_organization_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_p_o_categories_on_category_id"
-    t.index ["partnering_organization_id"], name: "index_p_o_categories_on_partnering_organization_id"
+    t.index ["category_id"], name: "index_partner_categories_on_category_id"
+    t.index ["partnering_organization_id"], name: "index_partner_categories_on_partnering_organization_id"
   end
 
   create_table "partnering_organizations", force: :cascade do |t|
@@ -153,8 +153,8 @@ ActiveRecord::Schema.define(version: 20180315002356) do
     t.index ["reset_password_token"], name: "index_veterans_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "p_o_categories", "categories"
-  add_foreign_key "p_o_categories", "partnering_organizations"
+  add_foreign_key "partner_categories", "categories"
+  add_foreign_key "partner_categories", "partnering_organizations"
   add_foreign_key "subscriptions", "partnering_organizations", on_delete: :cascade
   add_foreign_key "subscriptions", "veterans"
   add_foreign_key "upvotes", "resources"

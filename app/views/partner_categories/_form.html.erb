@@ -1,0 +1,17 @@
+<%= form_with(model: partner_category, local: true) do |form| %>
+  <% if partner_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(partner_category.errors.count, "error") %> prohibited this partner_category from being saved:</h2>
+
+      <ul>
+      <% partner_category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

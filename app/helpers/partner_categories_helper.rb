@@ -1,0 +1,2 @@
+module PartnerCategoriesHelper
+end

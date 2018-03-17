@@ -31,13 +31,12 @@ class ProfileModal extends React.Component {
   handleCheck(event) {
     const profile = this.state.profile
     const val = parseInt(event.target.name)
-    if (_.contains(profile.categories, val)) {
-      const index = profile.categories.indexOf(val)
-      profile.categories.splice(index, 1)
+    if (_.contains(profile.category_ids, val)) {
+      const index = profile.category_ids.indexOf(val)
+      profile.category_ids.splice(index, 1)
     } else {
-      profile.categories.push(val)
+      profile.category_ids.push(val)
     }
-    console.log(profile)
     this.setState({ profile: profile })
   }
 
@@ -57,7 +56,7 @@ class ProfileModal extends React.Component {
 
   renderProfileElements() {
     return Object.entries(this.state.profile).map((profile) => {
-      if (profile[0] == "categories") {
+      if (profile[0] == "category_ids") {
         return this.renderCategorySelection()
       } else {
         return (
@@ -82,7 +81,7 @@ class ProfileModal extends React.Component {
       return (
         <Checkbox
           key={cat.id}
-          checked={_.contains(this.state.profile.categories, cat.id)}
+          checked={_.contains(this.state.profile.category_ids, cat.id)}
           onChange={this.handleCheck}
           label={cat.name}
           name={cat.id}

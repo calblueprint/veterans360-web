@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from "prop-types"
 import { Card, Button } from "@blueprintjs/core"
+
 import request from '../../shared/requests/request'
 import ProfileModal from '../shared/ProfileModal.js'
 
@@ -16,12 +17,34 @@ class ApplicationModal extends React.Component {
         website: this.props.application.website,
         address: this.props.application.address,
         description: this.props.application.description,
-        categories: []
+        category_ids: []
       },
     }
     this.deletePartneringOrganization = this.deletePartneringOrganization.bind(this)
     this.approvePartneringOrganization = this.approvePartneringOrganization.bind(this)
     this.toggleProfile = this.toggleProfile.bind(this)
+    this._mounted = false
+  }
+
+  componentDidMount() {
+    this._mounted = true
+    this.getCategories()
+  }
+
+  componentWillUnmount() {
+    this._mounted = false
+  }
+
+  getCategories() {
+    const route = `/partnering_organizations/` + this.props.application.id + `/categories`
+    request.get(route, (response) => {
+      console.log(response)
+      const profile = this.state.profile
+      profile["category_ids"] = response.map((x) => {return x.id})
+      this._mounted && this.setState({ profile: profile })
+    }, (error) => {
+      console.log(error)
+    })
   }
 
   deletePartneringOrganization() {
