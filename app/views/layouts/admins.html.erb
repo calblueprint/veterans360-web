@@ -12,7 +12,10 @@
     <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
   </head>
   <body>
-    <%= react_component("admins/AdminNavbar", {admin: current_admin})%>
+    <%= react_component("admins/AdminNavbar", {
+      admin: current_admin,
+      categories: Category.all
+    })%>
     <%= yield %>
   </body>
 </html>
