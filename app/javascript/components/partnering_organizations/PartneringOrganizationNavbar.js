@@ -12,7 +12,8 @@ class PartneringOrganizationNavbar extends React.Component {
         phone_number: this.props.partneringOrganization.phone_number,
         website: this.props.partneringOrganization.website,
         address: this.props.partneringOrganization.address,
-        description: this.props.partneringOrganization.description
+        description: this.props.partneringOrganization.description,
+        categories: []
       },
     }
   }

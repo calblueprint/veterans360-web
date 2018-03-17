@@ -1,5 +1,6 @@
+import _ from 'underscore'
 import React from "react"
-import { Button, Dialog, Intent, EditableText } from "@blueprintjs/core"
+import { Button, Checkbox, Dialog, Intent, EditableText } from "@blueprintjs/core"
 
 import request from "../../shared/requests/request"
 
@@ -28,7 +29,16 @@ class ProfileModal extends React.Component {
   }
 
   handleCheck(event) {
-    console.log(event)
+    const profile = this.state.profile
+    const val = parseInt(event.target.name)
+    if (_.contains(profile.categories, val)) {
+      const index = profile.categories.indexOf(val)
+      profile.categories.splice(index, 1)
+    } else {
+      profile.categories.push(val)
+    }
+    console.log(profile)
+    this.setState({ profile: profile })
   }
 
   editProfile() {
@@ -47,32 +57,44 @@ class ProfileModal extends React.Component {
 
   renderProfileElements() {
     return Object.entries(this.state.profile).map((profile) => {
-      return (
-        <div key={profile[0]}>
-          <h5 className="profile-titles">{this.formatString(profile[0])}</h5>
-          <input
-            value={profile[1]}
-            name={profile[0]}
-            className="profile-text pt-input"
-            type="text"
-            onChange={this.handleChange}
-            required
-          />
-        </div>
-      )
+      if (profile[0] == "categories") {
+        return this.renderCategorySelection()
+      } else {
+        return (
+          <div key={profile[0]}>
+            <h5 className="profile-titles">{this.formatString(profile[0])}</h5>
+            <input
+              value={profile[1]}
+              name={profile[0]}
+              className="profile-text pt-input"
+              type="text"
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+        )
+      }
     })
   }
 
   renderCategorySelection() {
-    return this.props.categories.map((cat) => {
+    let cat_section = this.props.categories.map((cat) => {
       return (
-        <label key={cat.id} className="pt-control pt-checkbox">
-          <input type="checkbox" name={cat.id} onChange={this.handleCheck}/>
-          <span className="pt-control-indicator"></span>
-          {cat.name}
-        </label>
+        <Checkbox
+          key={cat.id}
+          checked={_.contains(this.state.profile.categories, cat.id)}
+          onChange={this.handleCheck}
+          label={cat.name}
+          name={cat.id}
+        />
       )
     })
+    return (
+      <div key={1} id="category_seclection">
+        <h5 className="profile-titles">Categories</h5>
+        {cat_section}
+      </div>
+    )
   }
 
   render() {
@@ -85,10 +107,6 @@ class ProfileModal extends React.Component {
       >
         <div className="pt-dialog-body">
           {this.renderProfileElements()}
-          <div id="category_seclection">
-            <h5 className="profile-titles">Categories</h5>
-            {this.renderCategorySelection()}
-          </div>
         </div>
         <div className="pt-dialog-footer">
           <div className="pt-dialog-footer-actions">

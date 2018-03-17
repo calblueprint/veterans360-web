@@ -15,7 +15,8 @@ class ApplicationModal extends React.Component {
         phone_number: this.props.application.phone_number,
         website: this.props.application.website,
         address: this.props.application.address,
-        description: this.props.application.description
+        description: this.props.application.description,
+        categories: []
       },
     }
     this.deletePartneringOrganization = this.deletePartneringOrganization.bind(this)
