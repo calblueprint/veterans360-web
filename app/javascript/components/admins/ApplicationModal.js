@@ -38,7 +38,6 @@ class ApplicationModal extends React.Component {
   getCategories() {
     const route = `/partnering_organizations/` + this.props.application.id + `/categories`
     request.get(route, (response) => {
-      console.log(response)
       const profile = this.state.profile
       profile["category_ids"] = response.map((x) => {return x.id})
       this._mounted && this.setState({ profile: profile })

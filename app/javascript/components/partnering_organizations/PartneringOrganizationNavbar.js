@@ -13,7 +13,7 @@ class PartneringOrganizationNavbar extends React.Component {
         website: this.props.partneringOrganization.website,
         address: this.props.partneringOrganization.address,
         description: this.props.partneringOrganization.description,
-        category_ids: []
+        category_ids: this.props.po_categories.map((x) => {return x.id})
       },
     }
   }

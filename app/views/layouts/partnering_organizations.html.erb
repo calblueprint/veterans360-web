@@ -15,7 +15,8 @@
   <body>
     <%= react_component("partnering_organizations/PartneringOrganizationNavbar", {
       partneringOrganization: current_partnering_organization,
-      categories: Category.all
+      categories: Category.all,
+      po_categories: current_partnering_organization.categories
     })%>
     <%= yield %>
   </body>
