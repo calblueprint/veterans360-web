@@ -71,7 +71,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: [:create, :destroy]
+  resources :categories, only: [:create, :destroy, :index] do
+    member do
+      get 'get_resources', to: 'categories#get_resources_in'
+    end
+  end
 
   namespace :api, defaults: { format: [:json, :csv] } do
     resources :resources, only: [:index, :show] do

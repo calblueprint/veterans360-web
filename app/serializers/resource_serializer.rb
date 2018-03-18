@@ -19,7 +19,7 @@ class ResourceSerializer < BaseSerializer
   attributes :id,
              :file_name,
              :file,
-             :category,
+             :categories,
              :description,
              :updated_at,
              :owner_id,
@@ -27,8 +27,17 @@ class ResourceSerializer < BaseSerializer
              :num_upvotes
 
   def veteran_has_upvoted
-    object.upvoted_by?(scope[:current_veteran])
+    object.upvoted_by?(1)
   end
+
+  def categories
+    category_arr = []
+    object.categories.each do |c|
+      category_arr.push(c.name)
+    end
+    return category_arr
+  end
+
   def num_upvotes
     object.upvotes.count
   end

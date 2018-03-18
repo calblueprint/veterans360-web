@@ -83,7 +83,8 @@ class ResourcesController < ApplicationController
   end
 
   def get_resource_categories
-    render json: Resource.resource_categories
+    @categories = Category.all
+    render json: @categories
   end
 
   def get_home_resources
