@@ -9,8 +9,6 @@
 #  address                :string
 #  lat                    :decimal(10, 6)
 #  lng                    :decimal(10, 6)
-#  role                   :integer
-#  demographic            :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  email                  :string           default(""), not null

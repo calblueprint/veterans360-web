@@ -4,7 +4,7 @@ li {
 .container {
   padding-top: 30px;
 }
-.container-header {
+.container-header, #filters {
   -webkit-margin-start: 40px;
 }
 ul {
@@ -13,4 +13,7 @@ ul {
 a, a:hover, a:active, a:visited{
   color: transparent;
   background-color: transparent;
+}
+#resource-list {
+  margin-top: 10px;
 }

@@ -36,6 +36,11 @@ class Resource < ApplicationRecord
     Crisis_Support: 9
   }
 
+  enum resource_sections: {
+    Vault: 0,
+    Response: 1
+  }
+
   def url
     file.url
   end
