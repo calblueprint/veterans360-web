@@ -12,4 +12,7 @@
 class Upvote < ApplicationRecord
   belongs_to :veteran
   belongs_to :resource
+
+    validates_uniqueness_of :veteran_id, scope: :resource_id
+
 end
