@@ -12,7 +12,7 @@ class VeteransController < ApplicationController
       format.html { render :index }
       format.json {
         render json: @veterans,
-               each_serializer: VeteranFriendSerializer,
+               each_serializer: VeteranSecretFieldsSerializer,
                scope: { current_veteran: current_veteran }
       }
     end
@@ -25,7 +25,7 @@ class VeteransController < ApplicationController
       format.html { render :show }
       format.json {
         render json: @veteran,
-               serializer: VeteranFriendSerializer,
+               serializer: VeteranSecretFieldsSerializer,
                scope: { current_veteran: current_veteran }
       }
     end
@@ -104,7 +104,7 @@ class VeteransController < ApplicationController
              scope: { current_veteran: current_veteran }
     else
       render json: @veteran,
-             serializer: VeteranFriendSerializer,
+             serializer: VeteranSecretSerializer,
              scope: { current_veteran: current_veteran }
     end
   end

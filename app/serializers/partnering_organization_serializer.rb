@@ -32,7 +32,11 @@ class PartneringOrganizationSerializer < BaseSerializer
              :address,
              :lat,
              :lng,
+             :role,
+             :demographic,
              :approval_status,
              :subscribers,
              :description
+  has_many :resources, serializer: ResourcePoSerializer
+
 end

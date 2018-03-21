@@ -5,7 +5,7 @@ def create_veterans
   num_roles = Veteran::ROLE_KEYS.count
 
   # Create 10 Veterans with random names and some random roles
-  10.times do |i|
+  100.times do |i|
     veteran = Veteran.create(
       first_name: FFaker::Name.first_name,
       last_name: FFaker::Name.last_name,
