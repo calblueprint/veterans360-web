@@ -11,9 +11,7 @@ class AddResourceModal extends React.Component {
       isOpen: false,
       resource: {
         file_name: '',
-        category: 1,
         description: '',
-        section: 0,
         file: '',
       },
     }
@@ -33,9 +31,7 @@ class AddResourceModal extends React.Component {
     let formData = new FormData()
     formData.append('resource[file]', this.file.files[0], this.file.files[0].name)
     formData.append('resource[file_name]', this.state.resource.file_name)
-    formData.append('resource[category]', this.state.resource.category)
     formData.append('resource[description]', this.state.resource.description)
-    formData.append('resource[section]', this.state.resource.section)
     fetch('/resources', {
       method: 'POST',
       body: formData,
@@ -59,14 +55,6 @@ class AddResourceModal extends React.Component {
     }
   }
 
-  renderSelect(items) {
-    return Object.entries(this.props[items]).map((item) => {
-      return (
-        <option key={item[1]} value={item[1]}>{item[0]}</option>
-      )
-    })
-  }
-
   render() {
     return (
       <div>
@@ -88,26 +76,6 @@ class AddResourceModal extends React.Component {
                   className="pt-input"
                   required
                 />
-              </p>
-              <p className="pt-ui-text">Category:
-                <select
-                  value={this.state.resource.category}
-                  onChange={this.handleChange}
-                  name="category"
-                  className="pt-input"
-                >
-                  {this.renderSelect("categories")}
-                </select>
-              </p>
-              <p className="pt-ui-text">Section:
-                <select
-                  value={this.state.resource.section}
-                  onChange={this.handleChange}
-                  name="section"
-                  className="pt-input"
-                >
-                  {this.renderSelect("sections")}
-                </select>
               </p>
               <p className="pt-ui-text">Description:
                 <textarea

@@ -54,8 +54,7 @@ class PartneringOrganizationsController < ApplicationController
       # TODO: Make this more efficient, this is a little hacky
       PartnerCategory.where(partnering_organization_id: @partnering_organization.id).delete_all
       params[:category_ids].each do |i|
-        @po_cat = PartnerCategory.new(partnering_organization_id: @partnering_organization.id, category_id: i)
-        @po_cat.save
+        @po_cat = PartnerCategory.create(partnering_organization_id: @partnering_organization.id, category_id: i)
       end
       if @partnering_organization.update(partnering_organization_params)
         format.html { redirect_to @partnering_organization, notice: 'Partnering organization was successfully updated.' }

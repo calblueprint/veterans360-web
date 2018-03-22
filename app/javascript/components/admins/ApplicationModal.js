@@ -70,11 +70,7 @@ class ApplicationModal extends React.Component {
   }
 
   toggleProfile() {
-    if (this.state.isOpen == true) {
-      this.setState({ isOpen: false })
-    } else {
-      this.setState({ isOpen: true })
-    }
+    this.setState({ isOpen: !this.state.isOpen })
   }
 
   render() {

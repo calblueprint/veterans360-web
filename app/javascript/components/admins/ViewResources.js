@@ -10,8 +10,6 @@ class ViewResources extends React.Component {
   render () {
     return (
       <ResourceViewModal
-        categories={this.props.categories}
-        sections={this.props.sections}
         resources={this.props.resources}
       />
     )
