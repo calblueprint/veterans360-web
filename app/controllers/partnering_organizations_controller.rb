@@ -87,6 +87,7 @@ class PartneringOrganizationsController < ApplicationController
   def resources
     respond_to do |format|
       format.json { render json: @partnering_organization.resources }
+      format.html { render :resources }
     end
   end
 

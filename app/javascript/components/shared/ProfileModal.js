@@ -3,6 +3,7 @@ import React from "react"
 import { Button, Checkbox, Dialog, Intent, EditableText } from "@blueprintjs/core"
 
 import request from "../../shared/requests/request"
+import AddResourceModal from "./AddResourceModal.js"
 import ResourceModal from "./ResourceModal.js"
 
 class ProfileModal extends React.Component {
@@ -105,6 +106,9 @@ class ProfileModal extends React.Component {
       <div key={2} id="profile_resource">
         <h5 className="profile-titles">Resources</h5>
         {resource_section}
+        <AddResourceModal
+          po_id={this.props.profile_id}
+        />
       </div>
     )
   }

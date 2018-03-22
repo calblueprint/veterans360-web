@@ -29,6 +29,10 @@ class AddResourceModal extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     let formData = new FormData()
+    if (this.props.po_id) {
+      console.log(this.props.po_id)
+      formData.append('resource[owner_id]', this.props.po_id)
+    }
     formData.append('resource[file]', this.file.files[0], this.file.files[0].name)
     formData.append('resource[file_name]', this.state.resource.file_name)
     formData.append('resource[description]', this.state.resource.description)
