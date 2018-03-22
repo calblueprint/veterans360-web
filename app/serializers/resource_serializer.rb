@@ -27,7 +27,7 @@ class ResourceSerializer < BaseSerializer
              :num_upvotes
 
   def veteran_has_upvoted
-    object.upvoted_by?(1)
+    object.upvoted_by?(scope[:current_veteran])
   end
 
   def categories

@@ -38,7 +38,7 @@ class Resource < ApplicationRecord
   end
 
   def upvoted_by?(veteran)
-    upvotes.exists?(veteran_id: 1)
+    upvotes.exists?(veteran_id: veteran.id)
   end
 
 end
