@@ -51,7 +51,6 @@ class ApplicationModal extends React.Component {
   getResources() {
     const route = `/partnering_organizations/` + this.props.application.id + `/resources`
     request.get(route, (response) => {
-      console.log(response)
       const profile = this.state.profile
       profile["resources"] = response
       this._mounted && this.setState({ profile: profile })

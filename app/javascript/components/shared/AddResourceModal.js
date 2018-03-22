@@ -30,7 +30,6 @@ class AddResourceModal extends React.Component {
     event.preventDefault()
     let formData = new FormData()
     if (this.props.po_id) {
-      console.log(this.props.po_id)
       formData.append('resource[owner_id]', this.props.po_id)
     }
     formData.append('resource[file]', this.file.files[0], this.file.files[0].name)
