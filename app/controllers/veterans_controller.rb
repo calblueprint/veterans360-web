@@ -71,7 +71,7 @@ class VeteransController < ApplicationController
     end
   end
 
-  # PATCH/PUT /veterans/1
+  # PATCH/PUT /veterans/1/connect_sign_up
   # Used solely for veterans signing up for Connect
   def connect_sign_up
     @veteran = Veteran.find(params[:id])

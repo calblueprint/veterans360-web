@@ -1,3 +1,4 @@
 class CategorySerializer < BaseSerializer
-  attributes :id
+  attributes :id,
+  			 :name
 end

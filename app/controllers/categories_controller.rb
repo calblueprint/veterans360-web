@@ -28,6 +28,22 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def index
+    @categories = Category.all
+    render json: @categories
+  end
+
+  def get_resources_in
+    resources = []
+    @category = Category.find(params[:id])
+    @category.partnering_organizations.each do |partner_org| 
+      resources += partner_org.resources
+    end
+    render json: resources, each_serializer: ResourceSerializer, scope: {
+      current_veteran: current_veteran
+    }
+  end
+
   private
     def category_params
       params.require(:category).permit(:name)
