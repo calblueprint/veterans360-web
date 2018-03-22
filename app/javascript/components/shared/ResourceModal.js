@@ -47,7 +47,6 @@ class ResourceModal extends React.Component {
 
 ResourceModal.propTypes = {
   resource: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     file_name: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
   })

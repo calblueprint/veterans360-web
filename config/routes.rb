@@ -64,6 +64,7 @@ Rails.application.routes.draw do
     member do
       post :generate_new_password_email
       get 'categories'
+      get 'resources'
     end
     collection do
       get 'resources'

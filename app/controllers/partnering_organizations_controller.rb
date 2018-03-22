@@ -83,6 +83,13 @@ class PartneringOrganizationsController < ApplicationController
     end
   end
 
+  # GET /partnering_organizations/1/resources
+  def resources
+    respond_to do |format|
+      format.json { render json: @partnering_organization.resources }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_partnering_organization
