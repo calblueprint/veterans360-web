@@ -3,7 +3,8 @@ import React from "react"
 import { Button, Checkbox, Dialog, Intent, EditableText } from "@blueprintjs/core"
 
 import request from "../../shared/requests/request"
-
+import AddResourceModal from "./AddResourceModal.js"
+import ResourceModal from "./ResourceModal.js"
 
 class ProfileModal extends React.Component {
   constructor(props) {
@@ -52,6 +53,8 @@ class ProfileModal extends React.Component {
     return Object.entries(this.state.profile).map((profile) => {
       if (profile[0] == "category_ids") {
         return this.renderCategorySelection()
+      } else if (profile[0] == "resources") {
+        return this.renderProfileResources()
       } else {
         return (
           <div key={profile[0]}>
@@ -83,9 +86,29 @@ class ProfileModal extends React.Component {
       )
     })
     return (
-      <div key={1} id="category_seclection">
+      <div key={1} id="category_selection">
         <h5 className="profile-titles">Categories</h5>
         {cat_section}
+      </div>
+    )
+  }
+
+  renderProfileResources() {
+    let resource_section = this.state.profile.resources.map((resource) => {
+      return (
+        <ResourceModal
+          key={resource.id}
+          resource={resource}
+        />
+      )
+    })
+    return (
+      <div key={2} id="profile_resource">
+        <h5 className="profile-titles">Resources</h5>
+        {resource_section}
+        <AddResourceModal
+          po_id={this.props.profile_id}
+        />
       </div>
     )
   }

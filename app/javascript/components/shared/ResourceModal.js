@@ -27,13 +27,7 @@ class ResourceModal extends React.Component {
           File Name: {this.props.resource.file_name}
         </p>
         <p>
-          Category: {this.props.categories[this.props.resource.category]}
-        </p>
-        <p>
           Description: {this.props.resource.description}
-        </p>
-        <p>
-          Section: {this.props.sections[this.props.resource.section]}
         </p>
         <p>
           Created at: {this.props.resource.created_at}
@@ -53,7 +47,6 @@ class ResourceModal extends React.Component {
 
 ResourceModal.propTypes = {
   resource: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     file_name: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
   })

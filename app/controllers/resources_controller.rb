@@ -36,12 +36,15 @@ class ResourcesController < ApplicationController
   # POST /resources.json
   def create
     if admin_signed_in?
-      user = Admin.find(current_admin.id)
+      owner = Admin.find(current_admin.id)
     end
     if partnering_organization_signed_in?
-      user = PartneringOrganization.find(current_partnering_organization.id)
+      owner = PartneringOrganization.find(current_partnering_organization.id)
     end
-    @resource = user.resources.new(resource_params)
+    if params[:resource][:owner_id]
+      owner = PartneringOrganization.find(params[:resource][:owner_id])
+    end
+    @resource = owner.resources.new(resource_params)
     respond_to do |format|
       if @resource.save
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
@@ -106,9 +109,8 @@ class ResourcesController < ApplicationController
       params.require(:resource).permit(
         :file_name,
         :file,
-        :category,
         :description,
-        :section
+        :owner_id
       )
     end
 

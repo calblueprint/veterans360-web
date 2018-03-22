@@ -24,11 +24,6 @@ class Resource < ApplicationRecord
 
   mount_uploader :file, FilesUploader
 
-  enum resource_sections: {
-    Vault: 0,
-    Response: 1
-  }
-
   def categories
     owner.categories
   end

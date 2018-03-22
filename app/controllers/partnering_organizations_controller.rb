@@ -52,10 +52,11 @@ class PartneringOrganizationsController < ApplicationController
   def update
     respond_to do |format|
       # TODO: Make this more efficient, this is a little hacky
-      PartnerCategory.where(partnering_organization_id: @partnering_organization.id).delete_all
-      params[:category_ids].each do |i|
-        @po_cat = PartnerCategory.new(partnering_organization_id: @partnering_organization.id, category_id: i)
-        @po_cat.save
+      if params[:category_ids]
+        PartnerCategory.where(partnering_organization_id: @partnering_organization.id).delete_all
+        params[:category_ids].each do |i|
+          @po_cat = PartnerCategory.create(partnering_organization_id: @partnering_organization.id, category_id: i)
+        end
       end
       if @partnering_organization.update(partnering_organization_params)
         format.html { redirect_to @partnering_organization, notice: 'Partnering organization was successfully updated.' }
@@ -81,6 +82,14 @@ class PartneringOrganizationsController < ApplicationController
   def categories
     respond_to do |format|
       format.json { render json: @partnering_organization.categories, each_serializer: CategorySerializer }
+    end
+  end
+
+  # GET /partnering_organizations/1/resources
+  def resources
+    respond_to do |format|
+      format.json { render json: @partnering_organization.resources }
+      format.html { render :resources }
     end
   end
 

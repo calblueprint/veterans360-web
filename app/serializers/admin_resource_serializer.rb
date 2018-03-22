@@ -13,7 +13,7 @@
 #  description                 :string
 #
 
-class ResourceSerializer < BaseSerializer
+class AdminResourceSerializer < BaseSerializer
   belongs_to :owner
   attributes :id,
              :file_name,
@@ -21,23 +21,7 @@ class ResourceSerializer < BaseSerializer
              :description,
              :updated_at,
              :owner_id,
-             :created_at,
-             :veteran_has_upvoted,
              :num_upvotes
-
-  def veteran_has_upvoted
-    if scope
-      object.upvoted_by?(scope[:current_veteran])
-    end
-  end
-
-  def categories
-    category_arr = []
-    object.categories.each do |c|
-      category_arr.push(c.name)
-    end
-    return category_arr
-  end
 
   def num_upvotes
     object.upvotes.count

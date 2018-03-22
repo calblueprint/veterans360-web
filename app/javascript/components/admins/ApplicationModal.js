@@ -17,7 +17,8 @@ class ApplicationModal extends React.Component {
         website: this.props.application.website,
         address: this.props.application.address,
         description: this.props.application.description,
-        category_ids: []
+        category_ids: [],
+        resources: []
       },
     }
     this.deletePartneringOrganization = this.deletePartneringOrganization.bind(this)
@@ -29,6 +30,7 @@ class ApplicationModal extends React.Component {
   componentDidMount() {
     this._mounted = true
     this.getCategories()
+    this.getResources()
   }
 
   componentWillUnmount() {
@@ -40,6 +42,17 @@ class ApplicationModal extends React.Component {
     request.get(route, (response) => {
       const profile = this.state.profile
       profile["category_ids"] = response.map((x) => {return x.id})
+      this._mounted && this.setState({ profile: profile })
+    }, (error) => {
+      console.log(error)
+    })
+  }
+
+  getResources() {
+    const route = `/partnering_organizations/` + this.props.application.id + `/resources`
+    request.get(route, (response) => {
+      const profile = this.state.profile
+      profile["resources"] = response
       this._mounted && this.setState({ profile: profile })
     }, (error) => {
       console.log(error)
@@ -70,11 +83,7 @@ class ApplicationModal extends React.Component {
   }
 
   toggleProfile() {
-    if (this.state.isOpen == true) {
-      this.setState({ isOpen: false })
-    } else {
-      this.setState({ isOpen: true })
-    }
+    this.setState({ isOpen: !this.state.isOpen })
   }
 
   render() {

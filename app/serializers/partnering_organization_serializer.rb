@@ -32,8 +32,6 @@ class PartneringOrganizationSerializer < BaseSerializer
              :address,
              :lat,
              :lng,
-             :role,
-             :demographic,
              :approval_status,
              :subscribers,
              :description
