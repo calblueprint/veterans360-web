@@ -52,9 +52,11 @@ class PartneringOrganizationsController < ApplicationController
   def update
     respond_to do |format|
       # TODO: Make this more efficient, this is a little hacky
-      PartnerCategory.where(partnering_organization_id: @partnering_organization.id).delete_all
-      params[:category_ids].each do |i|
-        @po_cat = PartnerCategory.create(partnering_organization_id: @partnering_organization.id, category_id: i)
+      if params[:category_ids]
+        PartnerCategory.where(partnering_organization_id: @partnering_organization.id).delete_all
+        params[:category_ids].each do |i|
+          @po_cat = PartnerCategory.create(partnering_organization_id: @partnering_organization.id, category_id: i)
+        end
       end
       if @partnering_organization.update(partnering_organization_params)
         format.html { redirect_to @partnering_organization, notice: 'Partnering organization was successfully updated.' }
