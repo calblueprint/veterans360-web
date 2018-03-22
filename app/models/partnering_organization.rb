@@ -31,9 +31,9 @@ class PartneringOrganization < ApplicationRecord
 
 	has_many :resources, :as => :owner, dependent: :destroy
 
-	has_many :subscriptions
+	has_many :subscriptions, dependent: :destroy
 	has_many :subscribers, through: :subscriptions, source: :veteran
-  has_many :partner_categories
+  has_many :partner_categories, dependent: :destroy
   has_many :categories, through: :partner_categories
 
   mount_uploader :image, ImageUploader
