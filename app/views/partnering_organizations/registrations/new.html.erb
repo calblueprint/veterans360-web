@@ -26,6 +26,11 @@
         <%= f.text_area :description, autofocus: true, :required => true %>
       </div>
 
+      <div>
+        <%= f.label :section %> <br />
+        <%= f.select :section, PartneringOrganization.sections.keys.to_a %>
+      </div>
+
       <div class="field">
         <%= f.label :password %>
         <% if @minimum_password_length %>

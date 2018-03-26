@@ -17,6 +17,7 @@ class ApplicationModal extends React.Component {
         website: this.props.application.website,
         address: this.props.application.address,
         description: this.props.application.description,
+        section: this.props.application.section,
         category_ids: [],
         resources: []
       },
@@ -101,6 +102,9 @@ class ApplicationModal extends React.Component {
           </p>
           <p>
             Description: {this.props.application.description}
+          </p>
+          <p>
+            Section: {this.props.application.section}
           </p>
           {this.props.application.approval_status ? (
             <div>

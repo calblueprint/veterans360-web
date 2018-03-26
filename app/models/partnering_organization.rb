@@ -41,6 +41,11 @@ class PartneringOrganization < ApplicationRecord
 	geocoded_by :address, :latitude  => :lat, :longitude => :lng
 	after_validation :geocode
 
+  enum section: {
+    Vault: 1,
+    Response: 2
+  }
+
   def active_for_authentication?
     super && approval_status?
   end

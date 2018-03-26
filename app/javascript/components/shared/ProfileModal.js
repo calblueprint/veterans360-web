@@ -55,6 +55,21 @@ class ProfileModal extends React.Component {
         return this.renderCategorySelection()
       } else if (profile[0] == "resources") {
         return this.renderProfileResources()
+      } else if (profile[0] == "section") {
+        return (
+          <div key={profile[0]}>
+            <h5 className="profile-titles">{this.formatString(profile[0])}</h5>
+            <select
+              value={profile[1]}
+              onChange={this.handleChange}
+              name="section"
+              className="pt-input"
+            >
+              <option key="Vault" value="Vault">Vault</option>
+              <option key="Response" value="Response">Response</option>
+            </select>
+          </div>
+        )
       } else {
         return (
           <div key={profile[0]}>
