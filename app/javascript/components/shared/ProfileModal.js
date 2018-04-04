@@ -15,6 +15,15 @@ class ProfileModal extends React.Component {
     this.editProfile = this.editProfile.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
+  }
+
+  // If we're switching section, we clear all the checkboxes
+  handleSelect(event) {
+    const profile = this.state.profile
+    profile[event.target.name] = event.target.value
+    profile.category_ids = []
+    this.setState({ profile: profile });
   }
 
   handleChange(event) {
@@ -61,7 +70,7 @@ class ProfileModal extends React.Component {
             <h5 className="profile-titles">{this.formatString(profile[0])}</h5>
             <select
               value={profile[1]}
-              onChange={this.handleChange}
+              onChange={this.handleSelect}
               name="section"
               className="pt-input"
             >
@@ -90,15 +99,17 @@ class ProfileModal extends React.Component {
 
   renderCategorySelection() {
     let cat_section = this.props.categories.map((cat) => {
-      return (
-        <Checkbox
-          key={cat.id}
-          checked={_.contains(this.state.profile.category_ids, cat.id)}
-          onChange={this.handleCheck}
-          label={cat.name}
-          name={cat.id}
-        />
-      )
+      if (cat.section == this.props.profile.section) {
+        return (
+          <Checkbox
+            key={cat.id}
+            checked={_.contains(this.state.profile.category_ids, cat.id)}
+            onChange={this.handleCheck}
+            label={cat.name}
+            name={cat.id}
+          />
+        )
+      }
     })
     return (
       <div key={1} id="category_selection">

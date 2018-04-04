@@ -36,7 +36,7 @@ class CategoriesController < ApplicationController
   def get_resources_in
     resources = []
     @category = Category.find(params[:id])
-    @category.partnering_organizations.each do |partner_org| 
+    @category.partnering_organizations.each do |partner_org|
       resources += partner_org.resources
     end
     render json: resources, each_serializer: ResourceSerializer, scope: {
@@ -46,6 +46,6 @@ class CategoriesController < ApplicationController
 
   private
     def category_params
-      params.require(:category).permit(:name)
+      params.require(:category).permit(:name, :section)
     end
 end

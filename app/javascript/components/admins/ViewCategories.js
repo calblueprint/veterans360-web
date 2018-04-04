@@ -11,6 +11,7 @@ class ViewCategories extends React.Component {
       isOpen: false,
       category: {
         name: '',
+        section: 1,
       }
     }
     this.toggleAddCategory = this.toggleAddCategory.bind(this)
@@ -64,6 +65,9 @@ class ViewCategories extends React.Component {
             <p>
               Name: {category.name}
             </p>
+            <p>
+              Section: {category.section}
+            </p>
             <Button className="delete-category" onClick={() => this.deleteCategory(category.id)}>
               Delete
             </Button>
@@ -81,7 +85,7 @@ class ViewCategories extends React.Component {
           iconName="pt-icon-add"
           isOpen={this.state.isOpen}
           onClose={this.toggleAddCategory}
-          title="Add Resource"
+          title="Add Category"
         >
           <form action='/categories' method='POST' onSubmit={this.submitCategory}>
             <div className="pt-dialog-body">
@@ -95,7 +99,19 @@ class ViewCategories extends React.Component {
                   required
                 />
               </p>
+              <p className="pt-ui-text">Category Section:
+                <select
+                  value={this.state.category.section}
+                  onChange={this.handleChange}
+                  name="section"
+                  className="pt-input"
+                >
+                  <option key="Vault" value="Vault">Vault</option>
+                  <option key="Response" value="Response">Response</option>
+                </select>
+              </p>
             </div>
+
             <div className="pt-dialog-footer">
               <div className="pt-dialog-footer-actions">
                 <Button
