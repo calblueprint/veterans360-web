@@ -11,9 +11,7 @@ class AddResourceModal extends React.Component {
       isOpen: false,
       resource: {
         file_name: '',
-        category: 1,
         description: '',
-        section: 0,
         file: '',
       },
     }
@@ -31,11 +29,12 @@ class AddResourceModal extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     let formData = new FormData()
+    if (this.props.po_id) {
+      formData.append('resource[owner_id]', this.props.po_id)
+    }
     formData.append('resource[file]', this.file.files[0], this.file.files[0].name)
     formData.append('resource[file_name]', this.state.resource.file_name)
-    formData.append('resource[category]', this.state.resource.category)
     formData.append('resource[description]', this.state.resource.description)
-    formData.append('resource[section]', this.state.resource.section)
     fetch('/resources', {
       method: 'POST',
       body: formData,
@@ -59,22 +58,6 @@ class AddResourceModal extends React.Component {
     }
   }
 
-  renderCategories() {
-    return Object.entries(this.props.categories).map((category) => {
-      return (
-        <option key={category[1]} value={category[1]}>{category[0]}</option>
-      )
-    })
-  }
-
-  renderSections() {
-    return Object.entries(this.props.sections).map((section) => {
-      return (
-        <option key={section[1]} value={section[1]}>{section[0]}</option>
-      )
-    })
-  }
-
   render() {
     return (
       <div>
@@ -94,27 +77,8 @@ class AddResourceModal extends React.Component {
                   name="file_name"
                   type="text"
                   className="pt-input"
+                  required
                 />
-              </p>
-              <p className="pt-ui-text">Category:
-                <select
-                  value={this.state.resource.category}
-                  onChange={this.handleChange}
-                  name="category"
-                  className="pt-input"
-                >
-                  {this.renderCategories()}
-                </select>
-              </p>
-              <p className="pt-ui-text">Section:
-              <select
-                  value={this.state.resource.section}
-                  onChange={this.handleChange}
-                  name="section"
-                  className="pt-input"
-                >
-                  {this.renderSections()}
-                </select>
               </p>
               <p className="pt-ui-text">Description:
                 <textarea
@@ -122,7 +86,8 @@ class AddResourceModal extends React.Component {
                   onChange={this.handleChange}
                   name="description"
                   type="text"
-                  className="pt-input">
+                  className="pt-input"
+                  required>
                 </textarea>
               </p>
               <p className="pt-ui-text">File:
@@ -132,6 +97,7 @@ class AddResourceModal extends React.Component {
                   type="file"
                   ref={input => {this.file = input}}
                   className='pt-button-small'
+                  required
                 />
               </p>
             </div>

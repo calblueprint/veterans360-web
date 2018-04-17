@@ -5,7 +5,6 @@
 #  id                          :integer          not null, primary key
 #  file_name                   :string
 #  file                        :string
-#  category                    :integer
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null
 #  partnering_organizations_id :integer
@@ -19,16 +18,27 @@ class ResourceSerializer < BaseSerializer
   attributes :id,
              :file_name,
              :file,
-             :category,
              :description,
              :updated_at,
              :owner_id,
+             :created_at,
              :veteran_has_upvoted,
              :num_upvotes
 
   def veteran_has_upvoted
-    object.upvoted_by?(scope[:current_veteran])
+    if scope
+      object.upvoted_by?(scope[:current_veteran])
+    end
   end
+
+  def categories
+    category_arr = []
+    object.categories.each do |c|
+      category_arr.push(c.name)
+    end
+    return category_arr
+  end
+
   def num_upvotes
     object.upvotes.count
   end

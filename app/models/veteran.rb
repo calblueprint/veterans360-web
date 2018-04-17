@@ -96,6 +96,7 @@ class Veteran < ApplicationRecord
     roles.map { |r| ROLE_KEYS[r].to_s }
   end
 
+
   def readable_roles
     roles.map { |r| ROLE_NAMES[ROLE_KEYS[r]] }
   end

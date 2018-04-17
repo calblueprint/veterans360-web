@@ -56,16 +56,25 @@ Rails.application.routes.draw do
     collection do
       get 'resources'
       get 'applications'
+      get 'categories'
     end
   end
 
   resources :partnering_organizations do
     member do
       post :generate_new_password_email
+      get 'categories'
+      get 'resources'
     end
     collection do
       get 'resources'
       get 'veterans'
+    end
+  end
+
+  resources :categories, only: [:create, :destroy, :index] do
+    member do
+      get 'get_resources', to: 'categories#get_resources_in'
     end
   end
 

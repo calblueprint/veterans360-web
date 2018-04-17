@@ -12,18 +12,19 @@ class PartneringOrganizationNavbar extends React.Component {
         phone_number: this.props.partneringOrganization.phone_number,
         website: this.props.partneringOrganization.website,
         address: this.props.partneringOrganization.address,
-        role: this.props.partneringOrganization.role,
-        demographic: this.props.partneringOrganization.demographic,
-        description: this.props.partneringOrganization.description
+        description: this.props.partneringOrganization.description,
+        section: this.props.partneringOrganization.section,
+        category_ids: this.props.po_categories.map((x) => {return x.id})
       },
     }
   }
 
   renderNavbarElements() {
     return (
-      <a href={`/partnering_organizations/resources`}><button className="pt-button pt-minimal pt-icon-document">Resources</button></a>
-      <a href={`/partnering_organizations/veterans`}><button className="pt-button pt-minimal pt-icon-document">Veterans</button></a>
-
+      <div>
+        <a href={`/partnering_organizations/resources`}><button className="pt-button pt-minimal pt-icon-document">Resources</button></a>
+        <a href={`/partnering_organizations/veterans`}><button className="pt-button pt-minimal pt-icon-document">Veterans</button></a>
+      </div>
     )
   }
 
@@ -34,6 +35,7 @@ class PartneringOrganizationNavbar extends React.Component {
         profile_id={this.props.partneringOrganization.id}
         edit_route="/partnering_organizations/"
         renderNavbarElements={this.renderNavbarElements}
+        categories={this.props.categories}
       />
     )
   }

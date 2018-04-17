@@ -24,22 +24,9 @@ class Resource < ApplicationRecord
 
   mount_uploader :file, FilesUploader
 
-  enum resource_categories: {
-    Financial: 1,
-    Volunteerism: 2,
-    Housing: 3,
-    Benefits: 4,
-    Career_Advice: 5,
-    Employment: 6,
-    Education: 7,
-    Peer_Groups: 8,
-    Crisis_Support: 9
-  }
-
-  enum resource_sections: {
-    Vault: 0,
-    Response: 1
-  }
+  def categories
+    owner.categories
+  end
 
   def url
     file.url
