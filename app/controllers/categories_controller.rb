@@ -33,6 +33,16 @@ class CategoriesController < ApplicationController
     render json: @categories
   end
 
+  def vault_categories
+    @vault_categories = Category.where("section = 1").order("section")
+    render json: @vault_categories
+  end
+
+  def response_categories
+    @response_categories = Category.where("section = 2").order("section")
+    render json: @response_categories
+  end
+
   def get_resources_in
     resources = []
     @category = Category.find(params[:id])
