@@ -1,7 +1,7 @@
 class VeteransController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_veteran!
-  before_action :set_veteran, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  before_action :set_veteran, only: [:show, :edit, :update, :destroy, :get_secret_fields]
 
 
   # GET /veterans
@@ -71,7 +71,7 @@ class VeteransController < ApplicationController
     end
   end
 
-  # PATCH/PUT /veterans/1
+  # PATCH/PUT /veterans/1/connect_sign_up
   # Used solely for veterans signing up for Connect
   def connect_sign_up
     @veteran = Veteran.find(params[:id])
@@ -92,9 +92,21 @@ class VeteransController < ApplicationController
     end
   end
 
-
   def get_military_branch
     render json: Veteran.military_branches
+  end
+
+  # If the veterans are friends, returns all the fields, else returns only some
+  def get_veteran_info
+    if current_veteran.is_friend_of?(@veteran)
+      render json: @veteran,
+             serializer: VeteranSecretFieldsSerializer,
+             scope: { current_veteran: current_veteran }
+    else
+      render json: @veteran,
+             serializer: VeteranFriendSerializer,
+             scope: { current_veteran: current_veteran }
+    end
   end
 
   # Returns a list of all users that follow this user unreciprocated
@@ -123,6 +135,8 @@ class VeteransController < ApplicationController
       params.require(:veteran).permit(:military_branch,
                                       :unit,
                                       :notes,
+                                      :phone_number,
+                                      :address,
                                       :accept_messages,
                                       :share_profile,
                                       :accept_notices,

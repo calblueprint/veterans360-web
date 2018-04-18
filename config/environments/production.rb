@@ -96,9 +96,9 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
 
-  config.action_mailer.default_url_options = { :host => 'veterans360.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'veterans360-prod.herokuapp.com' }
 
-  Rails.application.routes.default_url_options[:host] = 'veterans360.herokuapp.com'
+  Rails.application.routes.default_url_options[:host] = 'veterans360-prod.herokuapp.com'
 
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',

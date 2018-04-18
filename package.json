@@ -9,13 +9,13 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
-    "react-bootstrap": "^0.31.5",
+    "react-bootstrap": "^0.32.1",
     "react-bootstrap-modal": "^4.0.0",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
     "react_ujs": "^2.4.2",
-    "underscore": "^1.8.3",
-    "tcomb-form": "^0.9.17"
+    "tcomb-form": "^0.9.17",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.9.5"

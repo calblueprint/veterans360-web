@@ -9,9 +9,13 @@
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_link_tag 'https://unpkg.com/normalize.css@^4.1.1' %>
     <%= stylesheet_link_tag 'https://unpkg.com/@blueprintjs/core@^1.11.0/dist/blueprint.css' %>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
   </head>
   <body>
-    <%= react_component("admins/AdminNavbar", {admin: current_admin})%>
+    <%= react_component("admins/AdminNavbar", {
+      admin: current_admin,
+      categories: Category.all
+    })%>
     <%= yield %>
   </body>
 </html>

@@ -15,6 +15,8 @@
 #
 
 class Resource < ApplicationRecord
+  scope :by_category, -> cat { where(category: cat) }
+
   belongs_to :owner, :polymorphic => true
 
   has_many :upvotes, :dependent => :destroy
@@ -22,17 +24,9 @@ class Resource < ApplicationRecord
 
   mount_uploader :file, FilesUploader
 
-  enum resource_categories: {
-    Financial: 1,
-    Volunteerism: 2,
-    Housing: 3,
-    Benefits: 4,
-    Career_Advice: 5,
-    Employment: 6,
-    Education: 7,
-    Peer_Groups: 8,
-    Crisis_Support: 9
-  }
+  def categories
+    owner.categories
+  end
 
   def url
     file.url
@@ -42,5 +36,4 @@ class Resource < ApplicationRecord
     upvotes.exists?(veteran_id: veteran.id)
   end
 
-  
 end

@@ -5,7 +5,7 @@
       <%= devise_error_messages! %>
 
      <div><%= f.label :name %><br />
-            <%= f.text_field :name, autofocus: true %></div>
+            <%= f.text_field :name, autofocus: true, :required => true %></div>
 
      <div><%= f.label :website %><br />
             <%= f.text_field :website, autofocus: true %></div>
@@ -18,17 +18,17 @@
 
       <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true %>
+        <%= f.email_field :email, autofocus: true, :required => true %>
       </div>
 
       <div>
-      <%= f.label :role %><br />
-        <%= f.select(:role, PartneringOrganization.roles.keys.map {|role| [role.titleize,role]}) %>
+        <%= f.label :description %> <br />
+        <%= f.text_area :description, autofocus: true, :required => true %>
       </div>
 
       <div>
-      <%= f.label :demographic %><br />
-        <%= f.select(:demographic, PartneringOrganization.demographics.keys.map {|demographic| [demographic.titleize,demographic]}) %>
+        <%= f.label :section %> <br />
+        <%= f.select :section, PartneringOrganization.sections.keys.to_a %>
       </div>
 
       <div class="field">

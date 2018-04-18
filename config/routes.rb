@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     member do
       get :requests
       patch 'connect_sign_up', to: 'veterans#connect_sign_up'
+      get 'get_veteran_info'
     end
     collection do
       get 'get_military_branch'
@@ -41,7 +42,6 @@ Rails.application.routes.draw do
     end
     collection do
       get 'get_resource_categories', to: 'resources#get_resource_categories'
-      get 'filter_resources/:categories', to: 'resources#filter_resources'
       get 'get_home_resources', to: 'resources#get_home_resources'
     end
   end
@@ -56,21 +56,31 @@ Rails.application.routes.draw do
     collection do
       get 'resources'
       get 'applications'
+      get 'categories'
     end
   end
 
   resources :partnering_organizations do
     member do
       post :generate_new_password_email
+      get 'categories'
+      get 'resources'
     end
     collection do
       get 'resources'
+      get 'veterans'
+    end
+  end
+
+  resources :categories, only: [:create, :destroy, :index] do
+    member do
+      get 'get_resources', to: 'categories#get_resources_in'
     end
   end
 
   namespace :api, defaults: { format: [:json, :csv] } do
     resources :resources, only: [:index, :show] do
-    end
+     end
   end
 
   root to: redirect('/partnering_organizations/sign_in')
