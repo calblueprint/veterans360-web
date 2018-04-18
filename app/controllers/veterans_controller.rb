@@ -63,7 +63,7 @@ class VeteransController < ApplicationController
     respond_to do |format|
       if @veteran.update(veteran_params)
         format.html { redirect_to @veteran, notice: 'Veteran was successfully updated.' }
-        format.json { render :show, status: :ok, location: @veteran }
+        format.json { render  json: @veteran, status: :ok, location: @veteran }
       else
         format.html { render :edit }
         format.json { render json: @veteran.errors, status: :unprocessable_entity }
