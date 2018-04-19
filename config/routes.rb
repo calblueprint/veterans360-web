@@ -76,6 +76,10 @@ Rails.application.routes.draw do
     member do
       get 'get_resources', to: 'categories#get_resources_in'
     end
+    collection do
+      get 'vault', to: 'categories#vault_categories'
+      get 'response', to: 'categories#response_categories'
+    end
   end
 
   namespace :api, defaults: { format: [:json, :csv] } do
