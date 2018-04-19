@@ -12,6 +12,9 @@ class Veterans::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    params[:veteran][:roles] = Veteran.serialize_string_roles(
+      params[:veteran][:roles]
+    )
     super
   end
 
@@ -45,13 +48,19 @@ class Veterans::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name,
                                                        :last_name,
+                                                       :email,
+                                                       { roles: [] },
+                                                       :description
                                                        ])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name,
-                                                              :last_name,
+                                                              :last_name, 
+                                                              :email,
+                                                              { roles: [] },
+                                                              :description
                                                               ])
   end
 
