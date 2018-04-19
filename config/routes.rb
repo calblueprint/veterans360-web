@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     collection do
       get 'get_resource_categories', to: 'resources#get_resource_categories'
       get 'get_home_resources', to: 'resources#get_home_resources'
+      get 'get_recent_resources', to: 'resources#get_recent_resources'
     end
   end
 
