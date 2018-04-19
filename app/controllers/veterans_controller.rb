@@ -128,7 +128,11 @@ class VeteransController < ApplicationController
       params.require(:veteran).permit(:first_name,
                                       :last_name,
                                       :email,
-                                      :on_connect)
+                                      :phone_number,
+                                      :address,
+                                      :military_branch,
+                                      :on_connect, 
+                                      :description)
     end
 
     def veteran_connect_signup_params

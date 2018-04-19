@@ -7,5 +7,6 @@ class BaseVeteranSerializer < BaseSerializer
              :email,
              :lat,
              :lng,
+             :description,
              :military_branch
 end
