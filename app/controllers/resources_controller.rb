@@ -97,6 +97,13 @@ class ResourcesController < ApplicationController
     }
   end
 
+  def get_recent_resources
+    @pos = current_veteran.po_follows
+    @resources = Resource.where(owner_id:@pos).order(:created_at).limit(5)
+    render json: @resources, each_serializer: ResourceSerializer, scope: {
+      current_veteran: current_veteran
+    }
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
