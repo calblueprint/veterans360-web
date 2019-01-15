@@ -85,6 +85,9 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    devise_token_auth (1.0.0)
+      devise (> 3.5.2, < 4.6)
+      rails (>= 4.2.0, < 6)
     erubi (1.6.1)
     excon (0.59.0)
     execjs (2.7.0)
@@ -253,6 +256,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
   devise
+  devise_token_auth (~> 1.0.0)
   ffaker
   figaro
   fog-aws
@@ -278,4 +282,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
