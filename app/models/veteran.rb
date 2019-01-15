@@ -30,6 +30,7 @@
 #
 
 class Veteran < ApplicationRecord
+  include DeviseTokenAuth::Concerns::User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -47,13 +48,13 @@ class Veteran < ApplicationRecord
   has_many :subscriptions
   has_many :po_follows, through: :subscriptions, source: :partnering_organization
 
-  EMAIL_PATTERN = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  EMAIL_PATTERN = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates_confirmation_of :password
   validates :email, format: { with: EMAIL_PATTERN }, uniqueness: true, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  validate :correctly_serialized_roles, on: [ :create, :update ]
+  validate :correctly_serialized_roles, on: %i[create update]
 
   serialize :roles
 
@@ -66,36 +67,34 @@ class Veteran < ApplicationRecord
     First_Responder: 6
   }
 
-  ROLE_KEYS = [
-    :active_duty,
-    :veteran,
-    :post_911,
-    :family_member,
-    :caregiver,
-    :other,
-  ]
+  ROLE_KEYS = %i[
+    active_duty
+    veteran
+    post_911
+    family_member
+    caregiver
+    other
+  ].freeze
 
   ROLE_NAMES = {
-    active_duty:    'Active Duty',
-    veteran:        'Veteran',
-    post_911:       'Post 911',
-    family_member:  'Family Member',
-    caregiver:      'Caregiver',
-    other:          'Other',
-  }
+    active_duty: 'Active Duty',
+    veteran: 'Veteran',
+    post_911: 'Post 911',
+    family_member: 'Family Member',
+    caregiver: 'Caregiver',
+    other: 'Other'
+  }.freeze
 
   # Accepts an array of string roles and returns the serialized integer version
   def self.serialize_string_roles(arr)
-    if arr.nil?
-      return
-    end
+    return if arr.nil?
+
     arr.map { |s| ROLE_KEYS.index(s.to_sym) }
   end
 
   def string_roles
     roles.map { |r| ROLE_KEYS[r].to_s }
   end
-
 
   def readable_roles
     roles.map { |r| ROLE_NAMES[ROLE_KEYS[r]] }
@@ -116,15 +115,14 @@ class Veteran < ApplicationRecord
   private
 
   def correctly_serialized_roles
-    unless self.roles.is_a?(Array)
+    unless roles.is_a?(Array)
       errors.add(:roles, 'is not an array.')
       return
     end
-    self.roles.each do |r|
+    roles.each do |r|
       unless r.is_a?(Integer) && r < ROLE_KEYS.length
         errors.add(:roles, 'are not well defined.')
       end
     end
   end
-
 end

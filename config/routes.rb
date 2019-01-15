@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
+  mount_devise_token_auth_for 'Veteran', at: 'auth'
 
   get 'subscriptions/create'
 
   devise_for :partnering_organizations, controllers: {
     sessions: 'partnering_organizations/sessions',
     registrations: 'partnering_organizations/registrations'
-  }
-  devise_for :veterans, controllers: {
-    sessions: 'veterans/sessions',
-    registrations: 'veterans/registrations',
   }
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
