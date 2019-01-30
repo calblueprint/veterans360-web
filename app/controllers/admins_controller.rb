@@ -64,9 +64,9 @@ class AdminsController < ApplicationController
     end
   end
 
-  def current_ability
-    @current_ability ||= ::AdminAbility.new(current_admin)
-  end
+  # def current_ability
+  #   @current_ability ||= ::AdminAbility.new(current_admin)
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

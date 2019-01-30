@@ -49,6 +49,7 @@ gem 'webpacker'
 gem 'react-rails'
 gem 'ffaker'
 gem 'has_scope'
+gem 'devise_token_auth', '~> 1.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

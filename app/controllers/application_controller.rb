@@ -1,15 +1,18 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  # Include some session helper methods on veteran: 
+  # https://devise-token-auth.gitbook.io/devise-token-auth/usage/controller_methods
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  skip_before_action :verify_authenticity_token, raise: false
 
-  def current_ability
-    if admin_signed_in?
-      @current_ability ||= Ability.new(current_admin)
-    elsif partnering_organization_signed_in?
-      @current_ability ||= Ability.new(current_partnering_organization)
-    else
-      @current_ability ||= Ability.new(current_veteran)
-    end
-  end
+  # def current_ability
+  #   if admin_signed_in?
+  #     @current_ability ||= Ability.new(current_admin)
+  #   elsif partnering_organization_signed_in?
+  #     @current_ability ||= Ability.new(current_partnering_organization)
+  #   else
+  #     @current_ability ||= Ability.new(current_veteran)
+  #   end
+  # end
 
   rescue_from CanCan::AccessDenied do
     redirect_to '/partnering_organizations/sign_in'
