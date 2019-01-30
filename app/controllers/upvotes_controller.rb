@@ -1,5 +1,5 @@
 class UpvotesController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, raise: false
 
   def new
   end

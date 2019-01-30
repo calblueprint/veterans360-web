@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'Veteran', at: 'auth'
-
-  get 'subscriptions/create'
-
   devise_for :partnering_organizations, controllers: {
     sessions: 'partnering_organizations/sessions',
     registrations: 'partnering_organizations/registrations'
@@ -11,6 +7,12 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions',
     registrations: 'admins/registrations'
   }
+
+  mount_devise_token_auth_for 'Veteran', at: 'auth', controllers: {
+    sessions: 'overrides/sessions'
+  }
+
+  get 'subscriptions/create'
 
   resources :veterans do
     member do
@@ -70,7 +72,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: [:create, :destroy, :index] do
+  resources :categories, only: %i[create destroy index] do
     member do
       get 'get_resources', to: 'categories#get_resources_in'
     end
@@ -80,9 +82,9 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api, defaults: { format: [:json, :csv] } do
-    resources :resources, only: [:index, :show] do
-     end
+  namespace :api, defaults: { format: %i[json csv] } do
+    resources :resources, only: %i[index show] do
+    end
   end
 
   root to: redirect('/partnering_organizations/sign_in')

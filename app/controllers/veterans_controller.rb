@@ -1,6 +1,5 @@
 class VeteransController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  load_and_authorize_resource
+  skip_before_action :verify_authenticity_token, raise: false
   before_action :set_veteran, only: [:show, :edit, :update, :destroy, :get_secret_fields]
 
 
@@ -21,6 +20,7 @@ class VeteransController < ApplicationController
   # GET /veterans/1
   # GET /veterans/1.json
   def show
+    @veteran = Veteran.find(params[:id])
     respond_to do |format|
       format.html { render :show }
       format.json {
@@ -85,6 +85,7 @@ class VeteransController < ApplicationController
   # DELETE /veterans/1
   # DELETE /veterans/1.json
   def destroy
+    @veteran = Veteran.find(params[:id])
     @veteran.destroy
     respond_to do |format|
       format.html { redirect_to veterans_url, notice: 'Veteran was successfully destroyed.' }
