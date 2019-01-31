@@ -10,6 +10,7 @@ def create_veterans
       first_name: FFaker::Name.first_name,
       last_name: FFaker::Name.last_name,
       email: "veteran#{i}@gmail.com",
+      uid: "veteran#{i}@gmail.com",
       password: 'password',
       password_confirmation: 'password',
       roles: Array(0...num_roles).sample(rng.rand(num_roles) + 1),
@@ -30,6 +31,14 @@ def create_veterans
         friendship.save
       end
     end
+  end
+
+  # Create 5 resources for each veteran
+  veterans.each do |veteran|
+    Resource.create(
+      file_name: FFaker::Product.product_name, 
+      description: FFaker::AWS.product_description
+    )
   end
 end
 
@@ -52,8 +61,8 @@ def create_partering_orgs
                FFaker::AddressUS.zip_code,
       lat: FFaker::Geolocation.lat,
       lng: FFaker::Geolocation.lng,
-      role: rng.rand(PartneringOrganization.roles.count),
-      demographic: rng.rand(PartneringOrganization.demographics.count),
+      # role: rng.rand(PartneringOrganization.roles.count),
+      # demographic: rng.rand(PartneringOrganization.demographics.count),
     )
   end
 end
