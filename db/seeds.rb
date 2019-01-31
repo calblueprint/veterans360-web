@@ -13,6 +13,7 @@ def create_veterans
       uid: "veteran#{i}@gmail.com",
       password: 'password',
       password_confirmation: 'password',
+      provider: 'email', 
       roles: Array(0...num_roles).sample(rng.rand(num_roles) + 1),
       lat: FFaker::Geolocation.lat,
       lng: FFaker::Geolocation.lng,
@@ -35,7 +36,7 @@ def create_veterans
 
   # Create 5 resources for each veteran
   veterans.each do |veteran|
-    Resource.create(
+    veteran.resources.create(
       file_name: FFaker::Product.product_name, 
       description: FFaker::AWS.product_description
     )
