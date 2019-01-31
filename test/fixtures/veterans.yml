@@ -2,7 +2,7 @@
 #
 # Table name: veterans
 #
-#  id                     :integer          not null, primary key
+#  id                     :bigint(8)        not null, primary key
 #  first_name             :string
 #  last_name              :string
 #  on_connect             :boolean          default(FALSE)
@@ -19,14 +19,20 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
-#  lat                    :decimal(10, 6)
-#  lng                    :decimal(10, 6)
 #  military_branch        :integer
 #  unit                   :string
 #  notes                  :string
 #  accept_messages        :boolean
 #  share_profile          :boolean
 #  accept_notices         :boolean
+#  lat                    :decimal(10, 6)
+#  lng                    :decimal(10, 6)
+#  address                :string
+#  phone_number           :string
+#  description            :string
+#  provider               :string
+#  uid                    :string
+#  tokens                 :text
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

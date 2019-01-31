@@ -2,7 +2,7 @@
 #
 # Table name: partnering_organizations
 #
-#  id                     :integer          not null, primary key
+#  id                     :bigint(8)        not null, primary key
 #  name                   :string
 #  phone_number           :string
 #  website                :string
@@ -21,9 +21,16 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :inet
 #  last_sign_in_ip        :inet
-#  approval_status        :boolean          default(false)
+#  approval_status        :boolean          default(FALSE)
 #  image                  :string
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
+#  description            :string
+#  section                :integer
 #
+
 class PartneringOrganization < ApplicationRecord
 
 	devise :database_authenticatable, :registerable,

@@ -2,9 +2,9 @@
 #
 # Table name: upvotes
 #
-#  id          :integer          not null, primary key
-#  veteran_id  :integer
-#  resource_id :integer
+#  id          :bigint(8)        not null, primary key
+#  veteran_id  :bigint(8)
+#  resource_id :bigint(8)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

@@ -2,7 +2,7 @@
 #
 # Table name: friendships
 #
-#  id         :integer          not null, primary key
+#  id         :bigint(8)        not null, primary key
 #  veteran_id :integer
 #  friend_id  :integer
 #  created_at :datetime         not null
