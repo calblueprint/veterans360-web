@@ -10,8 +10,10 @@ def create_veterans
       first_name: FFaker::Name.first_name,
       last_name: FFaker::Name.last_name,
       email: "veteran#{i}@gmail.com",
+      uid: "veteran#{i}@gmail.com",
       password: 'password',
       password_confirmation: 'password',
+      provider: 'email', 
       roles: Array(0...num_roles).sample(rng.rand(num_roles) + 1),
       lat: FFaker::Geolocation.lat,
       lng: FFaker::Geolocation.lng,
@@ -31,8 +33,27 @@ def create_veterans
       end
     end
   end
+
+  # Create 5 resources for each veteran
+  # veterans.each do |veteran|
+  #   veteran.resources.create!(
+  #     file_name: FFaker::Product.product_name, 
+  #     description: FFaker::AWS.product_description
+  #   )
+  # end
 end
 
+def create_resources
+  # Create 5 resources for each veteran
+  10.times do |i|
+    Resource.create(
+      owner_type: 'Veteran', 
+      owner_id: i, 
+      file_name: FFaker::Product.product_name, 
+      description: FFaker::AWS.product_description
+    )
+  end
+end
 
 # Create Partering Orgs
 def create_partering_orgs
@@ -52,11 +73,12 @@ def create_partering_orgs
                FFaker::AddressUS.zip_code,
       lat: FFaker::Geolocation.lat,
       lng: FFaker::Geolocation.lng,
-      role: rng.rand(PartneringOrganization.roles.count),
-      demographic: rng.rand(PartneringOrganization.demographics.count),
+      # role: rng.rand(PartneringOrganization.roles.count),
+      # demographic: rng.rand(PartneringOrganization.demographics.count),
     )
   end
 end
 
 create_veterans
+create_resources
 create_partering_orgs

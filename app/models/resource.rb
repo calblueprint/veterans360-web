@@ -2,16 +2,14 @@
 #
 # Table name: resources
 #
-#  id                          :integer          not null, primary key
-#  file_name                   :string
-#  file                        :string
-#  category                    :integer
-#  created_at                  :datetime         not null
-#  updated_at                  :datetime         not null
-#  partnering_organizations_id :integer
-#  owner_type                  :string
-#  owner_id                    :integer
-#  description                 :string
+#  id          :bigint(8)        not null, primary key
+#  file_name   :string
+#  file        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  owner_type  :string
+#  owner_id    :bigint(8)
+#  description :string
 #
 
 class Resource < ApplicationRecord
@@ -19,8 +17,8 @@ class Resource < ApplicationRecord
 
   belongs_to :owner, :polymorphic => true
 
-  has_many :upvotes, :dependent => :destroy
-  has_many :veterans, through: :upvotes
+  has_many :upvotes
+  has_many :upvoted_veterans, through: :upvotes
 
   mount_uploader :file, FilesUploader
 

@@ -2,7 +2,7 @@
 #
 # Table name: veterans
 #
-#  id                     :integer          not null, primary key
+#  id                     :bigint(8)        not null, primary key
 #  first_name             :string
 #  last_name              :string
 #  on_connect             :boolean          default(FALSE)
@@ -27,6 +27,12 @@
 #  accept_notices         :boolean
 #  lat                    :decimal(10, 6)
 #  lng                    :decimal(10, 6)
+#  address                :string
+#  phone_number           :string
+#  description            :string
+#  provider               :string
+#  uid                    :string
+#  tokens                 :text
 #
 
 class Veteran < ApplicationRecord
@@ -37,8 +43,10 @@ class Veteran < ApplicationRecord
   
   include DeviseTokenAuth::Concerns::User
 
-  has_many :upvotes, dependent: :destroy
-  has_many :resources, through: :upvotes
+  has_many :resources, as: :owner
+
+  has_many :upvotes
+  has_many :upvoted_resources, through: :upvotes
 
   has_many :friendships
   has_many :follows, through: :friendships, source: :friend
