@@ -43,8 +43,10 @@ class Veteran < ApplicationRecord
   
   include DeviseTokenAuth::Concerns::User
 
-  has_many :upvotes, dependent: :destroy
-  has_many :resources, through: :upvotes
+  has_many :resources, as: :owner
+
+  has_many :upvotes
+  has_many :upvoted_resources, through: :upvotes
 
   has_many :friendships
   has_many :follows, through: :friendships, source: :friend

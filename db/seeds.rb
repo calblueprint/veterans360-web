@@ -35,14 +35,25 @@ def create_veterans
   end
 
   # Create 5 resources for each veteran
-  veterans.each do |veteran|
-    veteran.resources.create(
+  # veterans.each do |veteran|
+  #   veteran.resources.create!(
+  #     file_name: FFaker::Product.product_name, 
+  #     description: FFaker::AWS.product_description
+  #   )
+  # end
+end
+
+def create_resources
+  # Create 5 resources for each veteran
+  10.times do |i|
+    Resource.create(
+      owner_type: 'Veteran', 
+      owner_id: i, 
       file_name: FFaker::Product.product_name, 
       description: FFaker::AWS.product_description
     )
   end
 end
-
 
 # Create Partering Orgs
 def create_partering_orgs
@@ -69,4 +80,5 @@ def create_partering_orgs
 end
 
 create_veterans
+create_resources
 create_partering_orgs

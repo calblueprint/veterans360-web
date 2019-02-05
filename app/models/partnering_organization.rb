@@ -36,7 +36,7 @@ class PartneringOrganization < ApplicationRecord
 	devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable # , :confirmable
 
-	has_many :resources, :as => :owner, dependent: :destroy
+	has_many :resources, :as => :owner
 
 	has_many :subscriptions, dependent: :destroy
 	has_many :subscribers, through: :subscriptions, source: :veteran
